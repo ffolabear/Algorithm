@@ -1,22 +1,31 @@
 package BaekJoon;
 
-import java.io.*;
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
 import java.util.StringTokenizer;
 
 public class baek_fastPlus {
 	
-	public static void main(String[] args) throws IOException {
+	public static void main(String[] args) throws Exception, IOException {
 		
-		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));		
-		// BufferedInputstream 바이트입력스트립에 연결되어 버퍼를 제공
-		// BufferedReader 문자력 스트림에 연결되어 버퍼를 제공
-		
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
 		
-		
 		StringTokenizer st;
-		int a = Integer.parseInt(br.readLine());
- 		
+		int T = (Integer.parseInt(br.readLine()));
+		
+		for (int i = 0; i < T; i++) {
+			st = new StringTokenizer(br.readLine()," ");
+			bw.write((Integer.parseInt(st.nextToken()) + Integer.parseInt(st.nextToken()))+ "\n");
+		}
+		br.close();
+        
+		bw.flush();
+		bw.close();
+ 
 	}
 
 }
