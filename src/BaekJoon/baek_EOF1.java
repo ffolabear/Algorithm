@@ -2,7 +2,7 @@ package BaekJoon;
 
 import java.util.Scanner;
 
-public class baek_EOF_scanner {
+public class baek_EOF1 {
 
 	public static void main(String[] args) {
 
