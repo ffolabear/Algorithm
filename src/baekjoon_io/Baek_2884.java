@@ -1,8 +1,8 @@
-package BaekJoon;
+package baekjoon_io;
 
 import java.util.*;
 
-public class baek_alarm {
+public class Baek_2884 {
 
 	public static void main(String[] args) {
 

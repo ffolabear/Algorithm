@@ -1,8 +1,8 @@
-package BaekJoon;
+package baekjoon_for;
 
 import java.util.*;
 
-public class baek_1plusN {
+public class Baek_8393 {
 
 	public static void main(String[] args) {
 		

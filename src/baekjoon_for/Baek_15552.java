@@ -1,4 +1,4 @@
-package BaekJoon;
+package baekjoon_for;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -7,7 +7,7 @@ import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.util.StringTokenizer;
 
-public class baek_fastPlus {
+public class Baek_15552 {
 	
 	public static void main(String[] args) throws Exception, IOException {
 		

@@ -1,8 +1,8 @@
-package BaekJoon;
+package baekjoon_for;
 
 import java.util.*;
 
-public class baek_gugu {
+public class Baek_2739 {
 
 	public static void main(String[] args) {
 		Scanner sc = new Scanner(System.in);

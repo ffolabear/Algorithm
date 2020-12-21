@@ -1,8 +1,8 @@
-package BaekJoon;
+package baekjoon_for;
 
 import java.util.Scanner;
 
-public class back_reversestar_scanner {
+public class Baek_2439_2 {
 	
 	public static void main(String[] args) {
 		Scanner in = new Scanner(System.in);

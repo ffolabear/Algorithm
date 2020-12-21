@@ -1,11 +1,11 @@
-package BaekJoon;
+package baekjoon_for;
 
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.StringTokenizer;
 
-public class baek_x_vs_3 {
+public class Baek_10871_3 {
 	
 	public static void main(String[] args) throws IOException {
 		

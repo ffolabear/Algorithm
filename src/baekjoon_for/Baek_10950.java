@@ -1,7 +1,7 @@
-package BaekJoon;
+package baekjoon_for;
 
 import java.util.*;
-public class baek_AB {
+public class Baek_10950 {
 	
 	public static void main(String[] args) {
 		Scanner sc= new Scanner(System.in);
@@ -12,7 +12,7 @@ public class baek_AB {
 			int A = sc.nextInt();
 			int B = sc.nextInt();
 			if ( B<10) {
-			System.out.println(A+B);
+			System.out.print(A+B);
 			} else {
 				
 			}

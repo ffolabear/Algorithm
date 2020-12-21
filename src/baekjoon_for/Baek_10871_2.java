@@ -1,8 +1,8 @@
-package BaekJoon;
+package baekjoon_for;
 
 import java.util.Scanner;
 
-public class baek_x_vs_1 {
+public class Baek_10871_2 {
 	
 	public static void main(String[] args) {
 		

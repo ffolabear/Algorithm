@@ -1,8 +1,8 @@
-package BaekJoon;
+package baekjoon_while;
 
 import java.util.Scanner;
 
-public class baek_plus_cycle1 {
+public class Baek_1110_1 {
 
 	public static void main(String[] args) {
 

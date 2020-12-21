@@ -1,8 +1,8 @@
-package BaekJoon;
+package baekjoon_for;
 
 import java.util.*;
 
-public class baek_star2 {
+public class Baek_2438_2 {
 	
 	public static void main(String[] args) {
 		
@@ -13,7 +13,7 @@ public class baek_star2 {
 			for(int j=1 ; j<=i ; j++) {
 				System.out.print("*");
 			}
-			System.out.print("O");
+			System.out.println(" ");
 		}
 	}
 

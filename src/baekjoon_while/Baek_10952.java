@@ -1,8 +1,8 @@
-package BaekJoon;
+package baekjoon_while;
 
 import java.util.*;
 
-public class beak_while1 {
+public class Baek_10952 {
 
 	public static void main(String[] args) {
 
