@@ -1,4 +1,4 @@
-package ext_java;
+package Java_study;
 
 import java.util.regex.Pattern;
 
