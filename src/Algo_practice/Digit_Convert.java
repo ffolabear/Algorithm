@@ -1,4 +1,4 @@
-package data_structure;
+package Algo_practice;
 
 import java.util.Scanner;
 
