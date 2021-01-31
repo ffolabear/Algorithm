@@ -27,10 +27,7 @@ public class Bake_2108_statistics {
 
 		}
 		
-		System.out.println(Math.round(sum/N));
-		System.out.println("-------------------");
 		System.out.println((int)Math.round((double)sum / N));
-		System.out.println("-------------------");
 		
 		Arrays.sort(num);
 		System.out.println(num[N/2]);
