@@ -23,7 +23,8 @@ public class Comperator {
 		public String toString() {
 			return "PhyscData [name=" + name + ", height=" + height + ", vision=" + vision + "]";
 		}
-
+		
+		// 주어진 키를 찾는 부분
 		public static final Comparator<PhyscData> HEIGHT_ORDER = new HeightOrderCompator();
 
 		private static class HeightOrderCompator implements Comparator<PhyscData> {
@@ -34,6 +35,19 @@ public class Comperator {
 			}
 
 		}
+		
+		// 주어진 시력을 찾는 부분
+		public static final Comparator<PhyscData> SIGHT_ORDER = new SightOrderComparator();
+		
+		public static class SightOrderComparator implements Comparator<PhyscData>{
+
+			@Override
+			public int compare(PhyscData o1, PhyscData o2) {
+				return (o1.vision > o2.vision) ? 1 : (o1.vision < o2.vision) ? -1 : 0;
+			}
+			
+		}
+			
 
 	}
 	
@@ -52,16 +66,21 @@ public class Comperator {
 			};
 		
 		
-		System.out.print("몇 cm 인 사람을 찾고 있나요? : ");
-		int height = sc.nextInt();
-		int idx = Arrays.binarySearch(x, new PhyscData("", height, 0.0), PhyscData.HEIGHT_ORDER);
+//		System.out.print("몇 cm 인 사람을 찾고 있나요? : ");
+//		int height = sc.nextInt();
+//		int idx = Arrays.binarySearch(x, new PhyscData("", height, 0.0), PhyscData.HEIGHT_ORDER);
 		
-		if(idx < 0) {
+		
+		System.out.print("시력이 몇인 사람을 찾고 있나요? : ");
+		Double sight = sc.nextDouble();
+		int aws = Arrays.binarySearch(x, new PhyscData("", 0, sight), PhyscData.SIGHT_ORDER);
+		
+		if(aws < 0) {
 			System.out.println("요소가 없습니다.");
 		} else {
 			
-			System.out.println("x[" + idx + "]에 있습니다.");
-			System.out.println("찾은 데이터 : " + x[idx]);
+			System.out.println("x[" + aws + "]에 있습니다.");
+			System.out.println("찾은 데이터 : " + x[aws]);
 		}
 		
 		
