@@ -2,12 +2,12 @@ package Algo_practice;
 
 import java.util.Scanner;
 
-public class RingQueueTest {
+public class Ring_QueueTest {
 
 	public static void main(String[] args) {
 
 		Scanner sc = new Scanner(System.in);
-		RingQueue s = new RingQueue(64);
+		Ring_Queue s = new Ring_Queue(64);
 
 		while (true) {
 
@@ -29,7 +29,7 @@ public class RingQueueTest {
 				
 				try {
 					s.enque(x);
-				} catch (RingQueue.OverflowRingQueueException e) {
+				} catch (Ring_Queue.OverflowRingQueueException e) {
 					System.out.println("큐가 가득 찼습니다.");
 				}
 				break;
@@ -39,7 +39,7 @@ public class RingQueueTest {
 				try {
 					x = s.deque();
 					System.out.println("디큐한 데이터는 " + x + " 입니다. ");
-				} catch (RingQueue.EmptyRingQueueException e) {
+				} catch (Ring_Queue.EmptyRingQueueException e) {
 					System.out.println("큐가 비어있습니다.");
 				}
 				break;
@@ -49,7 +49,7 @@ public class RingQueueTest {
 				try {
 					x = s.peek();
 					System.out.println("피크한 데이터는 " + x + "입니다.");
-				} catch (RingQueue.EmptyRingQueueException e) {
+				} catch (Ring_Queue.EmptyRingQueueException e) {
 					System.out.println("큐가 비어있습니다.");
 				}
 				break;

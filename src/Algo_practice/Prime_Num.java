@@ -1,6 +1,6 @@
 package Algo_practice;
 
-public class PrimeNum {
+public class Prime_Num {
 	
 	public static void main(String[] args) {
 

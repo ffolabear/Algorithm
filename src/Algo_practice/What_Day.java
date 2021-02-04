@@ -2,7 +2,7 @@ package Algo_practice;
 
 import java.util.Scanner;
 
-public class WhatDay {
+public class What_Day {
 
 	int y;
 	int m;
@@ -20,7 +20,7 @@ public class WhatDay {
 		return (year % 4 == 0 && year % 100 == 0 && year % 400 == 0) ? 1 : 0;
 	}
 
-	WhatDay(int y, int m, int d) {
+	What_Day(int y, int m, int d) {
 
 		this.y = y;
 		this.m = m;
@@ -30,9 +30,9 @@ public class WhatDay {
 	
 	
 
-	WhatDay after(int n) {
+	What_Day after(int n) {
 
-		WhatDay temp = new WhatDay(this.y, this.m, this.d);
+		What_Day temp = new What_Day(this.y, this.m, this.d);
 		
 		if(n < 0) {
 			return (before(-n));
@@ -65,9 +65,9 @@ public class WhatDay {
 
 	}
 
-	WhatDay before(int n) {
+	What_Day before(int n) {
 		
-		WhatDay temp = new WhatDay(this.y, this.m, this.d);
+		What_Day temp = new What_Day(this.y, this.m, this.d);
 
 		if (n < 0) {
 
@@ -107,7 +107,7 @@ public class WhatDay {
 		System.out.print("일：");
 		int d = sc.nextInt();
 		
-		WhatDay date = new WhatDay(y,m,d);
+		What_Day date = new What_Day(y,m,d);
 		
 		System.out.print("몇 일 앞/뒤의 날짜를 구할까요?：");
 		
@@ -115,10 +115,10 @@ public class WhatDay {
 		int n = sc.nextInt();
 		
 		
-		WhatDay afterDay = date.after(n);
+		What_Day afterDay = date.after(n);
 		System.out.printf("%d일 뒤의 날짜는 %d년 %d월 %d일입니다.\n", n, afterDay.y,afterDay.m, afterDay.d);
 		
-		WhatDay beforeDay = date.before(n);
+		What_Day beforeDay = date.before(n);
 		System.out.printf("%d일 뒤의 날짜는 %d년 %d월 %d일입니다.\n", n, beforeDay.y,beforeDay.m, beforeDay.d);
 
 	}

@@ -9,30 +9,46 @@ public class Baek_9012 {
 
 		Scanner sc = new Scanner(System.in);
 		int T = sc.nextInt();
-
-		for (int i = 0; i < T; i++) {
+		
+		for(int i = 0; i < T; i++) {
 			
-			String str = sc.next();
-			String[] arr = str.split(str);
+			System.out.println(solve(sc.next()));
 			
-			for(int j = 0; j < arr.length; j++) {
-				
-				String aws = "";
-				
-				if(arr[i] == "(") {
-					aws += arr[i]; 
-				} else if (arr[i] == ")") {
-					aws.replace("(", null);
-				}
-				
-				System.out.print(aws + "/");
-				
-				
-				
-				
-			}
-
 		}
+		
 	}
-
+	
+	public static String solve(String s) {
+		
+		Stack<Character> stack = new Stack<>();
+		
+		for(int i = 0; i < s.length(); i++) {
+			
+			char c = s.charAt(i);
+			
+			if(c == '(' ) {
+				stack.push(c);
+			} 
+			
+			else if (c == ')') {
+				if(stack.empty()) {
+					return "NO";
+				} else {
+					stack.pop();
+				}
+			}
+			
+			}
+			
+			
+			
+			if (stack.empty()) {
+				return "YES";
+			} else {
+				return "NO";
+			}
+	}
 }
+
+
+

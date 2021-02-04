@@ -1,6 +1,6 @@
 package Algo_practice;
 
-public class IntStack {
+public class Int_Stack {
 	
 	private int max;			// 스택 용량
 	private int ptr;			// 스택 포인터
@@ -25,7 +25,7 @@ public class IntStack {
 	// 생성자 - 스택이 비어있으면 포인터는 0
 	// 넘겨받은 파라미터로 배열의 길이 생성
 	// 만약 배열 본체의 생성에실패할 경우 max를 0으로 만들어서 다른 메서드가 존재하지 않는 배열에 접근하는 것을 방지
-	public IntStack(int capacity) {
+	public Int_Stack(int capacity) {
 		
 		ptr = 0;
 		max = capacity;

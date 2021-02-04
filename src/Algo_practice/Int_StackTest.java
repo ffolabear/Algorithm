@@ -3,12 +3,12 @@ package Algo_practice;
 import java.util.Scanner;
 
 
-public class IntStackTest {
+public class Int_StackTest {
 
 	public static void main(String[] args) {
 
 		Scanner sc = new Scanner(System.in);
-		IntStack s = new IntStack(64);
+		Int_Stack s = new Int_Stack(64);
 
 		while (true) {
 			System.out.println("현재 데이터 수 : " + s.size() + "/" + s.capacity());
@@ -28,7 +28,7 @@ public class IntStackTest {
 				x = sc.nextInt();
 				try {
 					s.push(x);
-				} catch (IntStack.OverFlowIntStackException e) {
+				} catch (Int_Stack.OverFlowIntStackException e) {
 					System.out.println("스택이 가득 찼습니다.");
 				}
 				break;
@@ -38,7 +38,7 @@ public class IntStackTest {
 					x = s.pop();
 					System.out.println("팝한 데이터는 " + x + "입니다.");
 					
-				} catch (IntStack.EmptyIntStackException e) {
+				} catch (Int_Stack.EmptyIntStackException e) {
 					System.out.println("스택이 비어 있습니다.");
 				}
 				break;
@@ -48,7 +48,7 @@ public class IntStackTest {
 					x = s.peek();
 					System.out.println("피크한 데이터는 " + x + "입니다.");
 					
-				} catch (IntStack.EmptyIntStackException e) {
+				} catch (Int_Stack.EmptyIntStackException e) {
 					System.out.println("스택이 비어 있습니다.");
 				}
 				break;

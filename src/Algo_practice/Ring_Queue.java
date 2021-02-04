@@ -1,6 +1,6 @@
 package Algo_practice;
 
-public class RingQueue {
+public class Ring_Queue {
 
 	private int max; // 큐의 용량
 	private int front; // 첫번째 요소 커서
@@ -20,7 +20,7 @@ public class RingQueue {
 		}
 	}
 
-	public RingQueue(int capacity) {
+	public Ring_Queue(int capacity) {
 
 		num = front = rear = 0;
 		max = capacity;
