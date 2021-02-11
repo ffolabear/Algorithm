@@ -6,38 +6,53 @@ import java.util.Scanner;
 public class BubbleSort {
 
 	static void swap(int[] arr, int index1, int index2) {
-		
+
 		int ptr = arr[index1];
 		arr[index1] = arr[index2];
 		arr[index2] = ptr;
 
+		for (int i = 0; i < arr.length; i++) {
+			System.out.print(arr[i] + " ");
+		}
+		System.out.println();
+		System.out.println("----------------------------------");
+
 	}
 
 	static void bubblesort(int[] arr, int length) {
-		
-		
-		
-		// 뒤에 있는 원소들부터 패스를 진행
-		// 패스가 끝날때마다 정렬이 더이상 필요없는 원소들이 뒤에있음
-		for (int i = length -1 ; i > 0; i--) {
-			
-			// 이미 비교가 끝난 원소들을 건너뛰기 위한 변수
+
+		for (int i = 0; i < length; i++) {
+			// System.out.println("arr[" + i + "] : " + arr[i]);
 			int cnt = 0;
-			
-			for(int j = 0; j < i; j++) {
-				if(arr[j] > arr[j + 1]) {
-					
-					swap(arr, j, j+1);
+
+			for (int j = length - 1; j > i; j--) {
+
+				if (arr[j - 1] > arr[j]) {
+					swap(arr, j - 1, j);
 					cnt++;
+					System.out.println(cnt + "///");
 				}
+
 			}
-			if(cnt ==0) {
+			if (cnt == 0) {
 				break;
 			}
-			
 		}
+	}
+
+	static void bubblesort2(int[] arr, int length) {
 		
-		
+		int k = 0;
+		while(k < length - 1) {
+			int last = length - 1;
+			
+			for(int i = length - 1 ; i > k ; i--) {
+				if(arr[i-1] > arr[i]) {
+					swap(arr, i-1, i);
+					last = i;
+				}
+			}
+		}
 	}
 
 	public static void main(String[] args) {
@@ -51,17 +66,18 @@ public class BubbleSort {
 		Random rand = new Random();
 		for (int i = 0; i < arr.length; i++) {
 			arr[i] = rand.nextInt(11);
-			System.out.println("arr["+i+"] : " + arr[i]);
+			System.out.println("arr[" + i + "] : " + arr[i]);
 		}
 		System.out.println("==============================");
 		int start = (int) System.currentTimeMillis();
+
+		//bubblesort(arr, N);
+		bubblesort2(arr, N);
 		
-		bubblesort(arr, N);
-			
-		for(int i = 0; i < arr.length; i++) {
-			System.out.println("arr["+i+"] : " + arr[i]);
+
+		for (int i = 0; i < arr.length; i++) {
+			System.out.println("arr[" + i + "] : " + arr[i]);
 		}
-		
-		
+
 	}
 }
