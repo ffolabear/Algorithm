@@ -1,9 +1,9 @@
-package Programmers.lvl1_5;
+package Programmers.Test;
 
 import java.util.ArrayList;
 import java.util.Stack;
 
-public class Q1_kakao_Doll {
+public class lvl01_kakaoDoll {
 	
 	static class Solution {
 	    public static int solution(int[][] board, int[] moves) {

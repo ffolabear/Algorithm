@@ -1,9 +1,9 @@
-package Programmers.lvl1_2;
+package Programmers.Test;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class Q1_2 {
+public class lvl01_02 {
 	
 	/*
 	 * 소수의 배수는 소수가 아니다.

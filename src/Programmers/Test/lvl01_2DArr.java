@@ -1,4 +1,4 @@
-package Programmers.lvl1_4;
+package Programmers.Test;
 
 /*
  * 행렬의 덧셈은 행과 열의 크기가 같은 두 행렬의 같은 행, 같은 열의 값을 서로 더한 결과가 됩니다. 
@@ -10,7 +10,7 @@ package Programmers.lvl1_4;
  * 
  */
 
-public class Q1 {
+public class lvl01_2DArr {
 
 	public static void main(String[] args) {
 		

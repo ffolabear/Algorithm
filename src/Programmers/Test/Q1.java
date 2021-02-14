@@ -1,4 +1,4 @@
-package Programmers.lvl1_1;
+package Programmers.Test;
 
 import java.io.BufferedReader;
 import java.io.IOException;

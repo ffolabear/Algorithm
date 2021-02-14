@@ -1,4 +1,4 @@
-package Programmers.lvl1_4;
+package Programmers.Test;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -6,7 +6,7 @@ import java.io.InputStreamReader;
 import java.util.Scanner;
 import java.util.regex.Pattern;
 
-public class Line_EX {
+public class lvl01_Line {
 	
 	/*
 	 * 

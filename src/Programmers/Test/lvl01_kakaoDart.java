@@ -1,4 +1,4 @@
-package Programmers.lvl1_3;
+package Programmers.Test;
 
 /*
    2017 카카오 신입 공채 1차 코딩 테스트 
@@ -24,7 +24,7 @@ package Programmers.lvl1_3;
 
  */
 
-public class Q2_normal {
+public class lvl01_kakaoDart {
 
 	public static void main(String[] args) {
 		

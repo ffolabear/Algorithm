@@ -1,4 +1,4 @@
-package Programmers.hash;
+package Programmers.Test;
 
 import java.util.Arrays;
 
@@ -13,7 +13,7 @@ import java.util.Arrays;
  * return : ["leo"]
  */
 
-public class Solution {
+public class Hash {
 	
 	public String solution(String[] participant, String[] completion) {
         String answer = "";

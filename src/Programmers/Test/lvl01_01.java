@@ -1,4 +1,4 @@
-package Programmers.lvl1_2;
+package Programmers.Test;
 
 /*
   	1부터 입력받은 숫자 n 사이에 있는 소수의 개수를 반환하는 함수, solution을 만들어 보세요.
@@ -21,7 +21,7 @@ package Programmers.lvl1_2;
 	
  */
 
-public class Q1_1 {
+public class lvl01_01 {
 
 	
 	// 자기 자신보다 작은수로 나누어 본다. 나누어 떨어지면 소수가 아니다.

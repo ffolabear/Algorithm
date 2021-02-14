@@ -1,6 +1,6 @@
-package Programmers.lvl1_3;
+package Programmers.Test;
 
-public class Q1 {
+public class lvl01_03 {
 
 	/*
 	 * 대문자와 소문자가 섞여있는 문자열 s가 주어집니다. s에 'p'의 개수와 'y'의 개수를 비교해 같으면 True, 다르면 False를
