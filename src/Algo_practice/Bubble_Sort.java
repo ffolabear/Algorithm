@@ -3,7 +3,7 @@ package Algo_practice;
 import java.util.Random;
 import java.util.Scanner;
 
-public class BubbleSort {
+public class Bubble_Sort {
 
 	static void swap(int[] arr, int index1, int index2) {
 

@@ -1,66 +1,38 @@
 package baekjoon_sort;
 
-import java.util.Scanner;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
 
 public class Baek_10989 {
 	
 	
-	public static void main(String[] args) {
+	public static void main(String[] args) throws Exception, IOException {
 		
-		Scanner sc = new Scanner(System.in);
-		int N = sc.nextInt();
-		int[] arr = new int[N];
-		int max = 0;
+		BufferedReader bf = new BufferedReader(new InputStreamReader(System.in));
+		StringBuilder sb = new StringBuilder(); 
 		
+		int N = Integer.parseInt(bf.readLine());
 		
-		for(int i = 0; i < arr.length; i++) {
-			arr[i] = sc.nextInt();
+		int[] counting = new int[10001];
+		
+		for(int i = 0; i < N; i++) {
+			
+			counting[Integer.parseInt(bf.readLine())]++;
+			
 		}
 		
-		
-		for(int i = 0; i < arr.length - 1; i++) {
+		for(int i = 0; i < counting.length; i++) {
 			
-			if(arr[i] < arr[i+1]) {
-				max = arr[i+1];
+			while(counting[i] > 0) {
+				sb.append(i).append("\n");
+				counting[i]--;
 			}
-		}
-		System.out.println(max);
-		
-		int[] counting = new int[max];
-		
-		for(int i = 0; i < arr.length; i++) {
-			counting[arr[i]-1]++; 
-		}
-		
-		
-		for(int i = 0; i < counting.length; i++) {
-			System.out.println("i :" + i + " / " + counting[i]);
-			
-		}
-		System.out.println("==================================");
-		
-		for(int i = 1; i < counting.length; i++) {
-			counting[i] += counting[i - 1];
-			
-		}
-		
-		System.out.println("==================================");
-		
-		for(int i = 0; i < counting.length; i++) {
-			System.out.println("i :" + i + " / " + counting[i]);
-			
-		}
-		
-		for(int i = 0; i < counting.length; i++) {
-			
 			
 			
 		}
 		
-		
-		
-		
-		
+		System.out.println(sb);
 	}
 
 }
