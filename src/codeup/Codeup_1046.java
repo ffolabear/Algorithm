@@ -20,10 +20,10 @@ public class Codeup_1046 {
             sum += nums[i];
         }
 
-        long avg = sum/3;
+        double avg = (double)sum/3;
 
         System.out.println(sum);
-        System.out.println(avg);
+        System.out.printf("%.1f",avg);
 
 
     }
