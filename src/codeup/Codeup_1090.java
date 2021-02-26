@@ -3,6 +3,8 @@ package codeup;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.math.BigDecimal;
+import java.text.DecimalFormat;
 
 public class Codeup_1090 {
 
@@ -16,14 +18,18 @@ public class Codeup_1090 {
             arr[i] = Integer.parseInt(str[i]);
         }
 
-        int cnt = 1;
-        int res = arr[0];
+        double res = arr[0];
 
-        while (cnt <= arr[2]){
+        for (int i=1; i <= arr[2]; i++){
+
+
+
+            if (i == arr[2]){
+                DecimalFormat df = new DecimalFormat("#.##");
+                System.out.println(df.format(res));
+            }
             res *= arr[1];
-            cnt++;
         }
-        System.out.println(res);
 
     }
 }
