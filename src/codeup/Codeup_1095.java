@@ -17,7 +17,12 @@ public class Codeup_1095 {
         for(int i = 0; i < N; i++){
             String input = bf.readLine();
             String[] num = input.split(" ");
-            arr[Integer.parseInt(num[0])-1][Integer.parseInt(num[1])-1]++;
+
+            if(arr[Integer.parseInt(num[0])-1][Integer.parseInt(num[1])-1] < 1){
+                arr[Integer.parseInt(num[0])-1][Integer.parseInt(num[1])-1]++;
+
+            }
+
         }
 
         for (int i = 0; i < arr.length; i++){
