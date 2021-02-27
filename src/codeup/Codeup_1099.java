@@ -24,15 +24,30 @@ public class Codeup_1099 {
         int ptrX = 1;
         int ptrY = 1;
 
-        while (board[ptrX][ptrY] != 2 && (ptrX+1 != 9 && ptrY+1 != 9)) {
+        //((ptrX <= 8 && ptrY<=8) && board[ptrX][ptrY] !=2)
+        while (ptrX <= 8 && ptrY<=8) {
 
-            if (ptrX + 1 == 0) {
+            if (board[ptrX][ptrY] ==2 ){
                 board[ptrX][ptrY] = 9;
-                ptrX++;
-            } else if (ptrX + 1 == 1) {
-                board[ptrX][ptrY] = 9;
-                ptrY++;
+                break;
+
+            } else {
+                if (board[ptrX][ptrY + 1] == 0){
+                    board[ptrX][ptrY] = 9;
+                    ptrY++;
+                } else if (board[ptrX][ptrY + 1] == 1) {
+                    board[ptrX][ptrY] = 9;
+                    ptrX++;
+                } else if (board[ptrX][ptrY + 1] == 2) {
+                    board[ptrX][ptrY] = 9;
+                    board[ptrX][ptrY + 1] =9;
+                    break;
+                }
+
+
+
             }
+
 
 
         }
