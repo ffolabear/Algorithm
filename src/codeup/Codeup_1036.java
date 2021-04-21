@@ -1,1 +1,0 @@
-package codeup;import java.util.Scanner;public class Codeup_1036 {    public static void main(String[] args) {        Scanner sc = new Scanner(System.in);        String N = sc.next();        System.out.println((int) N.charAt(0));    }}
