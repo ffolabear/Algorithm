@@ -1,21 +1,20 @@
 package Programmers.Test;
 
+import java.util.regex.Pattern;
+
 public class test {
 
     public static void main(String[] args) {
 
-       int num = 45;
-       String cont = "";
+        String s = "ffffPfff";
 
-      while (num > 0){
+        for(int i=0; i < s.length(); i++){
+            System.out.println(i);
+            if(String.valueOf(s.charAt(i)).equals("f")){
 
-          cont = num%3 + cont;
-          num /= 3;
-
-      }
-
-        System.out.println(cont);
-
+                System.out.println("true");
+            }
+        }
     }
 
 }
