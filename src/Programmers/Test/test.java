@@ -6,15 +6,9 @@ public class test {
 
     public static void main(String[] args) {
 
-        String s = "ffffPfff";
+       int n = 12345;
+        System.out.println((int)(Math.log10(n) +1));
 
-        for(int i=0; i < s.length(); i++){
-            System.out.println(i);
-            if(String.valueOf(s.charAt(i)).equals("f")){
-
-                System.out.println("true");
-            }
-        }
     }
 
 }
