@@ -1,24 +1,29 @@
 package baekjoon_string;
 
-import java.util.Scanner;
+import java.io.*;
 
 public class Baek_11720 {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
 
-        Scanner sc = new Scanner(System.in);
-        int N = sc.nextInt();
+        BufferedReader bf = new BufferedReader(new InputStreamReader(System.in));
+        BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
 
+        String n = bf.readLine();
+        String nums = bf.readLine();
 
-        String str = sc.nextLine();
-        String[] arr = str.split("");
-        for (int i=0; i < N; i ++){
+        String[] str = nums.split("");
+        int sum = 0;
 
-            System.out.println(arr[i]);
+        for (int i=0; i <  Integer.parseInt(n); i++){
+
+            sum += Integer.parseInt(str[i]);
 
         }
 
 
-
+        bw.write(String.valueOf(sum));
+        bw.flush();
+        bw.close();
     }
 }

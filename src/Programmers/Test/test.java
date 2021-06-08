@@ -1,14 +1,21 @@
 package Programmers.Test;
 
-import java.util.regex.Pattern;
-
 public class test {
 
     public static void main(String[] args) {
 
-       int n = 12345;
-        System.out.println((int)(Math.log10(n) +1));
+        String str = "aabbcc";
+
+        String aws = str.replaceAll("hello", "hi");
+
+        for (int i=2; i <= str.length()/2; i++){
+
+            System.out.println(str.substring(0,i));
+        }
+
+
+
+        //System.out.println(str.substring(0,2));
 
     }
-
 }
