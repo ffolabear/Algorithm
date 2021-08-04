@@ -22,11 +22,21 @@ public class BridgeCrossingTruck {
                     current.add(truck);
                     current_weight += truck;
                     answer++;
+
+                    System.out.println("현재 올라간 트럭 : " + current);
+                    System.out.println("현재 무게 : " + current_weight);
+                    System.out.println("경과 시간 : " + answer);
+                    System.out.println("-----------------------------------");
+
                     break;
                     //큐의 사이즈는 다리의 길이보다 클수 없음 (다리 길이 이상의 트럭이 올라갈 수 없음)
                 } else if (current.size() == bridge_length) {
                     //현재 수용가능한 댓수 이상의 트럭이 들어왔으므로 초과하는 트럭의 무게를 빼줌
                     current_weight -= current.poll();
+                    System.out.println("현재 올라간 트럭 : " + current);
+                    System.out.println("현재 무게 : " + current_weight);
+                    System.out.println("경과 시간 : " + answer);
+                    System.out.println("-----------------------------------");
 
                 } else {
                     //현재 올라간 트럭 + 다음 트럭의 무게가 최대 무게를 초과한다면 올라갈수없음
@@ -34,11 +44,20 @@ public class BridgeCrossingTruck {
                     if (current_weight + truck > weight) {
                         current.add(0);
                         answer++;
+                        System.out.println("현재 올라간 트럭 : " + current);
+                        System.out.println("현재 무게 : " + current_weight);
+                        System.out.println("경과 시간 : " + answer);
+                        System.out.println("-----------------------------------");
+
                     } else {
                         //현재 올라간 트럭 + 다음 트럭의 무게가 최대 무게를 초과하지 않으므로 현재 무게에 트럭을 더해줌
                         current.add(truck);
                         current_weight += truck;
                         answer++;
+                        System.out.println("현재 올라간 트럭 : " + current);
+                        System.out.println("현재 무게 : " + current_weight);
+                        System.out.println("경과 시간 : " + answer);
+                        System.out.println("-----------------------------------");
                         break;
                     }
 
