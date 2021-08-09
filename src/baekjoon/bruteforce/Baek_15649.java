@@ -33,12 +33,20 @@ public class Baek_15649 {
             sb.append('\n');
         } else {
 
-
             for (int i = 1; i <= N; i++) {
-                selected[k] = i;
-                recurFunc(k + 1);
-                selected[k] = 0;
+                boolean chk = false;
+                for (int j = 1; j < k; j++) {
+                    if (i == selected[j]) {
+                        chk = true;
+                    }
+                }
 
+
+                if (!chk) {
+                    selected[k] = i;
+                    recurFunc(k + 1);
+                    selected[k] = 0;
+                }
             }
 
         }
