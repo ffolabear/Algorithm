@@ -67,6 +67,7 @@ public class Score {
 
 
     static char grade(int avg) {
+        System.out.println("평균: " + avg);
 
         if (avg >= 90) {
             return 'A';
