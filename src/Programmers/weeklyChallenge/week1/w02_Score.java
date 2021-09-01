@@ -1,9 +1,7 @@
 package Programmers.weeklyChallenge.week1;
 
 
-import java.util.Arrays;
-
-public class Score {
+public class w02_Score {
 
     static StringBuilder sb = new StringBuilder();
 
@@ -92,7 +90,7 @@ public class Score {
 //                {61, 57, 100, 80, 65},
 //                {24, 90, 94, 75, 65}};
         int[][] arr = {{50, 90}, {50, 87}};
-        Score score = new Score();
+        w02_Score score = new w02_Score();
         score.solution(arr);
         System.out.println(sb.toString());
 

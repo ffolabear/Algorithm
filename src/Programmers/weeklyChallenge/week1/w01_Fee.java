@@ -5,7 +5,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.StringTokenizer;
 
-public class Fee {
+public class w01_Fee {
 
     static int price, money, count;
 
@@ -44,7 +44,7 @@ public class Fee {
 
     public static void main(String[] args) throws IOException {
         input();
-        Fee fee = new Fee();
+        w01_Fee fee = new w01_Fee();
         fee.solution(price, money, count);
 
     }
