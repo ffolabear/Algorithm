@@ -5,21 +5,26 @@ public class int_sqrt {
     public static long solution(long n) {
 
         long answer = 0;
-        System.out.println(Long.parseLong(String.valueOf((long) Math.sqrt(n))));
-        if (Long.parseLong(String.valueOf((long) Math.sqrt(n))) > 0) {
+        double sqrt = Math.sqrt(n);
+        String toString = String.valueOf(sqrt);
 
-            answer = (long) Math.pow((Math.sqrt(n) + 1), 2);
+        if (toString.charAt(toString.length() - 1) == '0') {
+            long validNum = (long) sqrt;
+            answer = (long) Math.pow((validNum + 1), 2);
+
+        } else{
+            answer = -1;
         }
 
-
-
+        System.out.println(answer);
         return answer;
     }
 
     public static void main(String[] args) {
 
 
-        System.out.println(solution(7));
+        System.out.println(solution(121));
+        System.out.println(solution(3));
 
     }
 
