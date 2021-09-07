@@ -1,4 +1,4 @@
-package Programmers.weeklyChallenge.week1;
+package Programmers.weeklyChallenge;
 
 import java.util.ArrayList;
 import java.util.Collections;

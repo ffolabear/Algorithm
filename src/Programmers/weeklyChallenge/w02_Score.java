@@ -1,4 +1,4 @@
-package Programmers.weeklyChallenge.week1;
+package Programmers.weeklyChallenge;
 
 
 public class w02_Score {
