@@ -1,7 +1,9 @@
 package Programmers.weeklyChallenge;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Comparator;
+import java.util.List;
 
 class Boxer implements Comparable<Boxer>{
 
@@ -57,6 +59,13 @@ public class w06_Boxer {
     public int[] solution(int[] weights, String[] head2head) {
 
         int[] answer = new int[weights.length];
+        ArrayList<Boxer> boxerList = new ArrayList<>();
+
+        for (int i = 0; i < weights.length; i++) {
+            int pan = head2head[i].replace("N","").length();
+            System.out.println(head2head[i]);
+
+        }
 
 
 
@@ -69,14 +78,14 @@ public class w06_Boxer {
 
         w06_Boxer boxer = new w06_Boxer();
 
-//        int[] weights = {50, 82, 75, 120};
-//        String[] head2head = {"NLWL", "WNLL", "LWNW", "WWLN"};
+        int[] weights = {50, 82, 75, 120};
+        String[] head2head = {"NLWL", "WNLL", "LWNW", "WWLN"};
 
 //        int[] weights = {145,92,86};
 //        String[] head2head = {"NLW","WNL","LWN"};
 
-        int[] weights = {60,70,60};
-        String[] head2head = {"NNN","NNN","NNN"};
+//        int[] weights = {60,70,60};
+//        String[] head2head = {"NNN","NNN","NNN"};
 
         boxer.solution(weights, head2head);
 
