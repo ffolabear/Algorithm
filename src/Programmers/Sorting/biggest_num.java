@@ -29,7 +29,7 @@ public class biggest_num {
         }
         String answer = "";
 
-        if (sortedNum[0] == "0") {
+        if (sortedNum[0].equals("0")) {
             answer = "0";
         } else{
             for (String s : sortedNum) {
