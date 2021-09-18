@@ -10,22 +10,31 @@ public class Baek_1152 {
 
         BufferedReader bf = new BufferedReader(new InputStreamReader(System.in));
         String str = bf.readLine();
-        System.out.println(str.length());
 
-        if (str.charAt(0) == ' ') {
-            str = str.substring(1);
+
+        int answer = 0;
+
+
+        if (str.equals(" ")) {
+            answer = 0;
+
+        } else {
+
+            if (str.charAt(0) == ' ') {
+                str = str.substring(1);
+            }
+
+            if (str.charAt(str.length() - 1) == ' ') {
+                str = str.substring(0, str.length() - 1);
+            }
+
+
+            answer = str.split(" ").length;
+
+
         }
 
-        System.out.println(str.length());
 
-        if (str.charAt(str.length() - 1) == ' ') {
-            str = str.substring(0, str.length() - 1);
-        }
-
-        System.out.println(str.length());
-        System.out.println(str);
-
-        int answer = str.split(" ").length;
         System.out.println(answer);
 
     }
