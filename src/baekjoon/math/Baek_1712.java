@@ -11,6 +11,7 @@ public class Baek_1712 {
 
         BufferedReader bf = new BufferedReader(new InputStreamReader(System.in));
         String str = bf.readLine();
+        int answer = 0;
 
         int A = 0;
         int B = 0;
@@ -36,5 +37,7 @@ public class Baek_1712 {
 
         }
 
+
+        System.out.println("answer : " + answer);
     }
 }
