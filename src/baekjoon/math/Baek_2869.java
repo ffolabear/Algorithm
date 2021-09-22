@@ -1,8 +1,6 @@
 package baekjoon.math;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
+import java.io.*;
 import java.util.StringTokenizer;
 
 public class Baek_2869 {
@@ -10,40 +8,25 @@ public class Baek_2869 {
     public static void main(String[] args) throws IOException {
 
         BufferedReader bf = new BufferedReader(new InputStreamReader(System.in));
+        BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
         String input = bf.readLine();
 
-        int[] snail = new int[3];
 
         StringTokenizer st = new StringTokenizer(input);
-        while (st.hasMoreTokens()) {
-            snail[0] = Integer.parseInt(st.nextToken());
-            snail[1] = Integer.parseInt(st.nextToken());
-            snail[2] = Integer.parseInt(st.nextToken());
+        int day = Integer.parseInt(st.nextToken());
+        int night = Integer.parseInt(st.nextToken());
+        int height = Integer.parseInt(st.nextToken());
+
+        int cnt = (height - night) / (day - night);
+        if ((height - night) % (day - night) != 0) {
+            cnt++;
         }
 
-        int current = 0;
-        int day = 1;
+        String str = "";
 
-        while (true) {
-
-            current += snail[0];
-
-            if (current >= snail[2]) {
-                System.out.println(day);
-                break;
-
-            }
-
-            current -= snail[1];
-            day++;
-
-
-            if (current < 0) {
-                current = 0;
-            }
-
-        }
-
+        bw.write(str + cnt);
+        bw.flush();
+        bw.close();
     }
 
 }
