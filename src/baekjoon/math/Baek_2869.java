@@ -22,18 +22,28 @@ public class Baek_2869 {
         }
 
         int current = 0;
-        int day = 0;
+        int day = 1;
 
-        while (current < snail[2]) {
+        while (true) {
+
             current += snail[0];
+
+            if (current >= snail[2]) {
+                System.out.println(day);
+                break;
+
+            }
+
             current -= snail[1];
+            day++;
+
+
             if (current < 0) {
                 current = 0;
             }
-            day++;
+
         }
 
-        System.out.println(day);
     }
 
 }
