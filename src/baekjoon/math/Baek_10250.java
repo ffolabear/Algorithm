@@ -17,24 +17,25 @@ public class Baek_10250 {
 
             String input = bf.readLine();
             StringTokenizer st = new StringTokenizer(input);
+
             int H = Integer.parseInt(st.nextToken());
             int W = Integer.parseInt(st.nextToken());
             int N = Integer.parseInt(st.nextToken());
 
+            int floor = N % H;
+            int room = 0;
 
-            boolean[][] hotel = new boolean[H + 1][W + 1];
+            if (floor == 0) {
 
-            for (int j = 1; j <= N; j++) {
+                floor = H * 100;
+                room = N / H;
 
-                for (int k = 1; k <= W; k++) {
-                    for (int l = 1; l <= H; j++) {
-                        hotel[k][l] = true;
-                    }
-                }
-
+            } else {
+                floor = floor * 100;
+                room = (N / H )+ 1;
             }
 
-
+            System.out.println(floor + room);
         }
 
 
