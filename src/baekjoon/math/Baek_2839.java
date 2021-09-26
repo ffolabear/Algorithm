@@ -10,31 +10,29 @@ public class Baek_2839 {
 
         BufferedReader bf = new BufferedReader(new InputStreamReader(System.in));
         int N = Integer.parseInt(bf.readLine());
-        boolean valid = false;
+        int answer = 0;
+        int devideFive = N / 5;
+        int devideThree = N / 3;
 
-        int cntThree = 0;
-        int three = N / 3;
-        cntThree += three;
+        if (N % 5 == 0) {
+            answer = devideFive;
 
-        if (N % 3 == 0) {
-            valid = true;
+        } else if (N % 5 == 3) {
+            answer = devideFive + 1;
+
+        } else if (N % 5 == 4) {
+            answer = devideFive + 2;
+
+        } else if (N % 3 == 0) {
+            answer = devideThree;
+
+        } else if (N % 3 == 2){
+            answer = devideThree;
+        } else {
+            answer = -1;
         }
 
-        int five = N / 5;
-        int cntFive = 0;
-        cntFive += five;
-
-        if ((N % 5) % 3 == 0) {
-            valid = true;
-            cntFive += 1;
-        }
-
-        System.out.println("3 : " + cntThree);
-        System.out.println("5 : " + cntFive);
-
-        int answer = Math.min(cntFive, cntThree);
         System.out.println(answer);
-
 
     }
 
