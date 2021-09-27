@@ -15,18 +15,33 @@ public class Baek_2839 {
         int devideThree = N / 3;
 
         if (N < 5) {
-            if (N % 3 == 0) {
+            if (N == 3) {
                 answer = 1;
+            } else {
+                answer = -1;
+
             }
+
+
         } else {
-            if (N % 5 == 1) {
+            if (N % 5 == 0) {
+                answer = devideFive;
+            } else if (N % 5 == 1) {
                 answer = devideFive + 1;
             } else if (N % 5 == 4) {
                 answer = devideFive + 2;
-            } else if (N % 5 == 3){
+            } else if (N % 5 == 3) {
                 answer = devideFive + 1;
-            } else{
-                answer = -1;
+            } else {
+                if (N % 3 == 0) {
+                    answer = devideThree;
+                } else if (N % 3 == 2){
+                    answer = devideThree;
+                } else {
+                    answer = -1;
+                }
+
+
             }
 
         }
