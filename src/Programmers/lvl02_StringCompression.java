@@ -1,5 +1,8 @@
 package Programmers;
 
+import org.junit.Assert;
+import org.junit.Test;
+
 public class lvl02_StringCompression {
 
     public int solution(String s) {
@@ -65,16 +68,23 @@ public class lvl02_StringCompression {
     public static void main(String[] args) {
 
         String s = "aabbaccc";
-        //2a2ba3c
-
-
-//        String s = "ababcdcdababcdcd";
-//        String s = "abcabcdede";
-//        String s = "abcabcabcabcdededededede";
-//        String s = "xababcdcdababcdcd";
+        //String s = "ababcdcdababcdcd";
+        //String s = "abcabcdede";
+        //String s = "abcabcabcabcdededededede";
+        //String s = "xababcdcdababcdcd";
 
         lvl02_StringCompression stringComp = new lvl02_StringCompression();
         stringComp.solution(s);
 
     }
+
+    @Test
+    public void test(){
+        Assert.assertEquals(7, solution("aabbaccc"));
+        Assert.assertEquals(9, solution("ababcdcdababcdcd"));
+        Assert.assertEquals(14, solution("abcabcabcabcdededededede"));
+        Assert.assertEquals(17, solution("xababcdcdababcdcd"));
+
+    }
+
 }
