@@ -5,23 +5,27 @@ public class NumberOf124Country {
     public String solution(int n) {
 
 
-        String answer = "";
+        StringBuilder answer = new StringBuilder();
 
         while (n > 0) {
-            if (n % 3 == 0) {
-                answer = "4" + answer;
+
+            int remainder = n % 3;
+            n = n / 3;
+
+            if (remainder  == 0) {
+                remainder = 4;
                 n -= 1;
-            } else {
-                answer = n % 3 + answer;
             }
 
-            n = n / 3;
+            answer.insert(0, remainder);
+
+
 
 
         }
 
 
-        return answer;
+        return answer.toString();
     }
 
     public static void main(String[] args) {
