@@ -44,7 +44,7 @@ public class Kakao2017_GroupPicture {
         } else if (idx < 8) {
 
             for (int i = 0; i < 8; i++) {
-                //방문하지 않았따면 방문 처리
+                //방문하지 않았다면 방문 처리
                 if (!visited[i]) {
                     visited[i] = true;
                     //테스트 케이스에 전달받은 사람에 순서 값을 넣음

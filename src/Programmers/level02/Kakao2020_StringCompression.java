@@ -29,6 +29,7 @@ public class Kakao2020_StringCompression {
             for (int j = 0; j < s.length() / i; j++) {
 
                 String unit = s.substring((j * i), ((j * i) + i));
+                System.out.println(unit);
 
                 if (compare.equals(unit)) {
                     cnt++;
@@ -57,13 +58,14 @@ public class Kakao2020_StringCompression {
             }
 
             answer = Math.min(answer, covt.length());
-
-
         }
-
 
         return answer;
     }
+
+
+//----------------------------------------------------------------------------------------------------------------------
+
 
     public static void main(String[] args) {
 
