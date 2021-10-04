@@ -24,7 +24,7 @@ public class lottery_min_max {
                 }
             }
         }
-
+      
         int sum = numOfZero + baseRank;
 
 

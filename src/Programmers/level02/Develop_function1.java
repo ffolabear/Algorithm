@@ -1,8 +1,8 @@
-package Programmers.level01;
+package Programmers.level02;
 
 import java.util.*;
 
-public class function {
+public class Develop_function1 {
 
     public static void main(String[] args) {
 
