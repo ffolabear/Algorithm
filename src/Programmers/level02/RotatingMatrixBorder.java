@@ -2,7 +2,7 @@ package Programmers.level02;
 
 public class RotatingMatrixBorder {
 
-//    static int[][] matrix;
+    static int[][] matrix;
 
 
     public int[] solution(int rows, int columns, int[][] queries) {
