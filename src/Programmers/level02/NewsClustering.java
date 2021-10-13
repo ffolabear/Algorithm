@@ -1,9 +1,6 @@
 package Programmers.level02;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 
 
 public class NewsClustering {
@@ -16,21 +13,13 @@ public class NewsClustering {
         ArrayList<String> str1Arr = new ArrayList<>();
         ArrayList<String> str2Arr = new ArrayList<>();
 
-        String regex = "[a-z]";
-
-
-        System.out.println(str1);
-        System.out.println(str2);
-
-//        ArrayList<String> union = new ArrayList<>();
-        Map<String, Integer> union = new HashMap<>();
+        ArrayList<String> union = new ArrayList<>();
 
         for (int i = 0; i < str1.length() - 1; i++) {
             char a = str1.charAt(i);
             char b = str1.charAt(i + 1);
 
-            if (a >= 'a' && a <= 'z' && b >= 'a' && b <= 'z'){
-                union.put(String.valueOf(a) + b, 0);
+            if (a >= 'a' && a <= 'z' && b >= 'a' && b <= 'z') {
                 str1Arr.add(String.valueOf(a) + b);
             }
 
@@ -40,44 +29,34 @@ public class NewsClustering {
             char a = str2.charAt(i);
             char b = str2.charAt(i + 1);
 
-            if (a >= 'a' && a <= 'z' && b >= 'a' && b <= 'z'){
-                union.put(String.valueOf(a) + b, 0);
+            if (a >= 'a' && a <= 'z' && b >= 'a' && b <= 'z') {
                 str2Arr.add(String.valueOf(a) + b);
             }
 
         }
 
 
-
-
         int intersection = 0;
 
-        for (int i = 0; i < str1Arr.size(); i++) {
-            for (int j = 0; j < str2Arr.size(); j++) {
-                if (str1Arr.get(i).equals(str2Arr.get(j))) {
-                    intersection++;
-                }
+        for (String s : str1Arr) {
+            if (str2Arr.remove(s)) {
+                intersection++;
             }
+            union.add(s);
+        }
+
+        union.addAll(str2Arr);
+        int answer = 0;
+
+        if (union.size() == 0) {
+            answer = 65536;
+        } else {
+            double j = (double) intersection / (double) union.size() * 65536;
+            answer = (int) Math.floor(j);
 
         }
 
-        if (intersection > str1Arr.size() || intersection > str2Arr.size()) {
-            intersection = Math.min(str1Arr.size(), str2Arr.size());
-        }
 
-        System.out.println("str1 : " + str1Arr);
-        System.out.println("str2 : " + str2Arr);
-        System.out.println("합집합 : " + union + " / " + union.size());
-        System.out.println("교집합의 수 : " + intersection);
-
-
-        double f = (float) intersection / union.size() * 65536;
-        int answer = (int) Math.floor(f);
-
-        System.out.println(answer);
-
-
-        System.out.println();
         return answer;
     }
 
