@@ -2,11 +2,11 @@ package Programmers.level02;
 
 public class DistanceCheck {
 
-    static int[] d1x = {-1, 1, 0, 0};
-    static int[] d1y = {0, 0, -1, 1};
+    static int[] d1x = {0, 0, 1, -1};
+    static int[] d1y = {1, -1, 0, 0};
 
-    static int[] d2x = {-2, 2, 0, 0};
-    static int[] d2y = {0, 0, -2, 2};
+    static int[] d2x = {0, 0, 2, -2};
+    static int[] d2y = {2, -2, 0, 0};
 
     static int[] gx = {1, 1, -1, -1};
     static int[] gy = {1, -1, 1, -1};
@@ -62,7 +62,7 @@ public class DistanceCheck {
 
         }
 
-        //대각선 P 탐색
+        // 거리2인 상하좌우 P 탐색
         for (int i = 0; i < 4; i++) {
             int nx = x + d2x[i];
             int ny = y + d2y[i];
@@ -81,7 +81,7 @@ public class DistanceCheck {
 
         }
 
-        // 거리2인 상하좌우 P 탐색
+        //대각선 P 탐색
         for (int i = 0; i < 4; i++) {
             int nx = x + gx[i];
             int ny = y + gy[i];
@@ -91,7 +91,7 @@ public class DistanceCheck {
             }
 
             if (row[nx].charAt(ny) == 'P') {
-                if (row[x].charAt(ny) == 'X' && row[nx].charAt(y) == 'X') {
+                if (!(row[x].charAt(ny) == 'X' && row[nx].charAt(y) == 'X')) {
                     return true;
 
                 }
