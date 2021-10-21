@@ -2,7 +2,7 @@ package Programmers.level02;
 
 import java.util.*;
 
-public class queue_printer {
+public class Printer1 {
 
 
     public int solution(int[] priorities, int location) {
@@ -35,7 +35,7 @@ public class queue_printer {
     public static void main(String[] args) {
 
         int[] arr = {1, 1, 9, 1, 1, 1};
-        queue_printer printer = new queue_printer();
+        Printer1 printer = new Printer1();
 
         System.out.println(printer.solution(arr, 0));
 
