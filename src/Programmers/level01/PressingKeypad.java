@@ -1,4 +1,4 @@
-package Programmers.level02;
+package Programmers.level01;
 
 public class PressingKeypad {
 
