@@ -6,8 +6,12 @@ public class PressingKeypad {
 
         StringBuilder sb = new StringBuilder();
 
-        int lastRight = 0;
-        int lastLeft = 0;
+        int lastLeft = -1;
+        int lastRight = -2;
+
+        for (int i = 0; i < numbers.length; i++) {
+
+        }
 
         int[][] keypad = {{1, 2, 3},
                           {4, 5, 6},
