@@ -1,12 +1,29 @@
 package Programmers.level02;
 
+import java.util.ArrayList;
+
 public class MatchPrediction {
 
     public int solution(int n, int a, int b) {
-        int answer = 0;
 
-        // [실행] 버튼을 누르면 출력 값을 볼 수 있습니다.
-        System.out.println("Hello Java");
+        int c = Math.min(a, b);
+        int d = Math.max(a, b);
+
+        int answer = 1;
+
+
+        while (true) {
+
+            if (c % 2 == 1 && d - c == 1) {
+
+                break;
+            }
+
+            c = (c + 1) / 2;
+            d = (d + 1) / 2;
+            answer++;
+
+        }
 
         return answer;
     }
