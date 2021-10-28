@@ -12,20 +12,27 @@ public class SearchingRank {
         int[] answer = new int[query.length];
         data = new HashMap<>();
 
-        for (int i = 0; i < info.length; i++) {
-            String[] raw = info[i].split(" ");
+        //가능한 조합수를 저장
+        for (String s : info) {
+            String[] raw = s.split(" ");
             dfs("", 0, raw);
         }
 
-        int index = 0;
+        //이진 탐색부분
+        List<String> list = new ArrayList<>(data.keySet());
+        for(int i=0; i<list.size(); i++) {
+            List<Integer> scoreList = data.get(list.get(i));
+            Collections.sort(scoreList);
+        }
 
-        for (int i = 0; i < query.length; i++) {
+
+        for (int i=0; i < query.length; i++) {
 
             String queryRow = query[i].replaceAll(" and ", "");
             String[] queryData = queryRow.split(" ");
-            Collections.sort(data.get(queryData[0]));
-            int result = bns(queryData[0], Integer.parseInt(queryData[1]));
-            answer[index++] = result;
+
+            int score = Integer.parseInt(queryData[1]);
+            answer[i] = bns(queryData[0], score);
 
         }
 
@@ -36,6 +43,7 @@ public class SearchingRank {
 
         if (depth == 4) {
             int score = Integer.parseInt(raw[4]);
+
             if (data.containsKey(str)) {
                 data.get(str).add(score);
             } else {
@@ -54,19 +62,23 @@ public class SearchingRank {
 
     static int bns(String query, int score) {
 
-        int count = 0;
         if (!data.containsKey(query)) {
             return 0;
         }
-        ArrayList<Integer> scores = data.get(query);
-        int start = 0, end = scores.size()-1;
 
-        while(start <= end)
-        {
+        ArrayList<Integer> scores = data.get(query);
+        int start = 0, end = scores.size() - 1;
+
+        while (start <= end) {
             int mid = (start + end) / 2;
 
-            if(score > scores.get(mid)) start = mid + 1;
-            else end = mid - 1;
+
+            if (score > scores.get(mid)) {
+                start = mid + 1;
+
+            } else{
+                end = mid - 1;
+            }
         }
         return scores.size() - start;
     }
