@@ -4,64 +4,71 @@ import java.util.*;
 
 public class SearchingRank {
 
+    static Map<String, ArrayList<Integer>> data;
+
     public int[] solution(String[] info, String[] query) {
 
-        String[][] volunteers = new String[info.length][5];
-        String[][] questions = new String[query.length][];
-
+        //정답
         int[] answer = new int[query.length];
-        Map<Integer, ArrayList<String>> init = new HashMap<>();
+        data = new HashMap<>();
 
         for (int i = 0; i < info.length; i++) {
-            String[] temp = info[i].split(" ");
-
-            ArrayList<String> list = new ArrayList<>();
-            list.add(temp[0]);
-            list.add(temp[1]);
-            list.add(temp[2]);
-            list.add(temp[3]);
-
-            init.put(Integer.parseInt(temp[4]), list);
-
+            String[] raw = info[i].split(" ");
+            dfs("", 0, raw);
         }
 
-        List<Map.Entry<Integer,  ArrayList<String>>> covt = new ArrayList<Map.Entry<Integer, ArrayList<String>>>(init.entrySet());
-        covt.sort(new Comparator<Map.Entry<Integer, ArrayList<String>>>() {
-
-
-            @Override
-            public int compare(Map.Entry<Integer, ArrayList<String>> o1, Map.Entry<Integer, ArrayList<String>> o2) {
-
-                return o1.getKey().compareTo(o2.getKey());
-            }
-        });
-
-
-        System.out.println(covt);
-
-
-
-        System.out.println();
-        System.out.println();
+        int index = 0;
 
         for (int i = 0; i < query.length; i++) {
-            String temp = query[i].replaceAll(" and ", " ");
-            questions[i] = temp.split(" ");
+
+            String queryRow = query[i].replaceAll(" and ", "");
+            String[] queryData = queryRow.split(" ");
+            Collections.sort(data.get(queryData[0]));
+            int result = bns(queryData[0], Integer.parseInt(queryData[1]));
+            answer[index++] = result;
+
         }
-
-        //---------------------------------------------------------------
-
-        for (int i = 0; i < questions.length; i++) {
-            for (int j = 0; j < questions[i].length; j++) {
-                System.out.print(questions[i][j] + " ");
-            }
-            System.out.println();
-        }
-
-        //---------------------------------------------------------------
-
 
         return answer;
+    }
+
+    static void dfs(String str, int depth, String[] raw) {
+
+        if (depth == 4) {
+            int score = Integer.parseInt(raw[4]);
+            if (data.containsKey(str)) {
+                data.get(str).add(score);
+            } else {
+                ArrayList<Integer> tmp = new ArrayList<>();
+                tmp.add(score);
+                data.put(str, tmp);
+            }
+            return;
+        }
+
+        //"-" 를 포함할 경우와 포함하지 않을 경우를 같이 고려해야함
+
+        dfs(str + "-", depth + 1, raw);
+        dfs(str + raw[depth], depth + 1, raw);
+    }
+
+    static int bns(String query, int score) {
+
+        int count = 0;
+        if (!data.containsKey(query)) {
+            return 0;
+        }
+        ArrayList<Integer> scores = data.get(query);
+        int start = 0, end = scores.size()-1;
+
+        while(start <= end)
+        {
+            int mid = (start + end) / 2;
+
+            if(score > scores.get(mid)) start = mid + 1;
+            else end = mid - 1;
+        }
+        return scores.size() - start;
     }
 
     public static void main(String[] args) {
