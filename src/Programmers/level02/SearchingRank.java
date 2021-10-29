@@ -74,6 +74,7 @@ public class SearchingRank {
 
 
             if (score > scores.get(mid)) {
+
                 start = mid + 1;
 
             } else{
