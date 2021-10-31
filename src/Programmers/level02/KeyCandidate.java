@@ -1,39 +1,91 @@
 package Programmers.level02;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 public class KeyCandidate {
 
-    static String[] covt;
+    List<String> candi = new ArrayList<>();
 
     public int solution(String[][] relation) {
-
-        covt = new String[relation.length];
-
-        for (int i = 0; i < relation.length; i++) {
-
-            StringBuilder sb = new StringBuilder();
-
-            for (int j = 0; j < relation[i].length; j++) {
-                sb.append(relation[i][j]);
-            }
-
-            covt[i] = sb.toString();
-        }
-
-        dfs(relation[0], 0, "");
 
 
         int answer = 0;
 
+        for (int i = 0; i < relation[0].length; i++) {
+            boolean[] visited = new boolean[relation[0].length];
+            dfs(visited, 0, 0, i + 1, relation);
+        }
+
+        answer = candi.size();
+
+
+
         return answer;
     }
 
-    static int dfs(String[] row, int depth, String key) {
+    public void dfs(boolean[] visited, int start, int depth, int end, String[][] relation) {
 
 
+        if (depth == end) {
 
+            List<Integer> list = new ArrayList<>();
+            String key = "";
 
-        return 0;
+            for (int i = 0; i < visited.length; i++) {
+                if (visited[i]) {
+                    key += String.valueOf(i);
+                    list.add(i);
+                }
+            }
+
+            System.out.println(key);
+
+            Map<String, Integer> map = new HashMap<>();
+
+            for (int i = 0; i < relation.length; i++) {
+                String s = "";
+                for (Integer j : list) {
+                    s += relation[i][j];
+                }
+
+                System.out.println(s);
+
+                if (map.containsKey(s)) {
+                    return;
+                } else {
+                    map.put(s, 0);
+                }
+            }
+
+            // 후보키 추가
+            for (String s : candi) {
+                int count = 0;
+                for(int i = 0; i < key.length(); i++){
+                    String subS = String.valueOf(key.charAt(i));
+                    if(s.contains(subS)) count++;
+                }
+                if (count == s.length()) return;
+            }
+            candi.add(key);
+
+            return;
+        }
+
+        //boolean[] visited, int start, int depth, int end, String[][] relation
+        for (int i = start; i < visited.length; i++) {
+            if (visited[i]) continue;
+
+            visited[i] = true;
+            dfs(visited, i, depth + 1, end, relation);
+            visited[i] = false;
+        }
+
+        System.out.println();
     }
+
 
     public static void main(String[] args) {
 
