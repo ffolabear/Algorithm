@@ -6,11 +6,10 @@ import java.util.Stack;
 
 public class EliminationByGrouping {
 
-
-
     public int solution(String s) {
 
         int answer = -1;
+
         Queue<Character> queue = new LinkedList<>();
         Stack<Character> stack = new Stack<>();
 
