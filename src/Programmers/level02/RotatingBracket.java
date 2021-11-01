@@ -2,9 +2,9 @@ package Programmers.level02;
 
 import java.util.LinkedList;
 import java.util.Queue;
+import java.util.Stack;
 
 public class RotatingBracket {
-
 
     public int solution(String s) {
 
@@ -15,15 +15,12 @@ public class RotatingBracket {
             queue.add(s.charAt(i));
         }
 
-        System.out.println(queue);
 
         int max = s.length();
-        int  count = 0;
 
         String testcase = "";
 
         for (int i = 0; i < max - 1; i++) {
-            System.out.println(i);
 
             Queue<Character> copy = new LinkedList<>(queue);
 
@@ -32,37 +29,54 @@ public class RotatingBracket {
             }
 
             if (isValid(testcase)) {
-                count++;
+                System.out.println("correct : " + queue);
+                answer++;
             }
 
-            Character ch =  queue.poll();
+            Character ch = queue.poll();
             queue.add(ch);
 
-            System.out.println(queue);
             testcase = "";
 
         }
-
-
 
         return answer;
     }
 
     static boolean isValid(String str) {
 
-        str.replaceAll(" ", "");
+        Stack<Character> stack = new Stack<>();
+
+        int left = 0;
+        int right = 0;
 
         for (int i = 0; i < str.length(); i++) {
+            if (str.charAt(i) == '(' || str.charAt(i) == '[' || str.charAt(i) == '{') {
+                left++;
+                stack.push('(');
+            } else {
+                right++;
+                if (stack.isEmpty()) {
+                    return false;
+                } else {
+                    stack.pop();
+                }
+
+            }
 
         }
 
-        return true;
+        if (left == right) {
+            return true;
+        }
+
+        return false;
     }
 
     public static void main(String[] args) {
 
-        String s =  "[](){}";
-//        String s =  "}]()[{";
+//        String s = "[](){}";
+        String s =  "}]()[{";
 //        String s =  "[)(]";
 //        String s =  "}}}";
 
