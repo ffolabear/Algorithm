@@ -30,6 +30,7 @@ public class RotatingBracket {
 
             if (isValid(testcase)) {
                 System.out.println("correct : " + queue);
+                System.out.println(testcase);
                 answer++;
             }
 
@@ -76,8 +77,8 @@ public class RotatingBracket {
     public static void main(String[] args) {
 
 //        String s = "[](){}";
-        String s =  "}]()[{";
-//        String s =  "[)(]";
+//        String s =  "}]()[{";
+        String s =  "[)(]";
 //        String s =  "}}}";
 
         RotatingBracket sol = new RotatingBracket();
