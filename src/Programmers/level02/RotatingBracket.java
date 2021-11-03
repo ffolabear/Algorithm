@@ -8,7 +8,7 @@ public class RotatingBracket {
 
     public int solution(String s) {
 
-        int answer = -1;
+        int answer = 0;
 
         Queue<Character> queue = new LinkedList<>();
         for (int i = 0; i < s.length(); i++) {
@@ -29,8 +29,6 @@ public class RotatingBracket {
             }
 
             if (isValid(testcase)) {
-                System.out.println("correct : " + queue);
-                System.out.println(testcase);
                 answer++;
             }
 
@@ -48,26 +46,39 @@ public class RotatingBracket {
 
         Stack<Character> stack = new Stack<>();
 
-        int left = 0;
-        int right = 0;
-
         for (int i = 0; i < str.length(); i++) {
-            if (str.charAt(i) == '(' || str.charAt(i) == '[' || str.charAt(i) == '{') {
-                left++;
-                stack.push('(');
-            } else {
-                right++;
-                if (stack.isEmpty()) {
-                    return false;
-                } else {
-                    stack.pop();
+            try{
+                switch(str.charAt(i)){
+                    case '[':
+                        stack.add('[');
+                        break;
+                    case ']':
+                        if(stack.peek() != '[') return false;
+                        stack.pop();
+                        break;
+                    case '{':
+                        stack.add('{');
+                        break;
+                    case '}':
+                        if(stack.peek() != '{') return false;
+                        stack.pop();
+                        break;
+                    case '(':
+                        stack.add('(');
+                        break;
+                    case ')':
+                        if(stack.peek() != '(') return false;
+                        stack.pop();
+                        break;
                 }
-
+            } catch(Exception e){
+                return false;
             }
+
 
         }
 
-        if (left == right) {
+        if (stack.isEmpty()) {
             return true;
         }
 
@@ -76,9 +87,9 @@ public class RotatingBracket {
 
     public static void main(String[] args) {
 
-//        String s = "[](){}";
+        String s = "[](){}";
 //        String s =  "}]()[{";
-        String s =  "[)(]";
+//        String s =  "[)(]";
 //        String s =  "}}}";
 
         RotatingBracket sol = new RotatingBracket();
