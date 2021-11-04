@@ -1,21 +1,46 @@
 package Programmers.level02;
 
-import java.util.PriorityQueue;
+import java.util.LinkedList;
+import java.util.Queue;
 
 public class H_index {
+
     public int solution(int[] citations) {
 
+        Queue<Integer> queue = new LinkedList<>();
+        int answer = 0;
 
-        PriorityQueue<Integer> queue = new PriorityQueue<>();
-
-        for (int i = 0; i < citations.length; i++) {
-            queue.add(citations[i]);
+        for (int i : citations) {
+            queue.add(i);
         }
 
-        System.out.println(queue);
+        for (int i = 0; i < citations.length; i++) {
+
+            int over = 0;
+            int low = 0;
+
+            Queue<Integer> clone = new LinkedList<>(queue);
+            System.out.println("현재 : " + citations[i]);
+
+            while (!clone.isEmpty()) {
+                if (clone.peek() >= citations[i]) {
+                    clone.poll();
+                    over++;
+                } else if (clone.peek() < citations[i]) {
+                    clone.poll();
+                    low++;
+                }
 
 
-        int answer = 0;
+            }
+
+            System.out.println("over : " + over + " | low : " + low);
+            if (over > low) {
+                answer = Math.max(answer, over);
+            }
+            System.out.println(answer);
+        }
+
         return answer;
     }
 
