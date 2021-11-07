@@ -4,61 +4,69 @@ public class dart {
 
     public int solution(String dartResult) {
 
-        int sum = 0;
-        int lastScore = 0;
-        int currentScore = 0;
+        int[] result = new int[3];
 
-        boolean multiply = false;
+        String numStr = "";
+        int index = 0;
 
         for (int i = 0; i < dartResult.length(); i++) {
 
+            switch (dartResult.charAt(i)) {
+
+                case 'S':
+                    result[index] = (int) Math.pow(Integer.parseInt(numStr), 1);
+                    index++;
+                    numStr = "";
+                    break;
+
+                case 'D':
+                    result[index] = (int) Math.pow(Integer.parseInt(numStr), 2);
+                    index++;
+                    numStr = "";
+                    break;
+
+                case 'T':
+                    result[index] = (int) Math.pow(Integer.parseInt(numStr), 3);
+                    index++;
+                    numStr = "";
+                    break;
+
+                case '*':    // 스타상 :  바로 전에 얻은 점수를 각 2배
+
+                    result[index - 1] *= 2;
+                    if (index > 1) {
+                        result[index - 2] *= 2;
+                    }
+
+                    break;
+
+                case '#':    // 아차상 :  해당 점수는 마이너스
+                    result[index - 1] *= -1;
+                    index++;
+                    break;
+
+                default:
+                    numStr += String.valueOf(dartResult.charAt(i));
+                    break;
 
 
-            //몇점인지 확인 하고 건너뛰기
-            if (String.valueOf(dartResult.charAt(i)).matches("^[0-9]")) {
-                currentScore = dartResult.charAt(i) - '0';
-                System.out.println("현재 맞춘 점수 : " + currentScore);
-                System.out.println(currentScore);
-                continue;
             }
-
-            // S or D or T
-            if (String.valueOf(dartResult.charAt(i)).matches("^[A-Z]")) {
-
-                if(String.valueOf(dartResult.charAt(i)).equals("D")){
-                    System.out.println("더블");
-                    currentScore = (int) Math.pow(currentScore, 2);
-
-                } else if(String.valueOf(dartResult.charAt(i)).equals("T")){
-                    System.out.println("트리플");
-                    currentScore = (int) Math.pow(currentScore, 3);
-
-                }
-
-                lastScore = currentScore;
-                System.out.println("이전 점수 : " + lastScore);
-                System.out.println("현재 점수 : " + currentScore);
-                System.out.println(String.valueOf(dartResult.charAt(i)) + " - " + lastScore);
-                continue;
-            }
-
-
-            if (String.valueOf(dartResult.charAt(i)).equals("*")) {
-                multiply = true;
-            }
-
         }
 
-
-
-
         int answer = 0;
+
+        for (int i : result) {
+            answer += i;
+        }
+
+        System.out.println(answer);
         return answer;
     }
 
     public static void main(String[] args) {
 
-        String dartResult = "10S2D*3T";
+//        String dartResult = "1S2D*3T";
+        String dartResult = "1D2S#10ST";
         dart sol = new dart();
         sol.solution(dartResult);
 
