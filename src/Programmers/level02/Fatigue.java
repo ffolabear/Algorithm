@@ -6,7 +6,6 @@ public class Fatigue {
 
     public int solution(int k, int[][] dungeons) {
 
-
         boolean[] visited = new boolean[dungeons.length];
         expedition(k, visited, dungeons, 0);
 
@@ -22,7 +21,6 @@ public class Fatigue {
             return;
         }
 
-
         for (int i = 0; i < dungeons.length; i++) {
 
             if (visited[i]) {
@@ -35,7 +33,10 @@ public class Fatigue {
             }
 
             visited[i] = true;
-            expedition(k - dungeons[i][1], visited, dungeons, count+1);
+            System.out.println(count++ + " | " + count+1);
+            System.out.println();
+//            expedition(k - dungeons[i][1], visited, dungeons, count+1);
+
             visited[i] = false;
 
         }
