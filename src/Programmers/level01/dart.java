@@ -42,7 +42,6 @@ public class dart {
 
                 case '#':    // 아차상 :  해당 점수는 마이너스
                     result[index - 1] *= -1;
-                    index++;
                     break;
 
                 default:
@@ -66,7 +65,7 @@ public class dart {
     public static void main(String[] args) {
 
 //        String dartResult = "1S2D*3T";
-        String dartResult = "1D2S#10ST";
+        String dartResult = "1D2S#10S";
         dart sol = new dart();
         sol.solution(dartResult);
 
