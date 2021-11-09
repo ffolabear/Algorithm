@@ -12,27 +12,22 @@ public class FriendsBlock {
             block[i] = board[i].split("");
         }
 
-        for (int i = 0; i < block.length; i++) {
-            for (int j = 0; j < block[i].length; j++) {
-                System.out.print(block[i][j] + " ");
-            }
-            System.out.println();
-        }
-
         int answer = 0;
 
-
-        for (int i = 0; i < block.length; i++) {
-            for (int j = 0; j < block[i].length; j++) {
-                check(i, j);
+        while (true) {
+            int cnt = check(m, n);
+            if (cnt == 0) {
+                break;
             }
+            answer += cnt;
+            dropBlock(m, n);
         }
 
-
+        System.out.println(answer);
         return answer;
     }
 
-    static void check(int m, int n) {
+    static int check(int m, int n) {
 
         boolean[][] squareChk = new boolean[m][n];
 
@@ -40,28 +35,56 @@ public class FriendsBlock {
             boolean isSquare = false;
             for (int j = 1; j < n; j++) {
 
-                String current = block[i][j];
+                if (!block[i][j].equals(" ")) {
+                    String current = block[i][j];
 
-                if (block[i - 1][j - 1].equals(current) && block[i - 1][j].equals(current) && block[i][j - 1].equals(current)) {
+                    if (block[i - 1][j - 1].equals(current) && block[i - 1][j].equals(current) && block[i][j - 1].equals(current)) {
 
-                    squareChk[i - 1][j - 1] = true;
-                    squareChk[i][j - 1] = true;
-                    squareChk[i - 1][j] = true;
-                    squareChk[i][j] = true;
+                        squareChk[i - 1][j - 1] = true;
+                        squareChk[i][j - 1] = true;
+                        squareChk[i - 1][j] = true;
+                        squareChk[i][j] = true;
 
-                    isSquare = true;
+                    }
+                }
+            }
+        }
+        return countSquare(m, n, squareChk);
+    }
 
+    static int countSquare(int m, int n, boolean[][] sqareChk) {
+
+        int count = 0;
+
+        for (int i = 0; i < m; i++) {
+            for (int j = 0; j < n; j++) {
+                if (sqareChk[i][j]) {
+                    count++;
+                    block[i][j] = " ";
                 }
 
-
-            }
-
-            if (isSquare) {
-                System.out.println("사각형 " + m + " " + n);
             }
         }
 
+        return count;
+    }
 
+    static void dropBlock(int m, int n) {
+
+        for (int i = m - 1; i > 0; i--) {
+            for (int j = 0; j < n; j++) {
+                if (block[i][j].equals(" ")) {
+                    for (int k = i - 1; k >= 0; k--) {
+                        if (!block[k][j].equals(" ")) {
+                            block[i][j] = block[k][j];
+                            block[k][j] = " ";
+                            break;
+
+                        }
+                    }
+                }
+            }
+        }
     }
 
 
