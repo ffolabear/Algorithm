@@ -9,14 +9,15 @@ public class TriangleSnail {
 
         ArrayList<ArrayList<Integer>> list = new ArrayList<>();
 
+        int last = 0;
+
         for (int i = 1; i <= n; i++) {
-            ArrayList<Integer> row = new ArrayList<>();
-            list.add(row);
+            last += i;
         }
 
-        System.out.println(list);
+        System.out.println(last);
 
-        for (int i = 0; i < list.size(); i++) {
+        for (int i = 1; i <= last; i++) {
 
         }
 
