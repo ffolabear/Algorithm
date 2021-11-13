@@ -12,23 +12,18 @@ public class StockPrice2 {
 
         for (int i = 0; i < prices.length; i++) {
 
-            stack.push(prices[i]);
-            int time = 0;
-
-            for (int j = i + 1; j < prices.length; j++) {
-                if (stack.peek() <= prices[j]) {
-                    time++;
-                } else {
-                    break;
-                }
-            }
-
-            if (i < prices.length - 1 && time == 0) {
-                answer[i] = 1;
-            } else {
-                answer[i] = time;
+            while (!stack.isEmpty() && prices[stack.peek()] > prices[i]) {
+                int tmp = stack.pop();
+                answer[tmp] = i - tmp;
 
             }
+            stack.push(i);
+            System.out.println(stack);
+        }
+
+        while (!stack.isEmpty()) {
+            int tmp = stack.pop();
+            answer[tmp] = (prices.length - 1) - tmp;
         }
 
         for (int i : answer) {
