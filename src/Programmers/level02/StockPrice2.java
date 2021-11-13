@@ -19,7 +19,6 @@ public class StockPrice2 {
                 if (stack.peek() <= prices[j]) {
                     time++;
                 } else {
-                    System.out.println(time);
                     break;
                 }
             }
@@ -42,6 +41,7 @@ public class StockPrice2 {
     public static void main(String[] args) {
 
         int[] prices = {1, 2, 3, 2, 3};
+//        int[] prices = {1, 2, 3, 2, 3, 3, 1};
 //        int[] prices = {3, 1, 1, 2, 1, 0};
 //        int[] prices = {5, 8, 6, 2, 4, 1};
         StockPrice2 sol = new StockPrice2();
