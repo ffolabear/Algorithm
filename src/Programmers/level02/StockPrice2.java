@@ -14,33 +14,26 @@ public class StockPrice2 {
 
             stack.push(prices[i]);
             int time = 0;
-            System.out.println("현재 : " + prices[i]);
 
             for (int j = i + 1; j < prices.length; j++) {
-                System.out.println(prices[j]);
-
-                int current = stack.peek();
-
-                if (current <= prices[j]) {
-                    time = time + 1;
-
+                if (stack.peek() <= prices[j]) {
+                    time++;
                 } else {
-                    stack.pop();
-                    if (j != prices.length - 1) {
-                        time = 1;
-                    }
-                    answer[i] = time;
-                    time = 0;
+                    System.out.println(time);
                     break;
                 }
             }
 
+            if (i < prices.length - 1 && time == 0) {
+                answer[i] = 1;
+            } else {
+                answer[i] = time;
 
-
+            }
         }
 
         for (int i : answer) {
-            System.out.println("시간 : " + i);
+            System.out.println(i);
         }
 
         return answer;
@@ -48,13 +41,11 @@ public class StockPrice2 {
 
     public static void main(String[] args) {
 
-//        int[] prices = {1, 2, 3, 2, 3};
+        int[] prices = {1, 2, 3, 2, 3};
 //        int[] prices = {3, 1, 1, 2, 1, 0};
-        int[] prices = {5, 8, 6, 2, 4, 1};
+//        int[] prices = {5, 8, 6, 2, 4, 1};
         StockPrice2 sol = new StockPrice2();
         sol.solution(prices);
-
-
 
     }
 }
