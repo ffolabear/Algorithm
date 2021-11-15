@@ -17,9 +17,11 @@ public class StockPrice2 {
                 answer[tmp] = i - tmp;
 
             }
+
             stack.push(i);
             System.out.println(stack);
         }
+
 
         while (!stack.isEmpty()) {
             int tmp = stack.pop();
