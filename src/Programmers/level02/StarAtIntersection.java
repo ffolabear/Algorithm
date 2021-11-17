@@ -2,7 +2,7 @@ package Programmers.level02;
 
 import java.util.*;
 
-public class StatAtIntersection {
+public class StarAtIntersection {
 
     static int nx = Integer.MAX_VALUE;
     static int px = Integer.MIN_VALUE;
@@ -96,7 +96,7 @@ public class StatAtIntersection {
 //        int[][] line = {{1, -1, 0}, {2, -1, 0}};
 //        int[][] line = {{1, -1, 0}, {2, -1, 0}, {4, -1, 0}};
 
-        StatAtIntersection sol = new StatAtIntersection();
+        StarAtIntersection sol = new StarAtIntersection();
         sol.solution(line);
 
 
