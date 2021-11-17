@@ -73,8 +73,8 @@ public class StatAtIntersection {
             return;
         }
 
-        long x = xNumerator / denominator;
-        long y = yNumerator / denominator;
+        int x = (int)xNumerator / (int)denominator;
+        int y = (int)yNumerator /(int) denominator;
 
 
         px = Math.max(px, (int) x);
