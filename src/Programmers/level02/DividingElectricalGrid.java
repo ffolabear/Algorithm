@@ -1,37 +1,60 @@
 package Programmers.level02;
 
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
+import java.util.Queue;
 
 public class DividingElectricalGrid {
 
-    class Node{
-        int current;
-        int next;
-
-        public Node(int current, int next) {
-            this.current = current;
-            this.next = next;
-        }
-        
-    }
+    static List<List<Integer>> nodes;
 
     public int solution(int n, int[][] wires) {
-        int answer = -1;
 
-        List<Node> nodes = new ArrayList<>();
+        int answer = 100;
 
-        //노드 생성하고 정보 넣기
-        for (int i = 0; i < wires.length; i++) {
-            Node node = new Node(wires[i][0], wires[i][1]);
-            nodes.add(node);
-            System.out.println(node.current);
-            System.out.println(node.next);
-            System.out.println();
+        nodes = new ArrayList<>();
+
+        for (int i = 0; i <= n; i++) {
+            nodes.add(new ArrayList<>());
         }
 
+        for (int i = 0; i < wires.length; i++) {
+            nodes.get(wires[i][0]).add(wires[i][1]);
+            nodes.get(wires[i][1]).add(wires[i][0]);
+        }
+
+        for (int[] wire : wires) {
+            int node1 = dfs(wire[0], wire[1], n);
+            int node2 = dfs(wire[1], wire[0], n);
+
+            answer = Math.min(answer, Math.abs(node1 - node2));
+        }
 
         return answer;
+    }
+
+    static int dfs(int node1, int node2, int n) {
+        Queue<Integer> queue = new LinkedList<>();
+        boolean[] visited = new boolean[n + 1];
+
+        int cnt = 0;
+        queue.add(node1);
+        visited[node1] = true;
+
+        while (!queue.isEmpty()) {
+
+            int current = queue.poll();
+            cnt++;
+
+            for (int next : nodes.get(current)) {
+                if (next != node2 && !visited[next]) {
+                    queue.add(next);
+                    visited[next] = true;
+                }
+            }
+        }
+        return cnt;
     }
 
     public static void main(String[] args) {
