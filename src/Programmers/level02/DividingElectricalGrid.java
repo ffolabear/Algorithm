@@ -21,6 +21,7 @@ public class DividingElectricalGrid {
 
         List<Node> nodes = new ArrayList<>();
 
+        //노드 생성하고 정보 넣기
         for (int i = 0; i < wires.length; i++) {
             Node node = new Node(wires[i][0], wires[i][1]);
             nodes.add(node);
