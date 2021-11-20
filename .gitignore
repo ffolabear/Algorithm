@@ -78,5 +78,4 @@ MANIFEST.MF
 # End of https://www.toptal.com/developers/gitignore/api/eclipse
 
 # 인텔리제이 설정파일 제외
-src/Hackerrank/test/
-src/Hackerrank/test1
+src/Hackerrank
