@@ -79,4 +79,5 @@ MANIFEST.MF
 
 
 # 인텔리제이 설정파일 제외
-src/Hackerrank/restAPI
+src/Hackerrank/test1
+src/Hackerrank/test
