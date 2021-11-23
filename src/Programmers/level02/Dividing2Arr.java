@@ -3,6 +3,9 @@ package Programmers.level02;
 public class Dividing2Arr {
 
     public int[] solution(int n, long left, long right) {
+
+        int[][] arr = new int[n][n];
+
         int[] answer = {};
         return answer;
     }
