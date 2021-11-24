@@ -4,37 +4,37 @@ public class Dividing2Arr {
 
     public int[] solution(int n, long left, long right) {
 
-        StringBuilder sb = new StringBuilder();
+        left += 1;
+        right += 1;
 
-        long index = 1;
-        int count = 0;
+        int rowLeft = 0;
+        int rowRight = 0;
 
-        while (index <= n) {
+        int length = (int) Math.pow(n, 2);
 
-            for (long i = 1; i <= n; i++) {
-                if (count >= left && count <= right) {
-                    if (i <= index) {
-                        sb.append(index);
-                    } else {
-                        sb.append(i);
-                    }
-
-                } else {
-                    count++;
-                    continue;
-                }
-                count++;
+        for (int i = 1; i <= n; i++) {
+            if (left < (long) i * n) {
+                rowLeft = i;
+                break;
             }
-            index++;
         }
 
-        System.out.println(sb);
-
-        int[] answer = new int[sb.length()];
-
-        for (int i = 0; i < sb.length(); i++) {
-            answer[i] = sb.charAt(i) - '0';
+        for (int i = 1; i <= n; i++) {
+            if (right < (long) i * n) {
+                rowRight = i;
+                break;
+            }
         }
+
+        System.out.println(left);
+        System.out.println(right);
+
+        System.out.println(n * (rowLeft - 1) + " ~ " + n * rowLeft);
+        System.out.println(n * (rowRight - 1) + " ~ " + n * rowRight);
+
+
+        int[] answer = {};
+
 
         return answer;
     }
@@ -43,8 +43,8 @@ public class Dividing2Arr {
 
         Dividing2Arr sol = new Dividing2Arr();
         int n = 7;
-        int left = 2;
-        int right = 5;
+        int left = 14;
+        int right = 28;
         sol.solution(n, left, right);
 
     }
