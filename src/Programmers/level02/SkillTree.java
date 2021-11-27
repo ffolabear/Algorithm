@@ -45,6 +45,10 @@ public class SkillTree {
                     return false;
                 }
 
+                if (skillOrder.get(skill.charAt(i)) - last > 1) {
+                    return false;
+                }
+
                 last = skillOrder.get(skill.charAt(i));
 
             }
@@ -56,8 +60,11 @@ public class SkillTree {
 
     public static void main(String[] args) {
 
-        String skill = "CBD";
-        String[] skill_trees = {"BACDE", "CBADF", "AECB", "BDA"};
+//        String skill = "CBD";
+//        String[] skill_trees = {"BACDE", "CBADF", "AECB", "BDA"};
+
+        String skill = "BDC";
+        String[] skill_trees = {"AAAABACA"};
 
         SkillTree sol = new SkillTree();
         sol.solution(skill, skill_trees);
