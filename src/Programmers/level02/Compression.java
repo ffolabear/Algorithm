@@ -16,19 +16,28 @@ public class Compression {
             idx++;
         }
 
-        String temp = "";
+        StringBuilder sb = new StringBuilder();
+        int index = 0;
 
         for (int i = 0; i < msg.length(); i++) {
-            temp += String.valueOf(msg.charAt(i));
+            sb.append(msg.charAt(i));
 
-            if (!dict.containsKey(temp)) {
-                dict.put(temp, idx);
-                idx++;
-                temp = String.valueOf(msg.charAt(i));
+            //dict에 키가 있을때
+            if (dict.containsKey(sb.toString())) {
+                index = dict.get(sb.toString());
+
+                //dict에 키가 없을때
+            } else {
+                dict.put(sb.toString(), idx++);
+                answer.add(index);
+                sb.setLength(0);
+                i--;
             }
-            answer.add(dict.get(temp));
-        }
 
+        }
+        if (index != 0) {
+            answer.add(index);
+        }
 
         return answer;
     }
