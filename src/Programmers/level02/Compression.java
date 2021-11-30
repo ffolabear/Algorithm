@@ -25,7 +25,6 @@ public class Compression {
             //dict에 키가 있을때
             if (dict.containsKey(sb.toString())) {
                 index = dict.get(sb.toString());
-
                 //dict에 키가 없을때
             } else {
                 dict.put(sb.toString(), idx++);
