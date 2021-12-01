@@ -47,6 +47,9 @@ public class SortingFileName {
         String remain = "";
 
         int index = 0;
+
+        //substring 사용시 런타임 에러 발생함
+
         for (; index < file.length(); index++) {
 
             if (file.charAt(index) >= '0' && file.charAt(index) <= '9') {
