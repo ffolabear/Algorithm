@@ -46,64 +46,59 @@ public class SortingFileName {
         String number = "";
         String remain = "";
 
+        int index = 0;
+        for (; index < file.length(); index++) {
 
-        file = file.toLowerCase(Locale.ROOT);
-
-        int headIdx = 0;
-
-        for (int j = 0; j < file.length(); j++) {
-            if (file.charAt(j) >= 48 && file.charAt(j) <= 57) {
-                head = file.substring(0, j);
-                headIdx = j;
-
-                int numIdx = 0;
-
-                for (int k = headIdx; k < file.length(); k++) {
-
-                    if (String.valueOf(file.charAt(k)).matches("[0-9]")) {
-                        numIdx = k;
-                    } else {
-                        number = file.substring(headIdx, numIdx += 1);
-                        break;
-                    }
-                }
-
-                remain = file.substring(numIdx + 1);
-
+            if (file.charAt(index) >= '0' && file.charAt(index) <= '9') {
                 break;
-
             }
-
+            head += file.charAt(index);
 
         }
 
 
-        String[] res = {head, number, remain};
+        for (; index < file.length(); index++) {
+            if (!(file.charAt(index) >= '0' && file.charAt(index) <= '9')) {
+                break;
+            }
+            number += file.charAt(index);
+        }
+
+
+        for (; index < file.length(); index++) {
+
+            remain += file.charAt(index);
+        }
+
+
+        System.out.println(head + " " + number + " " + remain);
+
+        String[] res = {head.toLowerCase(), number, remain};
 
         return res;
     }
 
     public static void main(String[] args) {
 
-        String[] files = {
-
-                "img12.png",
-                "img10.png",
-                "img02.png",
-                "img1.png",
-                "IMG01.GIF",
-                "img2.JPG"
-
-        };
-
 //        String[] files = {
 //
-//                "F-5 Freedom Fighter",
-//                "B-50 Superfortress",
-//                "A-10 Thunderbolt II",
-//                "F-14 Tomcat"
+//                "img12.png",
+//                "img10.png",
+//                "img02.png",
+//                "img1.png",
+//                "IMG01.GIF",
+//                "img2.JPG"
 //
 //        };
+
+        String[] files = {
+
+                "F-5 Freedom Fighter",
+                "B-50 Superfortress",
+                "A-10 Thunderbolt II",
+                "F-14 Tomcat"
+
+        };
 
 
         // 출력 예졔
