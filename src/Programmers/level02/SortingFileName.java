@@ -12,63 +12,75 @@ public class SortingFileName {
 
 
         for (int i = 0; i < files.length; i++) {
-            files[i] = files[i].toLowerCase(Locale.ROOT);
 
-            int headIdx = 0;
-
-            for (int j = 0; j < files[i].length(); j++) {
-                if (files[i].charAt(j) >= 48 && files[i].charAt(j) <= 57) {
-                    divide[i][0] = files[i].substring(0, j);
-                    headIdx = j;
-
-                    int numIdx = 0;
-
-                    for (int k = headIdx; k < files[i].length(); k++) {
-
-                        if (String.valueOf(files[i].charAt(k)).matches("[0-9]")) {
-                            numIdx = k;
-                        } else {
-                            divide[i][1] = files[i].substring(headIdx, numIdx += 1);
-                            break;
-
-                        }
-
-                    }
-
-                    divide[i][2] = files[i].substring(numIdx + 1);
-
-                    break;
-
-                }
-
-
-            }
-
+            divide(files[i]);
 
         }
-
-        for (int i = 0; i < divide.length; i++) {
-            for (int j = 0; j < divide[i].length; j++) {
-
-                System.out.print(divide[i][j] + " ");
-
-            }
-            System.out.println();
-        }
-
 
         Arrays.sort(files, new Comparator<String>() {
-
             @Override
             public int compare(String o1, String o2) {
-                return 0;
-            }
 
+                String[] str1 = divide(o1);
+                String[] str2 = divide(o2);
+
+                int headCompare = str1[0].compareTo(str2[0]);
+
+                if (headCompare == 0) {
+                    int numCompare = Integer.parseInt(str1[1]) - Integer.parseInt(str2[1]);
+                    return numCompare;
+
+                } else {
+                    return headCompare;
+                }
+            }
         });
 
 
-        String[] answer = {};
-        return answer;
+        return files;
+    }
+
+    static String[] divide(String file) {
+
+        String head = "";
+        String number = "";
+        String remain = "";
+
+
+        file = file.toLowerCase(Locale.ROOT);
+
+        int headIdx = 0;
+
+        for (int j = 0; j < file.length(); j++) {
+            if (file.charAt(j) >= 48 && file.charAt(j) <= 57) {
+                head = file.substring(0, j);
+                headIdx = j;
+
+                int numIdx = 0;
+
+                for (int k = headIdx; k < file.length(); k++) {
+
+                    if (String.valueOf(file.charAt(k)).matches("[0-9]")) {
+                        numIdx = k;
+                    } else {
+                        number = file.substring(headIdx, numIdx += 1);
+                        break;
+                    }
+                }
+
+                remain = file.substring(numIdx + 1);
+
+                break;
+
+            }
+
+
+        }
+
+
+        String[] res = {head, number, remain};
+
+        return res;
     }
 
     public static void main(String[] args) {
