@@ -2,7 +2,6 @@ package Programmers.level02;
 
 import java.util.Arrays;
 import java.util.Comparator;
-import java.util.Locale;
 
 public class SortingFileName {
 
@@ -16,6 +15,8 @@ public class SortingFileName {
             divide(files[i]);
 
         }
+
+
 
         Arrays.sort(files, new Comparator<String>() {
             @Override
@@ -35,7 +36,6 @@ public class SortingFileName {
                 }
             }
         });
-
 
         return files;
     }
