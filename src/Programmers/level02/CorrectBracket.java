@@ -1,30 +1,49 @@
 package Programmers.level02;
 
-import java.util.LinkedList;
-import java.util.Queue;
+import java.util.Stack;
 
 public class CorrectBracket {
     boolean solution(String s) {
         boolean answer = true;
 
-        Queue<Integer> queue = new LinkedList<>();
+        Stack<Character> stack = new Stack<>();
 
-        for (int i = 0; i < s.length(); i++) {
-            System.out.println(s.charAt(i));
+        int left = 0;
+        int right = 0;
 
-        }
+            for (int i = 0; i < s.length(); i++) {
+                if (s.charAt(i) == '(') {
+                    left++;
+                    stack.push('(');
 
-        System.out.println(queue);
+                } else {
+                    right++;
+                    if (stack.isEmpty()) {
+                        return false;
+
+                    } else {
+                        stack.pop();
+                    }
+                }
+            }
+
+            if (left == right) {
+                answer = true;
+            } else {
+                answer = false;
+            }
 
         return answer;
     }
 
     public static void main(String[] args) {
 
-        String s = "()()";
+//        String s = "()()";
+        String s = "(()(";
 
         CorrectBracket sol = new CorrectBracket();
-        sol.solution(s);
+
+        System.out.println(sol.solution(s));
 
     }
 }
