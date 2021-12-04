@@ -9,40 +9,48 @@ public class nNumeralSystemGame {
         for (int i = 0; i <= m * t; i++) {
 
             String current = convert(n, i);
+
             int player = 1;
 
             for (int j = 0; j < current.length(); j++) {
 
-                if (answer.length() == t){
+                System.out.println(current + " - " + current.charAt(j) + " " + player + " " + answer);
 
+                if (answer.length() == t) {
+                    break;
                 }
 
                 if (player == p) {
                     answer += String.valueOf(current.charAt(j));
-                    System.out.println(current.charAt(j));
-
                 }
 
                 if (player == m) {
                     player = 1;
-
-                } else {
-                    player++;
+                    continue;
                 }
+                player++;
 
+            }
 
+            if (answer.length() == t) {
+                break;
             }
 
 
         }
 
-
+        System.out.println(answer);
         return answer;
     }
 
     static String convert(int n, int num) {
 
         String ans = "";
+
+        if (num == 0) {
+
+            return "0";
+        }
 
         for (int i = num; i > 0; i /= n) {
 
@@ -65,12 +73,18 @@ public class nNumeralSystemGame {
             num /= n;
         }
 
+
         return ans;
     }
 
     public static void main(String[] args) {
-        int n = 2;
-        int t = 4;
+//        int n = 2;
+//        int t = 4;
+//        int m = 2;
+//        int p = 1;
+
+        int n = 16;
+        int t = 16;
         int m = 2;
         int p = 1;
 
