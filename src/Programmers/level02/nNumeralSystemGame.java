@@ -3,28 +3,46 @@ package Programmers.level02;
 public class nNumeralSystemGame {
 
     public String solution(int n, int t, int m, int p) {
+
         String answer = "";
 
+        for (int i = 0; i <= m * t; i++) {
 
-        int numCnt = 0;
-        int number = 0;
+            String current = convert(n, i);
+            int player = 1;
 
-        while (numCnt != t) {
+            for (int j = 0; j < current.length(); j++) {
+
+                if (answer.length() == t){
+
+                }
+
+                if (player == p) {
+                    answer += String.valueOf(current.charAt(j));
+                    System.out.println(current.charAt(j));
+
+                }
+
+                if (player == m) {
+                    player = 1;
+
+                } else {
+                    player++;
+                }
 
 
+            }
 
 
         }
+
 
         return answer;
     }
 
     static String convert(int n, int num) {
 
-        System.out.println("현재 숫자 : " + num);
-
         String ans = "";
-
 
         for (int i = num; i > 0; i /= n) {
 
@@ -47,7 +65,6 @@ public class nNumeralSystemGame {
             num /= n;
         }
 
-        System.out.println(ans);
         return ans;
     }
 
