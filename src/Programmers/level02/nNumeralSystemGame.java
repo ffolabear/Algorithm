@@ -6,40 +6,20 @@ public class nNumeralSystemGame {
 
         String answer = "";
 
+        String list = "";
+
         for (int i = 0; i <= m * t; i++) {
+            list += new StringBuffer(convert(n, i)).reverse().toString();
+        }
 
-            String current = convert(n, i);
+        System.out.println(list);
 
-            int player = 1;
-
-            for (int j = 0; j < current.length(); j++) {
-
-                System.out.println(current + " - " + current.charAt(j) + " " + player + " " + answer);
-
-                if (answer.length() == t) {
-                    break;
-                }
-
-                if (player == p) {
-                    answer += String.valueOf(current.charAt(j));
-                }
-
-                if (player == m) {
-                    player = 1;
-                    continue;
-                }
-                player++;
-
-            }
-
-            if (answer.length() == t) {
-                break;
-            }
+        for (int i = 0; i < t; i++) {
+            answer += String.valueOf(list.charAt(m * i + p - 1));
 
 
         }
 
-        System.out.println(answer);
         return answer;
     }
 
@@ -52,27 +32,16 @@ public class nNumeralSystemGame {
             return "0";
         }
 
-        for (int i = num; i > 0; i /= n) {
 
-            if (num % n == 10) {
-                ans = "A" + ans;
-            } else if (num % n == 11) {
-                ans = "B" + ans;
-            } else if (num % n == 12) {
-                ans = "C" + ans;
-            } else if (num % n == 13) {
-                ans = "D" + ans;
-            } else if (num % n == 14) {
-                ans = "E" + ans;
-            } else if (num % n == 15) {
-                ans = "F" + ans;
+        while (num != 0) {
+
+            if (num % n >= 10) {
+                ans += String.valueOf((char) (num % n + 55));
             } else {
-                ans = (num % n) + ans;
-
+                ans += String.valueOf(num % n);
             }
             num /= n;
         }
-
 
         return ans;
     }
