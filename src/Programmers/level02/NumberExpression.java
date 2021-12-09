@@ -12,7 +12,7 @@ public class NumberExpression {
 
             for (int j = i; j <= n; j++) {
 
-                sum += i;
+                sum += j;
 
                 if (sum == n) {
                     answer++;
