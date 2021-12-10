@@ -4,24 +4,24 @@ public class Fibonacci {
 
     public int solution(int n) {
 
-        int answer = Fibo(n) & 1234567;
+        int answer = 0;
+
+        long[] fibo = new long[n + 1];
+
+        fibo[0] = 0;
+        fibo[1] = 1;
+
+        for (int i = 2; i <=  n; i++) {
+
+            fibo[i] = (fibo[i - 1] + fibo[i - 2]) % 1234567;
+
+        }
+
+        answer = (int) fibo[n];
 
         return answer;
     }
 
-    static int Fibo(int n) {
-
-        System.out.println(n);
-
-        if (n == 0) {
-            return 0;
-        } else if (n == 1) {
-            return 1;
-        }
-
-        return Fibo(n - 1) + Fibo(n - 2);
-
-    }
 
     public static void main(String[] args) {
 
