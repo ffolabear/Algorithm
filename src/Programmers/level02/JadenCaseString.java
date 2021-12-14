@@ -5,17 +5,18 @@ public class JadenCaseString {
     public String solution(String s) {
 
         String answer = "";
-        String[] words = s.split(" ");
+        s = s.toLowerCase();;
 
-        for (int i = 0; i < words.length; i++) {
 
-            StringBuilder sb = new StringBuilder(words[i].toLowerCase());
-            sb.setCharAt(0, Character.toUpperCase(sb.charAt(0)));
+        answer += String.valueOf(Character.toUpperCase(s.charAt(0)));
 
-            answer += sb + " ";
+        for (int i = 1; i < s.length(); i++) {
+            if (String.valueOf(s.charAt(i - 1)).equals(" ") && !String.valueOf(s.charAt(i)).equals(" ")) {
+                answer += String.valueOf(Character.toUpperCase(s.charAt(i)));
+            } else {
+                answer += String.valueOf(s.charAt(i));
+            }
         }
-
-        answer = answer.substring(0, answer.length() - 1);
         System.out.println(answer);
 
         return answer;
@@ -23,7 +24,8 @@ public class JadenCaseString {
 
     public static void main(String[] args) {
 
-        String s = "3people unFollowed me";
+//        String s = "3people unFollowed me";
+        String s = "3people unFollowed   me";
 //        String s = "for the last week";
 //        String s = " ";
 
