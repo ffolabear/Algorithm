@@ -39,6 +39,7 @@ public class ExpressInN {
         }
 
         combination[cnt] = new HashSet<>();
+        combination[cnt].add(num);
 
         for (int i = 1; i <= cnt; i++) {
 
