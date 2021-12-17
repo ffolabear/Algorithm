@@ -2,6 +2,8 @@ package Programmers.level03;
 
 public class ExpressInN2 {
 
+    static int anInt;
+
     public int solution(int N, int number) {
 
         int answer = -1;
