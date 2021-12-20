@@ -23,6 +23,18 @@ public class NormalBackpack {
         }
 
         for (int i = 0; i < N; i++) {
+            String stuff = bf.readLine();
+            st = new StringTokenizer(stuff);
+
+            int W = 0;
+            int V = 0;
+
+            while (st.hasMoreTokens()) {
+                W = Integer.parseInt(st.nextToken());
+                V = Integer.parseInt(st.nextToken());
+            }
+
+            System.out.println(W + " "  + V);
 
         }
 
