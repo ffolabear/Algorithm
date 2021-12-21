@@ -29,7 +29,7 @@ public class NormalBackpack {
         int[][] knapsack = new int[N + 1][K + 1];
 
 
-        for (int i = 0; i < N; i++) {
+        for (int i = 1; i <= N; i++) {
 
             String inputStuff = bf.readLine();
             st = new StringTokenizer(inputStuff);
