@@ -14,30 +14,49 @@ public class NormalBackpack {
         String input = bf.readLine();
         StringTokenizer st = new StringTokenizer(input);
 
-        int N=0;
-        int K=0;
+        int N = 0;
+        int K = 0;
 
         while (st.hasMoreTokens()) {
             N = Integer.parseInt(st.nextToken());
             K = Integer.parseInt(st.nextToken());
         }
 
-        for (int i = 0; i < N; i++) {
-            String stuff = bf.readLine();
-            st = new StringTokenizer(stuff);
+        int[] W = new int[N + 1];
+        int[] V = new int[N + 1];
 
-            int W = 0;
-            int V = 0;
+
+        int[][] knapsack = new int[N + 1][K + 1];
+
+
+        for (int i = 0; i < N; i++) {
+
+            String inputStuff = bf.readLine();
+            st = new StringTokenizer(inputStuff);
 
             while (st.hasMoreTokens()) {
-                W = Integer.parseInt(st.nextToken());
-                V = Integer.parseInt(st.nextToken());
+                W[i] = Integer.parseInt(st.nextToken());
+                V[i] = Integer.parseInt(st.nextToken());
             }
+        }
 
-            System.out.println(W + " "  + V);
+        for (int i = 1; i <= N; i++) {
+            for (int j = 1; j <= K; j++) {
+
+                if (W[i] > j) {
+                    knapsack[i][j] = knapsack[i - 1][j];
+                } else {
+                    knapsack[i][j] = Math.max(knapsack[i - 1][j], knapsack[i - 1][j - W[i]] + V[i]);
+                }
+
+
+            }
 
         }
 
+        System.out.println(knapsack[N][K]);
+
     }
+
 
 }
