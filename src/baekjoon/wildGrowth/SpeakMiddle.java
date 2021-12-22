@@ -3,7 +3,6 @@ package baekjoon.wildGrowth;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.Collections;
 import java.util.Comparator;
 import java.util.PriorityQueue;
 
@@ -25,7 +24,19 @@ public class SpeakMiddle {
         for (int i = 0; i < N; i++) {
             int input = Integer.parseInt(bf.readLine());
             maxHeap.add(input);
-            minHeap.add(input);
+
+            if ((maxHeap.size() + minHeap.size()) % 2 != 0) {
+                minHeap.add(maxHeap.poll());
+
+            } else {
+                if (minHeap.peek() > input) {
+                    maxHeap.add(minHeap.poll());
+                    minHeap.add(maxHeap.poll());
+                }
+
+
+            }
+            System.out.println(minHeap.peek());
 
         }
 
