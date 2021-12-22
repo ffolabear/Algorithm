@@ -11,6 +11,8 @@ public class SpeakMiddle {
     public static void main(String[] args) throws IOException {
 
         BufferedReader bf = new BufferedReader(new InputStreamReader(System.in));
+        StringBuilder sb = new StringBuilder();
+
         int N = Integer.parseInt(bf.readLine());
         PriorityQueue<Integer> maxHeap = new PriorityQueue<>();
         PriorityQueue<Integer> minHeap = new PriorityQueue<>(new Comparator<Integer>() {
@@ -36,24 +38,10 @@ public class SpeakMiddle {
 
 
             }
-            System.out.println(minHeap.peek());
+            sb.append(minHeap.peek()).append("\n");
 
         }
-
-//        System.out.println(maxHeap);
-//        System.out.println(minHeap);
-
-        int size = maxHeap.size();
-
-        for (int i = 0; i < size; i++) {
-            System.out.print(maxHeap.poll() + " ");
-        }
-
-        System.out.println();
-
-        for (int i = 0; i < size; i++) {
-            System.out.print(minHeap.poll() + " ");
-        }
+        System.out.println(sb);
 
     }
 }
