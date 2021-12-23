@@ -24,23 +24,35 @@ public class SpeakMiddle {
 
 
         for (int i = 0; i < N; i++) {
+
             int input = Integer.parseInt(bf.readLine());
             maxHeap.add(input);
+
+            //maxHeap : 1
+            //minHeap : -
+
+            //maxHeap : 2
+            //minHeap : -
 
             if ((maxHeap.size() + minHeap.size()) % 2 != 0) {
                 minHeap.add(maxHeap.poll());
 
             } else {
+                //중간값을 설정해주는 작업
                 if (minHeap.peek() > input) {
                     maxHeap.add(minHeap.poll());
                     minHeap.add(maxHeap.poll());
                 }
 
-
             }
-            sb.append(minHeap.peek()).append("\n");
 
+
+            sb.append(minHeap.peek()).append("\n");
+            System.out.println();
         }
+
+
+
         System.out.println(sb);
 
     }
