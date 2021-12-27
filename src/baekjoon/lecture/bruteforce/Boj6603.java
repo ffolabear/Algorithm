@@ -17,15 +17,9 @@ public class Boj6603 {
 
             String[] strArr = input.split(" ");
 
-            //뽑아야하는 숫자의 갯수
             int k = Integer.parseInt(strArr[0]);
-
-            //숫자의 갯수를 제외한 숫자배열
             int[] intArr = new int[k];
-
-            //사용했는지 안했는지 체크할 배열
             boolean[] visited = new boolean[k];
-
 
             for (int i = 0; i < intArr.length; i++) {
                 intArr[i] = Integer.parseInt(strArr[i + 1]);
