@@ -38,7 +38,7 @@ public class SpeakMiddle {
                 minHeap.add(maxHeap.poll());
 
             } else {
-                //중간값을 설정해주는 작업
+                //중간값을 설정해주는 작습
                 if (minHeap.peek() > input) {
                     maxHeap.add(minHeap.poll());
                     minHeap.add(maxHeap.poll());
