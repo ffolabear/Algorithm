@@ -17,6 +17,13 @@ public class Boj16929 {
             int M = Integer.parseInt(st.nextToken());
             System.out.println(N + " " + M);
 
+            for (int i = 0; i < N; i++) {
+
+                String row = br.readLine();
+                System.out.println(row);
+
+            }
+
 
         }
 
