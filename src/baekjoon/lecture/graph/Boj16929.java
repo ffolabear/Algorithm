@@ -7,24 +7,34 @@ import java.util.StringTokenizer;
 
 public class Boj16929 {
 
-        public static void main(String[] args) throws IOException {
+    static int N,M;
+    static char[][] board;
+    static boolean[][] visited;
 
-            BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-            String input = br.readLine();
-            StringTokenizer st = new StringTokenizer(input);
+    static int[] dx = {-1, 1, 0, 0};
+    static int[] dy = {0, 0, -1, 1};
 
-            int N = Integer.parseInt(st.nextToken());
-            int M = Integer.parseInt(st.nextToken());
-            System.out.println(N + " " + M);
 
-            for (int i = 0; i < N; i++) {
+    public static void main(String[] args) throws IOException {
 
-                String row = br.readLine();
-                System.out.println(row);
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        String input = br.readLine();
+        StringTokenizer st = new StringTokenizer(input);
 
-            }
+        N = Integer.parseInt(st.nextToken());
+        M = Integer.parseInt(st.nextToken());
 
+        board = new char[N + 1][M + 1];
+        visited = new boolean[N + 1][M + 1];
+
+        for (int i = 0; i < N; i++) {
+
+            String row = br.readLine();
+            System.out.println(row);
 
         }
+
+    }
+
 
 }
