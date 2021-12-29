@@ -7,8 +7,8 @@ import java.util.StringTokenizer;
 
 public class Boj16929 {
 
-    static int N,M;
-    static char[][] board;
+    static int N, M;
+    static String[][] board;
     static boolean[][] visited;
 
     static int[] dx = {-1, 1, 0, 0};
@@ -24,14 +24,19 @@ public class Boj16929 {
         N = Integer.parseInt(st.nextToken());
         M = Integer.parseInt(st.nextToken());
 
-        board = new char[N + 1][M + 1];
+        board = new String[N + 1][M + 1];
         visited = new boolean[N + 1][M + 1];
 
+        for (int i = 0; i < board.length; i++) {
+            board[i] = br.readLine().split("");
+        }
+
         for (int i = 0; i < N; i++) {
+            for (int j = 0; j < M; j++) {
 
-            String row = br.readLine();
-            System.out.println(row);
 
+
+            }
         }
 
     }
