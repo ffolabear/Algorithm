@@ -27,15 +27,13 @@ public class Boj11048 {
         }
 
 
-
-
-        for (int i = 1; i < maze.length; i++) {
-            for (int j = 1; j < maze[i].length; j++) {
-                System.out.print(maze[i][j] + " ");
+        for (int i = 1; i <= N; i++) {
+            for (int j = 1; j <= M; j++) {
+                maze[i][j] = Math.max(maze[i][j] + maze[i][j - 1], maze[i][j] + maze[i - 1][j]);
             }
-            System.out.println();
         }
 
+        System.out.println(maze[N][M]);
 
     }
 
