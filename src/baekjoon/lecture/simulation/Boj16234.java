@@ -3,12 +3,11 @@ package baekjoon.lecture.simulation;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.StringTokenizer;
+import java.util.*;
 
 public class Boj16234 {
 
     static int N, L, R;
-    static int answer = 0;
 
     static int[][] country;
     static boolean[][] visited;
@@ -31,6 +30,7 @@ public class Boj16234 {
 
         country = new int[N][N];
         visited = new boolean[N][N];
+        int answer = 0;
 
         for (int i = 0; i < N; i++) {
 
@@ -41,9 +41,12 @@ public class Boj16234 {
 
         }
 
-        for (int i = 0; i < country.length; i++) {
-            for (int j = 0; j < country[i].length; j++) {
-                checkMove(i, j);
+        while (true) {
+            visited = new boolean[N][N];
+            if (checkMove()) {
+                answer++;
+            } else {
+                break;
 
             }
         }
@@ -61,39 +64,74 @@ public class Boj16234 {
         System.out.println(answer);
     }
 
-    static void checkMove(int x, int y) {
+    static boolean checkMove() {
+
+        List<Node> visitList;
+
+        boolean finish = true;
+
+        for (int i = 0; i < N; i++) {
+            for (int j = 0; j < N; j++) {
+                if (!visited[i][j]) {
+
+                    visitList = new LinkedList<>();
+                    visitList.add(new Node(i, j));
+                    int sum = dfs(i, j, visitList, 0);
+                    if (visitList.size() > 1) {
+                        movePeople(sum, visitList);
+                        finish = false;
+                    }
+                }
+            }
+        }
+
+        return finish;
+    }
+
+    static int dfs(int x, int y, List<Node> visitList, int sum) {
 
         visited[x][y] = true;
+        sum = country[x][y];
 
         for (int i = 0; i < 4; i++) {
             int nx = x + dx[i];
             int ny = y + dy[i];
 
+            if (nx < 0 || nx >= N || ny < 0 || ny >= N) {
+                continue;
+            }
 
-            if (nx >= 0 && ny >= 0 &&
-                nx < N && ny < N &&
-                country[x][y] >= L && country[x][y] <= R &&
-                country[nx][ny] >= L && country[nx][ny] <= R) {
-                movePeople(x, y, nx, ny);
+            if (!visited[nx][ny]) {
+                int difference = Math.abs(country[x][y] - country[nx][ny]);
+                if (difference >= L && difference <= R) {
+                    visitList.add(new Node(nx, ny));
+                    sum += dfs(nx, ny, visitList, sum);
+                }
+
             }
 
         }
+        return sum;
     }
 
-    static void movePeople(int x, int y, int nx, int ny) {
+    static void movePeople(int sum, List<Node> visitList) {
 
-        System.out.println(country[x][y] + " | " + country[nx][ny]);
-
-        int xy = country[x][y];
-        int nxny = country[nx][ny];
-
-        country[x][y] = (xy + nxny) / 2;
-        country[nx][ny] = (xy + nxny) / 2;
-        answer++;
-
-        System.out.println(country[x][y] + " | " + country[nx][ny]);
-        System.out.println();
+        int avg = sum / visitList.size();
+        for (Node node : visitList) {
+            country[node.x][node.y] = avg;
+        }
     }
 
 
 }
+
+class Node {
+    int x;
+    int y;
+
+    public Node(int x, int y) {
+        this.x = x;
+        this.y = y;
+    }
+}
+
