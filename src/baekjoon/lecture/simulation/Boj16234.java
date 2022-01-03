@@ -73,12 +73,12 @@ public class Boj16234 {
         System.out.println("------------");
 
         for (int i = 0; i < 4; i++) {
-            int nx = dx[i];
-            int ny = dy[i];
+            int nx = x + dx[i];
+            int ny = y + dy[i];
 
 
             if (nx >= 0 && ny >= 0 &&
-                nx < N && ny < N) {
+                nx < N && ny < N ) {
                 System.out.println(nx + " | " + ny + " = " + i);
             }
 
