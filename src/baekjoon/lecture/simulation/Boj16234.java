@@ -25,11 +25,8 @@ public class Boj16234 {
         L = Integer.parseInt(st.nextToken());
         R = Integer.parseInt(st.nextToken());
 
-        System.out.println(N + " " + L + " " + R);
-        System.out.println("----------------------");
-
         country = new int[N][N];
-        visited = new boolean[N][N];
+
         int answer = 0;
 
         for (int i = 0; i < N; i++) {
@@ -43,7 +40,7 @@ public class Boj16234 {
 
         while (true) {
             visited = new boolean[N][N];
-            if (checkMove()) {
+            if (!checkMove()) {
                 answer++;
             } else {
                 break;
