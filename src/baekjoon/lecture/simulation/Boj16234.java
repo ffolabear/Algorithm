@@ -8,6 +8,7 @@ import java.util.StringTokenizer;
 public class Boj16234 {
 
     static int N, L, R;
+    static int answer = 0;
 
     static int[][] country;
     static boolean[][] visited;
@@ -30,7 +31,6 @@ public class Boj16234 {
 
         country = new int[N][N];
         visited = new boolean[N][N];
-        int answer = 0;
 
         for (int i = 0; i < N; i++) {
 
@@ -43,10 +43,7 @@ public class Boj16234 {
 
         for (int i = 0; i < country.length; i++) {
             for (int j = 0; j < country[i].length; j++) {
-
-                if (checkMove(i, j)) {
-                    answer++;
-                }
+                checkMove(i, j);
 
             }
         }
@@ -60,17 +57,13 @@ public class Boj16234 {
             System.out.println();
         }
 
-        System.out.println();
 
         System.out.println(answer);
     }
 
-    static boolean checkMove(int x, int y) {
+    static void checkMove(int x, int y) {
 
         visited[x][y] = true;
-
-        System.out.println(x + " | " + y);
-        System.out.println("------------");
 
         for (int i = 0; i < 4; i++) {
             int nx = x + dx[i];
@@ -78,19 +71,28 @@ public class Boj16234 {
 
 
             if (nx >= 0 && ny >= 0 &&
-                nx < N && ny < N ) {
-                System.out.println(nx + " | " + ny + " = " + i);
+                nx < N && ny < N &&
+                country[x][y] >= L && country[x][y] <= R &&
+                country[nx][ny] >= L && country[nx][ny] <= R) {
+                movePeople(x, y, nx, ny);
             }
 
         }
-        System.out.println();
-        return false;
     }
 
-    static void movePeople(int x, int y, int dx, int dy) {
-        country[x][y] = (country[x][y] + country[dx][dy]) / 2;
-        country[dx][dy] = (country[x][y] + country[dx][dy]) / 2;
+    static void movePeople(int x, int y, int nx, int ny) {
 
+        System.out.println(country[x][y] + " | " + country[nx][ny]);
+
+        int xy = country[x][y];
+        int nxny = country[nx][ny];
+
+        country[x][y] = (xy + nxny) / 2;
+        country[nx][ny] = (xy + nxny) / 2;
+        answer++;
+
+        System.out.println(country[x][y] + " | " + country[nx][ny]);
+        System.out.println();
     }
 
 
