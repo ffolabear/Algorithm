@@ -1,4 +1,4 @@
-package baekjoon.lecture.bruteforce;
+package baekjoon.lecture.bruteforce.recursive;
 
 import java.io.BufferedReader;
 import java.io.IOException;
