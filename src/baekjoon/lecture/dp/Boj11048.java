@@ -33,6 +33,16 @@ public class Boj11048 {
             }
         }
 
+
+        for (int i = 1; i <= N; i++) {
+            for (int j = 1; j <= M; j++) {
+                System.out.print(maze[i][j] + " ");
+            }
+            System.out.println();
+        }
+
+
+
         System.out.println(maze[N][M]);
 
     }
