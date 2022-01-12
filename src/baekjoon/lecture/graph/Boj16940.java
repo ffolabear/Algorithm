@@ -85,6 +85,7 @@ public class Boj16940 {
             }
         }
 
+
         return true;
     }
 
