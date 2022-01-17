@@ -66,7 +66,7 @@ public class Boj17143 {
             for (int j = 0; j < R; j++) {
                 if (board[j][i] != null) {
                     answer += board[j][i].z;
-                    board[0][i] = null;
+                    board[j][i] = null;
                     break;
                 }
 
@@ -105,14 +105,12 @@ public class Boj17143 {
             Shark current = queue.poll();
 
             int speed = current.s;
-            int direction = current.d;
-            int weight = current.z;
 
-            if (direction == 0 || direction == 2) {
+            if (current.d == 0 || current.d == 2) {
                 speed %= (R - 1) * 2;
             }
 
-            if (direction == 1 || direction == 3) {
+            if (current.d == 1 || current.d == 3) {
                 speed %= (C - 1) * 2;
             }
 
@@ -137,10 +135,10 @@ public class Boj17143 {
             //상어 잡아먹기
             if (board[current.r][current.c] != null) {
                 if (board[current.r][current.c].z < current.z) {
-                    board[current.r][current.c] = new Shark(current.r, current.c, speed, direction, current.z);
+                    board[current.r][current.c] = new Shark(current.r, current.c, current.s, current.d, current.z);
                 }
             } else {
-                board[current.r][current.c] = new Shark(current.r, current.c, speed, direction, current.z);
+                board[current.r][current.c] = new Shark(current.r, current.c, current.s, current.d, current.z);
             }
 
 
