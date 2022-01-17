@@ -13,6 +13,9 @@ public class Boj17143 {
     static Shark[][] board;
     static int answer = 0;
 
+    static int dx[] = {-1, 0, 1, 0};
+    static int dy[] = {0, -1, 0, 1};
+
     public static void main(String[] args) throws IOException {
 
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
@@ -40,23 +43,35 @@ public class Boj17143 {
             int c = Integer.parseInt(st.nextToken()); // 열 위치
             int s = Integer.parseInt(st.nextToken()); // 속력
             int d = Integer.parseInt(st.nextToken()); // 이동 방향
-            int z = Integer.parseInt(st.nextToken());
+            int z = Integer.parseInt(st.nextToken()); // 크기
+
+            if (d == 1) {
+
+                d = 0;
+            } else if (d == 4) {
+                d = 1;
+
+            }
 
             Shark shark = new Shark(r - 1, c - 1, s, d, z);
 
             board[r - 1][c - 1] = shark;
 
 
-
         }
 
 
-        for (int i = 0; i < board.length; i++) {
+        for (int i = 0; i < C; i++) {
 
-            if (board[0][i] != null) {
-                answer += board[0][i].z;
-                board[0][i] = null;
+            for (int j = 0; j < R; j++) {
+                if (board[j][i] != null) {
+                    answer += board[j][i].z;
+                    board[0][i] = null;
+                    break;
+                }
+
             }
+
 
             move();
 
@@ -64,13 +79,7 @@ public class Boj17143 {
 
         //상어번호 : 위치 r,c / 속력 / 이동 방향 / 크기
 
-
-        for (int i = 0; i < board.length; i++) {
-            for (int j = 0; j < board[i].length; j++) {
-                System.out.print(board[i][j] + " ");
-            }
-            System.out.println();
-        }
+        System.out.println(answer);
 
 
     }
@@ -81,14 +90,15 @@ public class Boj17143 {
         Queue<Shark> queue = new LinkedList<>();
 
         //움직일 상어들의 리스트
-        for(int i = 0; i < R; i++) {
-            for(int j = 0; j < C; j++) {
-                if(board[i][j] != null) {
+        for (int i = 0; i < R; i++) {
+            for (int j = 0; j < C; j++) {
+                if (board[i][j] != null) {
                     queue.add(new Shark(i, j, board[i][j].s, board[i][j].d, board[i][j].z));
                 }
             }
         }
 
+        board = new Shark[R][C];
 
         while (!queue.isEmpty()) {
 
@@ -98,18 +108,44 @@ public class Boj17143 {
             int direction = current.d;
             int weight = current.z;
 
-            if (direction == 1 || direction == 2) {
-
+            if (direction == 0 || direction == 2) {
+                speed %= (R - 1) * 2;
             }
 
-            if (direction == 3 || direction == 4) {
-
+            if (direction == 1 || direction == 3) {
+                speed %= (C - 1) * 2;
             }
 
+            //상어 이동시키기
+            for (int i = 0; i < speed; i++) {
 
+                int nx = current.r + dx[current.d];
+                int ny = current.c + dy[current.d];
+
+                if (nx < 0 || nx >= R || ny < 0 || ny >= C) {
+                    current.r -= dx[current.d];
+                    current.c -= dy[current.d];
+
+                    current.d = (current.d + 2) % 4;
+                    continue;
+                }
+
+                current.r = nx;
+                current.c = ny;
+            }
+
+            //상어 잡아먹기
+            if (board[current.r][current.c] != null) {
+                if (board[current.r][current.c].z < current.z) {
+                    board[current.r][current.c] = new Shark(current.r, current.c, speed, direction, current.z);
+                }
+            } else {
+                board[current.r][current.c] = new Shark(current.r, current.c, speed, direction, current.z);
+            }
 
 
         }
+
 
 
     }
