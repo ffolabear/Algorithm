@@ -3,12 +3,15 @@ package baekjoon.lecture.simulation;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.LinkedList;
+import java.util.Queue;
 import java.util.StringTokenizer;
 
 public class Boj17143 {
 
-    static int[][] board;
-    static int[][] sharkInfo;
+    static int R, C, M;
+    static Shark[][] board;
+    static int answer = 0;
 
     public static void main(String[] args) throws IOException {
 
@@ -16,32 +19,46 @@ public class Boj17143 {
         StringTokenizer st = new StringTokenizer(br.readLine());
 
         //낚시터 세로
-        int R = Integer.parseInt(st.nextToken());
+        R = Integer.parseInt(st.nextToken());
 
         //낚시터 가로
-        int C = Integer.parseInt(st.nextToken());
+        C = Integer.parseInt(st.nextToken());
 
         //상어 숫자
-        int M = Integer.parseInt(st.nextToken());
+        M = Integer.parseInt(st.nextToken());
 
 
         //낚시터
-        board = new int[R + 1][C + 1];
+        board = new Shark[R][C];
 
-        //상어정보
-        sharkInfo = new int[M][5];
 
         for (int i = 0; i < M; i++) {
 
             st = new StringTokenizer(br.readLine());
 
-            sharkInfo[i][0] = Integer.parseInt(st.nextToken());
-            sharkInfo[i][1] = Integer.parseInt(st.nextToken());
-            sharkInfo[i][2] = Integer.parseInt(st.nextToken());
-            sharkInfo[i][3] = Integer.parseInt(st.nextToken());
-            sharkInfo[i][4] = Integer.parseInt(st.nextToken());
+            int r = Integer.parseInt(st.nextToken()); // 행 위치
+            int c = Integer.parseInt(st.nextToken()); // 열 위치
+            int s = Integer.parseInt(st.nextToken()); // 속력
+            int d = Integer.parseInt(st.nextToken()); // 이동 방향
+            int z = Integer.parseInt(st.nextToken());
 
-            board[sharkInfo[i][0]][sharkInfo[i][1]] = i + 1;
+            Shark shark = new Shark(r - 1, c - 1, s, d, z);
+
+            board[r - 1][c - 1] = shark;
+
+
+
+        }
+
+
+        for (int i = 0; i < board.length; i++) {
+
+            if (board[0][i] != null) {
+                answer += board[0][i].z;
+                board[0][i] = null;
+            }
+
+            move();
 
         }
 
@@ -61,22 +78,58 @@ public class Boj17143 {
 
     static void move() {
 
-        for (int i = 1; i < board.length; i++) {
-            for (int j = 1; j < board[i].length; j++) {
+        Queue<Shark> queue = new LinkedList<>();
 
-                if (board[i][j] != 0) {
-                    board[i][j] = 0;
-
-
-
-
+        //움직일 상어들의 리스트
+        for(int i = 0; i < R; i++) {
+            for(int j = 0; j < C; j++) {
+                if(board[i][j] != null) {
+                    queue.add(new Shark(i, j, board[i][j].s, board[i][j].d, board[i][j].z));
                 }
+            }
+        }
+
+
+        while (!queue.isEmpty()) {
+
+            Shark current = queue.poll();
+
+            int speed = current.s;
+            int direction = current.d;
+            int weight = current.z;
+
+            if (direction == 1 || direction == 2) {
+
+            }
+
+            if (direction == 3 || direction == 4) {
 
             }
 
 
+
+
         }
 
+
+    }
+
+}
+
+class Shark {
+
+    int r; // 행 위치
+    int c; // 열 위치
+    int s; // 속력
+    int d; // 방향
+    int z; // 크기
+
+    Shark(int r, int c, int s, int d, int z) {
+        this.r = r;
+        this.c = c;
+        this.s = s;
+        this.d = d;
+        this.z = z;
     }
 
 }
