@@ -20,7 +20,6 @@ public class Boj15658 {
 
         //숫자의 갯수
         N = Integer.parseInt(br.readLine());
-        System.out.println("N : " + N);
 
         //입력받은 숫자
         String[] numbers = br.readLine().split(" ");
@@ -30,9 +29,7 @@ public class Boj15658 {
 
         for (int i = 0; i < numbers.length; i++) {
             nums[i] = Integer.parseInt(numbers[i]);
-            System.out.print(nums[i] + " ");
         }
-        System.out.println();
 
         StringTokenizer st = new StringTokenizer(br.readLine());
 
