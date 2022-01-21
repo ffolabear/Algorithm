@@ -11,6 +11,9 @@ public class Boj15658 {
     static int[] operators = new int[4];
     static int[] nums;
 
+    static int MAX = Integer.MIN_VALUE;
+    static int MIN = Integer.MAX_VALUE;
+
     public static void main(String[] args) throws IOException {
 
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
@@ -38,10 +41,48 @@ public class Boj15658 {
         operators[2] = Integer.parseInt(st.nextToken());
         operators[3] = Integer.parseInt(st.nextToken());
 
-        System.out.println(operators[0] + " " + operators[1] + " " + operators[2] + " " + operators[3]);
+        dfs(nums[0], 1);
 
+        System.out.println(MAX);
+        System.out.println(MIN);
 
 
     }
+
+    static void dfs(int num,int idx) {
+
+        if (idx == N) {
+            MAX = Math.max(MAX, num);
+            MIN = Math.min(MIN, num);
+
+            return;
+        }
+
+        for (int i = 0; i < 4; i++) {
+
+            if (operators[i] == 0) {
+                continue;
+            }
+
+            operators[i]--;
+
+            switch (i) {
+
+                case 0: dfs(num + nums[idx], idx + 1); break;
+                case 1: dfs(num - nums[idx], idx + 1); break;
+                case 2: dfs(num * nums[idx], idx + 1); break;
+                case 3: dfs(num / nums[idx], idx + 1); break;
+
+
+            }
+
+            operators[i]++;
+
+
+        }
+
+
+    }
+
 
 }
