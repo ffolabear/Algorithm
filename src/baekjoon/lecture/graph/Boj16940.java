@@ -51,7 +51,6 @@ public class Boj16940 {
             System.out.println(0);
         }
 
-
     }
 
     static boolean bfs() {
