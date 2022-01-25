@@ -12,13 +12,14 @@ public class Boj10989 {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         int N = Integer.parseInt(br.readLine());
 
-        int[] nums = new int[N];
+        int[] nums = new int[10001];
 
-        for (int i = 0; i < N; i++) {
-            nums[i] = Integer.parseInt(br.readLine());
+        for (int i = 1; i <= N; i++) {
+
+            int  current = Integer.parseInt(br.readLine());
+            nums[current]++;
         }
 
-        Arrays.sort(nums);
 
         for (int i : nums) {
             System.out.println(i);
