@@ -1,15 +1,14 @@
 package baekjoon.silver;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.util.Arrays;
+import java.io.*;
 
 public class Boj10989 {
 
     public static void main(String[] args) throws IOException {
 
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
+
         int N = Integer.parseInt(br.readLine());
 
         int[] nums = new int[10001];
@@ -21,10 +20,18 @@ public class Boj10989 {
         }
 
 
-        for (int i : nums) {
-            System.out.println(i);
+        for (int i = 1; i < nums.length; i++) {
+            if (nums[i] != 0) {
+                while (nums[i] != 0) {
+                    bw.write(i + "\n");
+                    nums[i]--;
+                }
+
+            }
         }
 
+        bw.flush();
+        bw.close();
 
     }
 
