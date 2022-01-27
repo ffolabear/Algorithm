@@ -6,7 +6,7 @@ import java.util.List;
 
 public class Boj10845 {
 
-    static List<Integer> queue = new ArrayList<>();
+    static List<Integer> deque = new ArrayList<>();
     static BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
 
     public static void main(String[] args) throws IOException {
@@ -46,6 +46,8 @@ public class Boj10845 {
 
             }
 
+            System.out.println(command + " " + deque);
+
         }
 
         bw.flush();
@@ -55,36 +57,36 @@ public class Boj10845 {
 
 
     static void push_front(int element) {
-        queue.add(element);
+        deque.add(0, element);
     }
 
     static void push_back(int element) {
-        queue.add(element);
+        deque.add(element);
     }
 
 
     static int pop_front() throws IOException {
 
-        if (queue.size() == 0) {
+        if (deque.size() == 0) {
             return -1;
 
         } else {
 
-            int index = queue.get(0);
-            queue.remove(0);
+            int index = deque.get(0);
+            deque.remove(0);
             return index;
         }
     }
 
     static int pop_back() throws IOException {
 
-        if (queue.size() == 0) {
+        if (deque.size() == 0) {
             return -1;
 
         } else {
 
-            int index = queue.get(0);
-            queue.remove(0);
+            int index = deque.get(deque.size() - 1);
+            deque.remove(deque.size() - 1);
             return index;
         }
     }
@@ -92,12 +94,12 @@ public class Boj10845 {
 
     static int size() {
 
-        return queue.size();
+        return deque.size();
     }
 
     static int empty() {
 
-        if (queue.size() == 0) {
+        if (deque.size() == 0) {
             return 1;
         } else {
             return 0;
@@ -107,19 +109,19 @@ public class Boj10845 {
 
     static int front() {
 
-        if (queue.size() == 0) {
+        if (deque.size() == 0) {
             return -1;
         } else {
 
-            return queue.get(0);
+            return deque.get(0);
         }
     }
 
     static int back() {
-        if (queue.size() == 0) {
+        if (deque.size() == 0) {
             return -1;
         } else {
-            return queue.get(queue.size() - 1);
+            return deque.get(deque.size() - 1);
         }
 
     }
