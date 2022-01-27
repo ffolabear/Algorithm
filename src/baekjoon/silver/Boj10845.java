@@ -18,15 +18,15 @@ public class Boj10845 {
 
         for (int i = 0; i < N; i++) {
             String command = br.readLine();
-            if (command.matches("[push\b\\s]")) {
+
+            if (command.matches("push.*")) {
                 System.out.println("1");
             }else if (command.matches("pop")) {
                 System.out.println("2");
             }else if (command.matches("size")) {
                 System.out.println("3");
             }else if (command.matches("empty")) {
-                System.out.println("4");
-            }else if (command.matches("front")) {
+                System.out.println("4");            }else if (command.matches("front")) {
                 System.out.println("5");
             }else if (command.matches("back")) {
                 System.out.println("6");
