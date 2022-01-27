@@ -18,12 +18,19 @@ public class Boj10845 {
         for (int i = 0; i < N; i++) {
             String command = br.readLine();
 
-            if (command.matches("push.*")) {
+            if (command.matches("push_front.*")) {
                 String[] input = command.split(" ");
-                push(Integer.parseInt(input[1]));
+                push_front(Integer.parseInt(input[1]));
 
-            } else if (command.matches("pop")) {
-                bw.write(pop() + "\n");
+            } else if (command.matches("push_back.*")) {
+                String[] input = command.split(" ");
+                push_back(Integer.parseInt(input[1]));
+
+            }else if (command.matches("pop_front")) {
+                bw.write(pop_front() + "\n");
+
+            }else if (command.matches("pop_back")) {
+                bw.write(pop_back() + "\n");
 
             } else if (command.matches("size")) {
                 bw.write(size() + "\n");
@@ -47,11 +54,16 @@ public class Boj10845 {
     }
 
 
-    static void push(int element) {
+    static void push_front(int element) {
         queue.add(element);
     }
 
-    static int pop() throws IOException {
+    static void push_back(int element) {
+        queue.add(element);
+    }
+
+
+    static int pop_front() throws IOException {
 
         if (queue.size() == 0) {
             return -1;
@@ -62,9 +74,21 @@ public class Boj10845 {
             queue.remove(0);
             return index;
         }
-
-
     }
+
+    static int pop_back() throws IOException {
+
+        if (queue.size() == 0) {
+            return -1;
+
+        } else {
+
+            int index = queue.get(0);
+            queue.remove(0);
+            return index;
+        }
+    }
+
 
     static int size() {
 
