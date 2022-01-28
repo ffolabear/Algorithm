@@ -1,88 +1,75 @@
 package baekjoon.silver;
 
 import java.io.*;
+import java.util.Stack;
 
 public class Boj1406_editor {
 
-    static BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
-    static StringBuffer input;
-    static int cursor;
 
     public static void main(String[] args) throws IOException {
 
-
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
-        input = new StringBuffer(br.readLine());
+        String input = br.readLine();
 
-        int N = input.length();
-        int M = Integer.parseInt(br.readLine());
-        cursor = N;
+        Stack<Character> left = new Stack<>();
+        Stack<Character> right = new Stack<>();
 
-        for (int i = 0; i < M; i++) {
+        for (int i = 0; i < input.length(); i++) {
+            left.push(input.charAt(i));
+        }
 
-            String[] command = br.readLine().split(" ");
+        int N = Integer.parseInt(br.readLine());
 
-            if (command[0].equals("L")) {
+        for (int i = 0; i < N; i++) {
+            String command = br.readLine();
 
-                if (cursor > 0) {
-                    L();
-                } else {
-                    continue;
-                }
+            switch (command.charAt(0)) {
+                case 'L':
+                    if (left.empty()) {
+                        break;
+                    }
+                    right.push(left.pop());
+                    break;
 
-            } else if (command[0].equals("D")) {
-                if (cursor < N) {
-                    D();
-                } else {
-                    continue;
-                }
+                case 'D':
+                    if (right.empty()) {
+                        break;
+                    }
+                    left.push(right.pop());
+                    break;
 
-            } else if (command[0].equals("B")) {
+                case 'B':
+                    if (left.empty()) {
+                        break;
+                    }
+                    left.pop();
+                    break;
 
-                if (cursor != 0) {
-                    B();
-                } else {
-                    continue;
-                }
+                case 'P':
+                    left.push(command.charAt(2));
+                    break;
 
-
-            } else if (command[0].equals("P")) {
-                P(command[1]);
             }
 
         }
 
-        System.out.println(input);
 
 
-    }
+        BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
 
-    static void L() {
-        cursor -= 1;
-    }
-
-    static void D() {
-        cursor += 1;
-    }
-
-    static void B() {
-        input.deleteCharAt(cursor - 1);
-        cursor -= 1;
-    }
-
-    static void P(String element) {
-
-        if (cursor == 0) {
-            input.insert(0, element);
-        } else if (cursor == input.length() + 1){
-            input.append(element);
-        } else {
-            input.insert(cursor, element);
+        while (!left.empty()) {
+            right.push(left.pop());
         }
 
-        cursor += 1;
-    }
+        while (!right.empty()) {
+            bw.write(right.pop());
+        }
 
+
+        bw.flush();
+        bw.close();
+
+    }
 
 }
