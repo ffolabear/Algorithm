@@ -4,7 +4,7 @@ import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Boj10866 {
+public class Boj10866_queue {
 
     static List<Integer> queue = new ArrayList<>();
     static BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));

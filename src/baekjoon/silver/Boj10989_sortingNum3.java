@@ -2,7 +2,7 @@ package baekjoon.silver;
 
 import java.io.*;
 
-public class Boj10989 {
+public class Boj10989_sortingNum3 {
 
     public static void main(String[] args) throws IOException {
 
