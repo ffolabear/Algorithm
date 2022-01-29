@@ -4,7 +4,7 @@ import java.io.*;
 import java.util.Arrays;
 import java.util.Collections;
 
-public class Boj1026 {
+public class Boj1026_treasure {
 
     public static void main(String[] args) throws IOException {
 

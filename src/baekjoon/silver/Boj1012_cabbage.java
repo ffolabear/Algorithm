@@ -6,7 +6,7 @@ import java.io.InputStreamReader;
 import java.util.Arrays;
 import java.util.StringTokenizer;
 
-public class Baek_1012 {
+public class Boj1012_cabbage {
 
     // T: 테스트 케이스의 갯수
     // M: 배추밭의 가로길이 M(1 ≤ M ≤ 50)
