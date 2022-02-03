@@ -18,7 +18,16 @@ public class Boj1874_stackArr {
 
             int current = Integer.parseInt(br.readLine());
 
+            if (stack.peek() < current) {
 
+                for (int j = 1; j <= current; j++) {
+                    stack.push(j);
+                    System.out.println("+");
+                }
+
+            }else {
+                System.out.println("-");
+            }
 
         }
     }
