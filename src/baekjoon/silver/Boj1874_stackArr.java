@@ -12,24 +12,34 @@ public class Boj1874_stackArr {
 
         int N = Integer.parseInt(br.readLine());
         Stack<Integer> stack = new Stack<>();
-        stack.push(0);
 
-        for (int i = 1; i <= N; i++) {
+        int start = 0;
 
+        while (N-- > 0) {
             int current = Integer.parseInt(br.readLine());
 
-            if (stack.peek() < current) {
+            if (current > start) {
 
-                for (int j = 1; j <= current; j++) {
+                for (int j = start + 1; j <= current; j++) {
                     stack.push(j);
-                    System.out.println("+");
+                    bw.append("+").append("\n");
+                }
+                start = current;
+
+            } else {
+                if (stack.peek() != current) {
+                    System.out.println("NO");
+                    return;
                 }
 
-            }else {
-                System.out.println("-");
             }
-
+            stack.pop();
+            bw.append("-").append("\n");
         }
+
+
+        bw.flush();
+        bw.close();
     }
 
 }
