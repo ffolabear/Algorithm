@@ -1,6 +1,8 @@
 package baekjoon.silver;
 
 import java.io.*;
+import java.util.LinkedList;
+import java.util.StringTokenizer;
 
 public class Boj1158_josephus {
 
@@ -9,12 +11,28 @@ public class Boj1158_josephus {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
 
-        int N = Integer.parseInt(br.readLine());
-        boolean[] isBanished = new boolean[N + 1];
+        StringTokenizer st = new StringTokenizer(br.readLine());
+        int N = Integer.parseInt(st.nextToken());
+        int K = Integer.parseInt(st.nextToken());
 
+        LinkedList<Integer> list = new LinkedList<>();
+        for (int i = 1; i <= N; i++) {
+            list.add(i);
+        }
+
+        bw.append('<');
+        while (!list.isEmpty()) {
+            for (int i = 0; i < K; i++) {
+                if (i == K - 1) {
+
+
+                }
+            }
+        }
 
 
 
     }
 
 }
+
