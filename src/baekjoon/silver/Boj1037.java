@@ -2,7 +2,6 @@ package baekjoon.silver;
 
 import java.io.*;
 import java.util.Arrays;
-import java.util.StringTokenizer;
 
 public class Boj1037 {
 
@@ -22,9 +21,9 @@ public class Boj1037 {
 
         Arrays.sort(nums);
 
-        for (int i : nums) {
-            System.out.println(i);
-        }
+        bw.append(String.valueOf(nums[nums.length - 1] * 2));
+        bw.flush();
+        bw.close();
 
     }
 
