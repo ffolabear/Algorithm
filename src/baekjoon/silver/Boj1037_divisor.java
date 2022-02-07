@@ -3,7 +3,7 @@ package baekjoon.silver;
 import java.io.*;
 import java.util.Arrays;
 
-public class Boj1037 {
+public class Boj1037_divisor {
 
     public static void main(String[] args) throws IOException {
 
@@ -19,9 +19,11 @@ public class Boj1037 {
             nums[i] = Integer.parseInt(input[i]);
         }
 
+
         Arrays.sort(nums);
 
-        bw.append(String.valueOf(nums[nums.length - 1] * 2));
+
+        bw.append(String.valueOf(nums[nums.length - 1] * nums[0]));
         bw.flush();
         bw.close();
 
