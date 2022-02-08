@@ -14,10 +14,18 @@ public class Boj1929_findingPrimeNum2 {
 
         int N = Integer.parseInt(st.nextToken());
         int M = Integer.parseInt(st.nextToken());
-
+        
+        
         boolean[] nums = new boolean[M + 1];
 
-        for (int i = N; i * i <= M; i++) {
+        nums[0] = true;
+        nums[1] = true;
+
+        for (int i = 2; i <= Math.sqrt(M); i++) {
+
+            if (nums[i]) {
+                continue;
+            }
 
             if (!nums[i]) {
                 for (int j = i * i; j <= M; j += i) {
