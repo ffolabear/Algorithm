@@ -15,15 +15,23 @@ public class Boj2609_GcdLcm {
         int N = Integer.parseInt(st.nextToken());
         int M = Integer.parseInt(st.nextToken());
 
+        int sum = N + M;
+
+
+
+        //큰 수
         N = Math.max(N, M);
-        M = Math.min(N, M);
+
+        //작은 수
+        M = sum - N;
+
 
         int GCD = 1;
         int LCM = M;
 
         for (int i = 1; i <= M; i++) {
-            if (N % i == 0) {
-                if (M % i == 0) {
+            if (M % i == 0) {
+                if (N % i == 0) {
                     GCD = Math.max(GCD, i);
                 }
             }
