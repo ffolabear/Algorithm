@@ -37,6 +37,7 @@ public class Boj2609_GcdLcm {
             }
         }
 
+
         bw.append(String.valueOf(GCD)).append("\n");
 
         for (int i = 1; i <= N * M; i++) {
