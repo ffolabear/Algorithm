@@ -4,15 +4,19 @@ import java.io.*;
 
 public class Boj14889_startLink {
 
+    static int N;
+    static int[][] power;
+    static boolean[] visit;
+
+
     public static void main(String[] args) throws IOException {
 
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
 
-        int N = Integer.parseInt(br.readLine());
-
-        int[][] power = new int[N][N];
-
+        N = Integer.parseInt(br.readLine());
+        power = new int[N][N];
+        visit = new boolean[N];
 
         for (int i = 0; i < N; i++) {
 
@@ -35,6 +39,14 @@ public class Boj14889_startLink {
 //            System.out.println();
 //
 //        }
+
+    }
+
+    static void dfs(int depth, int idx) {
+
+        if (depth == N / 2) {
+            return;
+        }
 
     }
 
