@@ -30,51 +30,34 @@ public class sw_5658 {
         int K = sc.nextInt();
 
         String input = sc.next();
-
-        int side = N / 4;
-
         ArrayList<Integer> list = new ArrayList<>();
-        ArrayList<Integer> arr = new ArrayList<>();
 
-        for (int i = 1; i <= 4; i++) {
-            int index = 0;
+        for (int i = 0; i < N / 4; i++) {
 
-            while (index < N) {
-                String fragment = input.substring(index, index += side);
+            int start = 0;
+            int end = N / 4;
+
+            for (int j = 0; j < 4; j++) {
+
+                String fragment = input.substring(start, end);
                 int convert = Integer.parseInt(fragment, 16);
-                list.add(convert);
+
+                if (!list.contains(convert)) {
+                    list.add(convert);
+                }
+                start = end;
+                end += N / 4;
+
             }
+            String remain = input.substring(0, N - 1);
+            String last = String.valueOf(input.charAt(N - 1));
 
-            System.out.println(input);
+            input = last + remain;
 
-            String remain = input.substring(0, input.length() - 1);
-            String end = input.substring(input.length() - 1, input.length());
-            input = end + remain;
-
+            list.sort(Collections.reverseOrder());
         }
 
-        System.out.println();
-        list.sort(Collections.reverseOrder());
-        System.out.println(list);
-
-        int prev = -1;
-        int count = 0;
-
-
-        for (int i = 0; i < list.size(); i++) {
-            if (prev != list.get(i)) {
-                count++;
-            } else {
-                continue;
-            }
-
-            if (count == K) {
-                sb.append("#").append(testcase).append(" ").append(list.get(i)).append("\n");
-            }
-
-            prev = list.get(i);
-        }
-
+        sb.append("#").append(testcase).append(" ").append(list.get(K - 1)).append("\n");
     }
 
 
