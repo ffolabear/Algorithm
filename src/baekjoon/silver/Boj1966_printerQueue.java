@@ -23,15 +23,13 @@ public class Boj1966_printerQueue {
             //궁금한 문서가 현재 Queue 에서 몇 번째에 놓여 있는지를 나타내는
             int M = Integer.parseInt(st.nextToken());
 
-            System.out.println(N + " " + M);
-
             LinkedList<int[]> printer = new LinkedList<>();
 
             //중요도
-            StringTokenizer nums = new StringTokenizer(br.readLine());
+            st = new StringTokenizer(br.readLine());
 
             for (int j = 0; j < N; j++) {
-                printer.add(new int[]{i, Integer.parseInt(nums.nextToken())});
+                printer.offer(new int[]{j, Integer.parseInt(st.nextToken())});
             }
 
             int count = 0;
