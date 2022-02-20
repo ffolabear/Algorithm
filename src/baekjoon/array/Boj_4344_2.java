@@ -5,7 +5,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.StringTokenizer;
 
-public class Baek_4344_2 {
+public class Boj_4344_2 {
 	
 	public static void main(String[] args) throws Exception, IOException {
 		

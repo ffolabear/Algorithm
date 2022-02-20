@@ -5,7 +5,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.StringTokenizer;
 
-public class Baek_15649 {
+public class Boj_15649 {
 
     static int N;
     static int M;

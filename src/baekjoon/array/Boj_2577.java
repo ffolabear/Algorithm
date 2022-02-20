@@ -4,7 +4,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
-public class Baek_2577 {
+public class Boj_2577 {
 
 	public static void main(String[] args) throws Exception, IOException{
 

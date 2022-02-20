@@ -6,7 +6,7 @@ import java.io.InputStreamReader;
 import java.util.Arrays;
 import java.util.StringTokenizer;
 
-public class Baek_10818_2 {
+public class Boj_10818_2 {
 
 	public static void main(String[] args) throws Exception, IOException {
 

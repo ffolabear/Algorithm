@@ -2,7 +2,7 @@ package baekjoon.array;
 
 import java.util.Scanner;
 
-public class Baek_4344_1 {
+public class Boj_4344_1 {
 
 	public static void main(String[] args){
 

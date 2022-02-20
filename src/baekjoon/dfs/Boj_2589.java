@@ -6,7 +6,7 @@ import java.io.InputStreamReader;
 import java.util.LinkedList;
 import java.util.Queue;
 
-public class Baek_2589 {
+public class Boj_2589 {
 
     static String[][] treasure;
     static boolean[][] visited;

@@ -1,6 +1,6 @@
 package baekjoon.backtracking;
 
-public class Baek_15650 {
+public class Boj_15650 {
 
     public static void main(String[] args) {
 

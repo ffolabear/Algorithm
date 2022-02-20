@@ -2,7 +2,7 @@ package baekjoon.io;
 
 import java.util.*;
 
-public class Baek_2884 {
+public class Boj_2884 {
 
 	public static void main(String[] args) {
 

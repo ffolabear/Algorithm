@@ -4,7 +4,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
-public class Baek_10974 {
+public class Boj_10974 {
 
 
     static int N;

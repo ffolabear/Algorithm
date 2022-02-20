@@ -1,6 +1,6 @@
 package baekjoon.function;
 
-public class Baek_4673 {
+public class Boj_4673 {
 
 	public static void main(String[] args) {
 

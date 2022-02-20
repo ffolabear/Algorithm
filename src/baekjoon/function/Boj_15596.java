@@ -1,7 +1,7 @@
 package baekjoon.function;
 
 
-public class Baek_15596 {
+public class Boj_15596 {
 	
 	 long sum(int[] a) {
 	        long ans = 0;
