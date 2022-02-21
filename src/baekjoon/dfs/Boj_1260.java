@@ -13,8 +13,8 @@ public class Boj_1260 {
     static boolean[] visited;
 
     //dfs 결과
-    static ArrayList<Integer> result = new ArrayList<>();
-    static Queue<Integer> order = new LinkedList<>();
+    static ArrayList<Integer> dfs_result = new ArrayList<>();
+    static ArrayList<Integer> bfs_result = new ArrayList<>();
 
     public static void main(String[] args) throws IOException {
 
@@ -55,8 +55,10 @@ public class Boj_1260 {
 
         System.out.println();
         dfs(1);
+        bfs(1);
 
-        System.out.println(result);
+        System.out.println(dfs_result);
+        System.out.println(bfs_result);
 
     }
 
@@ -65,16 +67,35 @@ public class Boj_1260 {
             return;
         }
 
-        result.add(current);
+        dfs_result.add(current);
         visited[current] = true;
         for (int i = 0; i < adj[current].size(); i++) {
             dfs(adj[current].get(i));
         }
     }
 
-    static void bfs() {
+    static void bfs(int start) {
 
+        Queue<Integer> queue = new LinkedList<>();
+        visited[start] = true;
+        queue.add(start);
 
+        while (!queue.isEmpty()) {
+
+            int temp = queue.poll();
+            bfs_result.add(temp);
+
+            for (int i = 0; i < adj[temp].size(); i++) {
+                int current = adj[temp].get(i);
+
+                if (!visited[current]) {
+                    visited[current] = true;
+                    queue.add(current);
+                }
+
+            }
+
+        }
 
     }
 
