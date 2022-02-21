@@ -21,78 +21,84 @@ public class Boj_1260 {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         StringTokenizer st = new StringTokenizer(br.readLine());
 
+
         N = Integer.parseInt(st.nextToken());
         M = Integer.parseInt(st.nextToken());
         V = Integer.parseInt(st.nextToken());
 
         adj = new ArrayList[N + 1];
-        visited = new boolean[N + 1];
 
-        for (int i = 1; i <= N; i++) {
+
+        for (int i = 0; i <= N; i++) {
             adj[i] = new ArrayList<>();
         }
 
-        for (int i = 0; i < N; i++) {
-            st = new StringTokenizer(br.readLine());
-            int from = Integer.parseInt(st.nextToken());
-            int to = Integer.parseInt(st.nextToken());
+        for (int i = 0; i < M; i++) {
+            String[] input = br.readLine().split(" ");
+            int from = Integer.parseInt(input[0]);
+            int to = Integer.parseInt(input[1]);
 
             adj[from].add(to);
             adj[to].add(from);
 
-
         }
 
-        for (int i = 1; i < adj.length; i++) {
-            Collections.sort(adj[i]);
-
+        for (ArrayList<Integer> node : adj) {
+            Collections.sort(node);
         }
 
+        //--------------------
+        visited = new boolean[N + 1];
+        dfs(V);
 
-        for (int i = 0; i < adj.length; i++) {
-            System.out.println(adj[i]);
+        Arrays.fill(visited, false);
+        bfs(V);
+
+
+        for (Integer integer : dfs_result) {
+            System.out.print(integer + " ");
         }
 
         System.out.println();
-        dfs(1);
-        bfs(1);
 
-        System.out.println(dfs_result);
-        System.out.println(bfs_result);
+        for (Integer integer : bfs_result) {
+            System.out.print(integer + " ");
+        }
 
     }
 
     static void dfs(int current) {
+
         if (visited[current]) {
             return;
         }
 
-        dfs_result.add(current);
         visited[current] = true;
-        for (int i = 0; i < adj[current].size(); i++) {
-            dfs(adj[current].get(i));
+        dfs_result.add(current);
+
+        for (int i : adj[current]) {
+            if (!visited[i]) {
+                dfs(i);
+            }
         }
     }
 
-    static void bfs(int start) {
+    static void bfs(int current) {
 
         Queue<Integer> queue = new LinkedList<>();
-        visited[start] = true;
-        queue.add(start);
+        queue.offer(current);
+        visited[current] = true;
 
         while (!queue.isEmpty()) {
 
             int temp = queue.poll();
             bfs_result.add(temp);
 
-            for (int i = 0; i < adj[temp].size(); i++) {
-                int current = adj[temp].get(i);
-
-                if (!visited[current]) {
-                    visited[current] = true;
-                    queue.add(current);
+            for (int i : adj[temp]) {
+                if (!visited[i]) {
+                    visited[i] = true;
+                    queue.add(i);
                 }
-
             }
 
         }
