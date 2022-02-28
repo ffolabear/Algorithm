@@ -9,7 +9,7 @@ public class Boj_2178 {
 
     static int N, M;
     static String[][] maze;
-    static boolean[][] isVisited;
+    static boolean[][] visited;
 
 
     static int[] dx = {-1, 1, 0, 0};
@@ -25,7 +25,7 @@ public class Boj_2178 {
         M = Integer.parseInt(st.nextToken());
 
         maze = new String[N][M];
-        isVisited = new boolean[N][M];
+        visited = new boolean[N][M];
 
         for (int i = 0; i < N; i++) {
             maze[i] = br.readLine().split("");
@@ -52,7 +52,21 @@ public class Boj_2178 {
 
     static void dfs(int x, int y) {
 
-        if (isVisited[x][y]) {
+        visited[x][y] = true;
+
+        for (int i = 0; i < 4; i++) {
+            int nx = x + dx[i];
+            int ny = y + dy[i];
+
+            if (nx < 0 || ny < 0 || nx > maze.length || ny > maze.length) {
+                continue;
+            }
+
+            if (maze[nx][ny].equals("1") && !visited[nx][ny]) {
+                answer++;
+                dfs(nx, ny);
+
+            }
 
         }
 
