@@ -44,6 +44,7 @@ public class Kakao2017_ColoringBook {
 
     static void dfs(int x, int y, int[][] picture, boolean[][] visited) {
 
+
         if (visited[x][y]) {
             return;
         }

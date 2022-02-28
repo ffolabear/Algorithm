@@ -3,12 +3,14 @@ package baekjoon.dfs;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.LinkedList;
+import java.util.Queue;
 import java.util.StringTokenizer;
 
 public class Boj_2178 {
 
     static int N, M;
-    static String[][] maze;
+    static int[][] maze;
     static boolean[][] visited;
 
 
@@ -24,52 +26,57 @@ public class Boj_2178 {
         N = Integer.parseInt(st.nextToken());
         M = Integer.parseInt(st.nextToken());
 
-        maze = new String[N][M];
+        maze = new int[N][M];
         visited = new boolean[N][M];
 
         for (int i = 0; i < N; i++) {
-            maze[i] = br.readLine().split("");
-        }
 
+            String[] input = br.readLine().split("");
 
-
-
-
-
-
-
-
-
-        for (int i = 0; i < maze.length; i++) {
-            for (int j = 0; j < maze[i].length; j++) {
-                System.out.print(maze[i][j]);
+            for (int j = 0; j < M; j++) {
+                maze[i][j] = Integer.parseInt(input[j]);
             }
-            System.out.println();
         }
 
+        visited[0][0] = true;
+
+        bfs(0, 0);
+        System.out.println(maze[N - 1][M - 1]);
     }
 
 
-    static void dfs(int x, int y) {
+    static void bfs(int x, int y) {
 
-        visited[x][y] = true;
+        Queue<int[]> queue = new LinkedList<>();
+        queue.add(new int[]{x, y});
 
-        for (int i = 0; i < 4; i++) {
-            int nx = x + dx[i];
-            int ny = y + dy[i];
+        while (!queue.isEmpty()) {
+            int[] current = queue.poll();
+            int currentX = current[0];
+            int currentY = current[1];
 
-            if (nx < 0 || ny < 0 || nx > maze.length || ny > maze.length) {
-                continue;
+            for (int i = 0; i < 4; i++) {
+                int nx = currentX + dx[i];
+                int ny = currentY + dy[i];
+
+                //범위 벗어나면 건너뛰기
+                if (nx < 0 || ny < 0 || nx >= N || ny >= M) {
+                    continue;
+                }
+
+                //이미 방문했고 0이면 건너뛰기
+                if (visited[nx][ny] || maze[nx][ny] == 0) {
+                    continue;
+                }
+
+                //그게 아니라면 탐색할 필요있음
+                queue.add(new int[]{nx, ny});
+                maze[nx][ny] = maze[currentX][currentY] + 1;
+                visited[nx][ny] = true;
             }
 
-            if (maze[nx][ny].equals("1") && !visited[nx][ny]) {
-                answer++;
-                dfs(nx, ny);
-
-            }
 
         }
-
     }
 
 }
