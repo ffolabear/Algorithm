@@ -1,4 +1,4 @@
-package Programmers.SkillChk2;
+package Programmers.chk;
 
 public class sol_342155_873 {
 

@@ -1,7 +1,6 @@
-package Programmers.SkillChk2;
+package Programmers.chk;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.HashMap;
 
 public class sol_342155_2471 {
