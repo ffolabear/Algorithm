@@ -6,10 +6,11 @@ import java.util.StringTokenizer;
 
 public class Boj15686_chickenDelivery {
 
-    static int N, M;
+    static int N, M, ans;
     static int[][] city;
-    static ArrayList<Node> store;
-    static ArrayList<Node> house;
+    static boolean[] visited;
+    static ArrayList<Node> chicken = new ArrayList<>();
+    static ArrayList<Node> house = new ArrayList<>();
 
     public static void main(String[] args) throws IOException {
 
@@ -18,8 +19,8 @@ public class Boj15686_chickenDelivery {
 
         StringTokenizer st = new StringTokenizer(br.readLine());
 
-        int N = Integer.parseInt(st.nextToken());
-        int M = Integer.parseInt(st.nextToken());
+        N = Integer.parseInt(st.nextToken());
+        M = Integer.parseInt(st.nextToken());
 
         city = new int[N][N];
 
@@ -33,40 +34,48 @@ public class Boj15686_chickenDelivery {
                     house.add(new Node(i, j));
 
                 } else if (city[i][j] == 2) {
-                    house.add(new Node(i, j));
+                    chicken.add(new Node(i, j));
                 }
             }
 
         }
+        ans = Integer.MAX_VALUE;
+        visited = new boolean[chicken.size()];
+        chickenDistance(0, 0);
 
 
-        for (int i = 0; i < N; i++) {
-            for (int j = 0; j < N; j++) {
-                if (city[i][j] == 2) {
-                    chickenDistance(i, j);
-                }
-            }
-        }
-
-
-
-
-
-        for (int i = 0; i < N; i++) {
-            for (int j = 0; j < N; j++) {
-                System.out.print(city[i][j] + " ");
-            }
-            System.out.println();
-        }
+        System.out.println(ans);
 
     }
 
-    static boolean chickenDistance(int r, int c) {
+    static void chickenDistance(int idx, int cnt) {
 
+        if (cnt == M) {
 
+            int res = 0;
 
+            for (int i = 0; i < house.size(); i++) {
+                int temp = Integer.MAX_VALUE;
 
-        return false;
+                for (int j = 0; j < chicken.size(); j++) {
+                    if (visited[j]) {
+
+                        int distance = Math.abs(house.get(i).x - chicken.get(j).x) + Math.abs(house.get(i).y - chicken.get(j).y);
+                        temp = Math.min(temp, distance);
+                    }
+                }
+                res += temp;
+            }
+            ans = Math.min(ans, res);
+            return;
+
+        }
+
+        for (int i = idx; i < chicken.size(); i++) {
+            visited[i] = true;
+            chickenDistance(idx+1, cnt+1);
+            visited[i] = false;
+        }
     }
 
     static class Node {
