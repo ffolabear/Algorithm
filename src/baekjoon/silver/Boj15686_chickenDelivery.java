@@ -44,7 +44,9 @@ public class Boj15686_chickenDelivery {
         chickenDistance(0, 0);
 
 
-        System.out.println(ans);
+        bw.write(ans);
+        bw.flush();
+        bw.close();
 
     }
 
