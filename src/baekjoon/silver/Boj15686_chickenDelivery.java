@@ -7,10 +7,9 @@ import java.util.StringTokenizer;
 public class Boj15686_chickenDelivery {
 
     static int N, M, ans;
-    static int[][] city;
     static boolean[] visited;
-    static ArrayList<Node> chicken = new ArrayList<>();
-    static ArrayList<Node> house = new ArrayList<>();
+    static ArrayList<Node> chicken;
+    static ArrayList<Node> house;
 
     public static void main(String[] args) throws IOException {
 
@@ -22,23 +21,27 @@ public class Boj15686_chickenDelivery {
         N = Integer.parseInt(st.nextToken());
         M = Integer.parseInt(st.nextToken());
 
-        city = new int[N][N];
+        chicken = new ArrayList<>();
+        house = new ArrayList<>();
+
 
 
 
         for (int i = 0; i < N; i++) {
-            String[] row = br.readLine().split(" ");
+            st = new StringTokenizer(br.readLine());
             for (int j = 0; j < N; j++) {
-                city[i][j] = Integer.parseInt(row[j]);
-                if (city[i][j] == 1) {
+
+                int elem = Integer.parseInt(st.nextToken());
+
+                if (elem == 1) {
                     house.add(new Node(i, j));
 
-                } else if (city[i][j] == 2) {
+                } else if (elem == 2) {
                     chicken.add(new Node(i, j));
                 }
             }
-
         }
+
         ans = Integer.MAX_VALUE;
         visited = new boolean[chicken.size()];
         chickenDistance(0, 0);
