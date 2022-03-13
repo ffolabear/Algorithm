@@ -50,8 +50,8 @@ public class Boj_14500 {
         }
 
         for (int k = 0; k < 4; k++) {
-            int ny = y + dy[k];
             int nx = x + dx[k];
+            int ny = y + dy[k];
 
             if (ny < 0 || nx < 0 || ny >= N || nx >= M || visited[ny][nx]) {
                 continue;
