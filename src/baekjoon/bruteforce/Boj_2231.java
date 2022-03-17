@@ -10,52 +10,34 @@ public class Boj_2231 {
 
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
+        //초기 입력
         String str = br.readLine();
+        int init = Integer.parseInt(str);
+        int result = 0;
 
-        String[] input = str.split("");
-        int[] digit = new int[input.length];
+        for (int i = 0; i < init; i++) {
 
-        for (int i = 0; i < digit.length; i++) {
-            digit[i] = Integer.parseInt(input[i]);
+            int current = i;
+            int sum = 0;
+
+            while (current != 0) {
+                sum += current % 10;
+                current /= 10;
+            }
+
+            if (sum + i == init) {
+                result = i;
+                break;
+            }
+
         }
 
-        int init = (int) (Math.pow(10, input.length - 1));
-        int end = Integer.parseInt(str);
-
-        if (end < 10) {
-            System.out.println(end);
+        if (result < init) {
+            System.out.println(result);
         } else {
 
-            int sum= 0;
-            int current = 0;
-
-            for (int i = init; i < end; i++) {
-
-                sum = 0;
-                current = i;
-
-                String[] temp = String.valueOf(i).split("");
-
-                for (int j = 0; j < temp.length; j++) {
-                    sum += Integer.parseInt(temp[j]);
-                }
-
-                System.out.println(i + " " + sum + " " + (sum + i));
-                sum += i;
-
-                if (sum == end) {
-                    break;
-                }
-            }
-
-            if (current < end) {
-                System.out.println(sum);
-            } else {
-                System.out.println(0);
-            }
-
+            System.out.println(0);
         }
-
 
 
     }
