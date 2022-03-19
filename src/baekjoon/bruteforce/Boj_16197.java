@@ -14,8 +14,6 @@ public class Boj_16197 {
     static char[][] board;
     static int ans = Integer.MAX_VALUE;
 
-//    static boolean[][] visited;
-
     public static void main(String[] args) throws IOException {
 
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
@@ -37,14 +35,14 @@ public class Boj_16197 {
 
                 if (current == 'o') {
                     coin[cnt][0] = i;
-                    coin[cnt++][0] = j;
+                    coin[cnt++][1] = j;
                 }
             }
         }
 
-        for(char x[] : board) {
-			System.out.println(Arrays.toString(x));
-		}
+        for (char x[] : board) {
+            System.out.println(Arrays.toString(x));
+        }
 
         find(coin[0][0], coin[0][1], coin[1][0], coin[1][1], 0);
 
@@ -57,14 +55,14 @@ public class Boj_16197 {
 
     }
 
-    static void find(int c1x, int c1y, int c2x, int c2y, int depth ) {
+    static void find(int c1x, int c1y, int c2x, int c2y, int depth) {
 
         //10번 이상 탐색은 무의미
         if (depth > 10) {
             return;
         }
 
-        if (!isValid(c1x, c1y) && !isValid(c2x, c2y)) {
+        if ((!isValid(c1x, c1y) && !isValid(c2x, c2y))) {
             return;
         }
 
@@ -75,9 +73,7 @@ public class Boj_16197 {
             return;
         }
 
-
-
-        for (int i=0; i < 4; i++){
+        for (int i = 0; i < 4; i++) {
 
             int x1 = c1x + dx[i];
             int y1 = c1y + dy[i];
@@ -104,7 +100,7 @@ public class Boj_16197 {
 
 
     static boolean isValid(int x, int y) {
-        return x >= 0 && x <= N && y >= 0 && y <= M;
+        return x >= 0 && x < N && y >= 0 && y < M;
     }
 
 }
