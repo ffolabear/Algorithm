@@ -13,11 +13,6 @@ public class finding_primeNum {
         for (String num : nums) {
             System.out.println(num);
         }
-
-
-
-
-
         int answer = 0;
 
         return answer;
