@@ -17,6 +17,7 @@ public class ReverseSpecificWord {
             String left = arr[lt];
             String right = arr[rt];
 
+            //혹은 정규식을 사용하지 않고 char 배열로 만든다음 Character.isAlphabetic 메서드도 사용가능
             if (!left.matches(regex)) {
                 lt++;
             } else if (!right.matches(regex)) {
