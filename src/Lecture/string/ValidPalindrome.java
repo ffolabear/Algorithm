@@ -10,12 +10,14 @@ public class ValidPalindrome {
         StringBuilder sb = new StringBuilder();
         for (int i = 0; i < str.length(); i++) {
             if (!String.valueOf(str.charAt(i)).matches(regex)) {
-                str.replace(str.charAt(i), ' ');
+                sb.append("");
+            } else {
+                sb.append(str.charAt(i));
             }
 
         }
 
-        System.out.println(str);
+        System.out.println(sb);
         return false;
     }
 
