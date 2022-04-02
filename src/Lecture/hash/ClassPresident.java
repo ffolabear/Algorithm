@@ -1,24 +1,29 @@
 package Lecture.hash;
 
 import java.util.HashMap;
-import java.util.Map;
-import java.util.Map.Entry;
 import java.util.Scanner;
-import java.util.Set;
 
 public class ClassPresident {
 
     private void solution(int N, String s) {
 
+        int max = Integer.MIN_VALUE;
+        char ans = ' ';
 
         HashMap<Character, Integer> voteRes = new HashMap<>();
         for (char c : s.toCharArray()) {
             voteRes.put(c, voteRes.getOrDefault(c, 0) + 1);
         }
 
+        for (char c : voteRes.keySet()) {
+            if (voteRes.get(c) > max) {
+                max = voteRes.get(c);
+                ans = c;
+            }
 
-        System.out.println(voteRes);
+        }
 
+        System.out.println(ans);
     }
 
 
