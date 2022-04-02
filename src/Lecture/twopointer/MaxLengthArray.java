@@ -8,38 +8,36 @@ public class MaxLengthArray {
 
         int ans = 0;
 
-        int start = 0;
-        int end = 0;
-
-        int oneCnt = Integer.MIN_VALUE;
+        int lt = 0;
         int change = 0;
 
-        if (arr[start] == 0) {
-            change++;
-        } else if (arr[start] == 1) {
-            ans++;
-            oneCnt++;
-        }
+        for (int rt = 0; rt < arr.length; rt++) {
 
-
-        for (int i = 1; i < arr.length - 1; i++) {
-
-            while (change <= K) {
-                if (arr[i] == 1) {
-                    oneCnt++;
-                    ans++;
-                    end++;
-                } else if (arr[i] == 0) {
-                    change++;
-                }
-
+            if (arr[rt] == 0) {
+                change++;
             }
 
-            ans = Math.max(ans, oneCnt);
+            while (change > K) {
 
+                if (arr[lt] == 0) {
+                    change--;
+                }
+                lt++;
+            }
+
+            ans = Math.max(ans, rt - lt + 1);
         }
 
         System.out.println(ans);
+
+
+    }
+
+    private void printCurrent(int lt, int rt, int[] arr) {
+        for (int i = lt; i <= rt; i++) {
+            System.out.print(arr[i] + " ");
+        }
+        System.out.println();
 
     }
 
