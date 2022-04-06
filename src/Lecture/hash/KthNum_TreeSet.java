@@ -2,14 +2,13 @@ package Lecture.hash;
 
 import java.util.*;
 
-public class KthNum {
+public class KthNum_TreeSet {
 
     private int solution(int[] nums, int K) {
 
         int ans = 0;
 
-        ArrayList<Integer> sumList = new ArrayList<>();
-        Map<Integer, Integer> sumMap = new HashMap<>();
+        TreeSet<Integer> sumMap = new TreeSet<>();
 
         for (int i = 0; i < nums.length; i++) {
 
@@ -26,24 +25,25 @@ public class KthNum {
                     }
 
                     tempSum = nums[i] + nums[j] + nums[k];
-                    sumMap.put(tempSum, sumMap.getOrDefault(tempSum, 0) + 1);
-
+                    sumMap.add(tempSum);
                 }
             }
         }
 
-        for (int i : sumMap.keySet()) {
-            sumList.add(i);
-        }
 
-        Collections.sort(sumList, Collections.reverseOrder());
+        int cnt = K;
 
-
-        if (K > sumList.size()) {
+        if (K > sumMap.size()) {
             ans = -1;
-        } else {
-            ans = sumList.get(K - 1);
+            return ans;
         }
+
+        while (cnt > 1) {
+            sumMap.remove(sumMap.last());
+            cnt--;
+        }
+
+        ans = sumMap.last();
 
         return ans;
     }
@@ -59,7 +59,7 @@ public class KthNum {
             nums[i] = in.nextInt();
         }
 
-        KthNum sol = new KthNum();
+        KthNum_TreeSet sol = new KthNum_TreeSet();
         System.out.println(sol.solution(nums, K));
 
     }
