@@ -11,21 +11,29 @@ public class SteelBar {
         char[] arr = input.toCharArray();
         Stack<Character> stack = new Stack<>();
 
+        char last = '(';
+
         for (int i = 0; i < arr.length; i++) {
 
             if (arr[i] == '(') {
                 stack.add('(');
+                last = '(';
+
             } else {
-                stack.pop();
-                ans += stack.size();
+
+                if (last == '(') {
+                    stack.pop();
+                    ans += stack.size();
+                } else {
+                    stack.pop();
+                    ans += 1;
+
+                }
+
+                last = ')';
+
             }
-
-
         }
-
-
-
-
 
         return ans;
     }
