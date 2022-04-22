@@ -42,7 +42,7 @@ public class Stable {
         }
 
 
-        return 0;
+        return cnt;
     }
 
 
