@@ -1,29 +1,27 @@
-package Lecture.Recursive;
+package Lecture.recursive;
 
 import java.util.Scanner;
 
-public class RecursiveFunction1 {
-
+public class ConvertingBinary {
 
     private void solution(int N) {
 
-        if (N == 0) {
+        if (N > 0) {
+            solution(N / 2);
+            System.out.print(N % 2);
+        } else if (N == 0){
             return;
-        } else {
-            System.out.println(N);
-            solution(N - 1);
         }
-
     }
+
 
     public static void main(String[] args) {
 
         Scanner in = new Scanner(System.in);
         int N = in.nextInt();
-        RecursiveFunction1 sol = new RecursiveFunction1();
+        ConvertingBinary sol = new ConvertingBinary();
         sol.solution(N);
 
 
     }
-
 }

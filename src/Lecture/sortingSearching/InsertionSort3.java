@@ -1,4 +1,4 @@
-package Lecture.SortingSearching;
+package Lecture.sortingSearching;
 
 import java.util.Scanner;
 

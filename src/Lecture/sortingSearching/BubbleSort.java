@@ -1,24 +1,22 @@
-package Lecture.SortingSearching;
+package Lecture.sortingSearching;
 
 import java.util.Scanner;
 
-public class InsertionSort {
+public class BubbleSort {
 
     private void solution(int[] nums) {
 
         for (int i = 0; i < nums.length; i++) {
+            for (int j = i + 1; j < nums.length; j++) {
+                if (nums[j] < nums[i]) {
+                    int temp = nums[i];
+                    nums[i] = nums[j];
+                    nums[j] = temp;
 
-            int temp = nums[i];
-            int idx = i - 1;
+                }
 
-            //인덱스가 0보다 크고 비교대상보다 클동안
-            while (idx >= 0 && nums[idx] > temp) {
-                nums[idx + 1] = nums[idx];
-                idx--;
 
             }
-            nums[idx + 1] = temp;
-
         }
 
         for (int i : nums) {
@@ -38,7 +36,7 @@ public class InsertionSort {
             nums[i] = in.nextInt();
         }
 
-        InsertionSort sol = new InsertionSort();
+        BubbleSort sol = new BubbleSort();
         sol.solution(nums);
 
     }

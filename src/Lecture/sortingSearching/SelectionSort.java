@@ -1,32 +1,29 @@
-package Lecture.SortingSearching;
+package Lecture.sortingSearching;
 
 import java.util.Scanner;
 
-/**
- * 위키 백과보고 거품정렬 구현하기
- *
- * 두 인접한 원소를 검사하여 정렬하는 방법
- *
- */
-
-public class BubbleSort2 {
+public class SelectionSort {
 
     private void solution(int[] nums) {
 
         for (int i = 0; i < nums.length; i++) {
-            for (int j = i + 1; j < nums.length; j++) {
-                if (nums[i] > nums[j]) {
+            int idx = i;
 
-                    int temp = nums[i];
-                    nums[i] = nums[j];
-                    nums[j] = temp;
+            for (int j = i + 1; j < nums.length; j++) {
+                if (nums[j] < nums[idx]) {
+                    idx = j;
                 }
             }
+
+            int temp = nums[idx];
+            nums[idx] = nums[i];
+            nums[i] = temp;
         }
 
         for (int i : nums) {
             System.out.print(i + " ");
         }
+
 
     }
 
@@ -40,8 +37,9 @@ public class BubbleSort2 {
             nums[i] = in.nextInt();
         }
 
-        BubbleSort2 sol = new BubbleSort2();
+        SelectionSort sol = new SelectionSort();
         sol.solution(nums);
 
     }
+
 }

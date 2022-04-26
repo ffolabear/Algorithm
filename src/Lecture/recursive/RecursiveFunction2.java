@@ -1,4 +1,4 @@
-package Lecture.Recursive;
+package Lecture.recursive;
 
 import java.util.Scanner;
 
