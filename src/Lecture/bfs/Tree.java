@@ -1,4 +1,4 @@
-package Lecture.dfs;
+package Lecture.bfs;
 
 class Node {
 
