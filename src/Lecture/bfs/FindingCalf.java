@@ -35,20 +35,13 @@ public class FindingCalf {
                     return;
                 }
 
-                int forward = current + 1;
-                int backward = current - 1;
-                int forward5 = current + 5;
+                for (int j = 0; j < dis.length; j++) {
+                    int temp = dis[j] + current;
 
-                if (!visited[forward]) {
-                    queue.offer(forward);
-                }
-
-                if (!visited[backward]) {
-                    queue.offer(backward);
-                }
-
-                if (!visited[forward5]) {
-                    queue.offer(forward5);
+                    if (temp >= 1 && temp <= 10000 && !visited[temp]) {
+                        visited[temp] = true;
+                        queue.offer(temp);
+                    }
                 }
             }
             level++;
