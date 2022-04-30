@@ -6,42 +6,64 @@ import java.util.Scanner;
 
 public class FindingCalf {
 
+    static int S;
     static int E;
-    static int max;
-    static int temp = Integer.MIN_VALUE;
 
-    private void bfs(int S) {
+    static int answer = 0;
+    static int[] dis = {1, -1, 5};
+    static boolean[] visited;
+    static Queue<Integer> queue = new LinkedList<>();
 
-        Queue<Integer> queue = new LinkedList<>();
+
+    private void bfs() {
+
+        visited = new boolean[10001];
+        visited[S] = true;
         queue.offer(S);
+        int level = 0;
 
-        int L = 0;
         while (!queue.isEmpty()) {
 
             int len = queue.size();
+
             for (int i = 0; i < len; i++) {
+                //현재 탐색하는 노드
                 int current = queue.poll();
 
-                queue.offer(current - 1);
-                queue.offer(current + 1);
-                queue.offer(current + 5);
-                L++;
+                if (current == E) {
+                    System.out.println(level);
+                    return;
+                }
 
+                int forward = current + 1;
+                int backward = current - 1;
+                int forward5 = current + 5;
+
+                if (!visited[forward]) {
+                    queue.offer(forward);
+                }
+
+                if (!visited[backward]) {
+                    queue.offer(backward);
+                }
+
+                if (!visited[forward5]) {
+                    queue.offer(forward5);
+                }
             }
-
-
+            level++;
         }
-
     }
 
     public static void main(String[] args) {
 
         Scanner in = new Scanner(System.in);
-        int S = in.nextInt();
+
+        S = in.nextInt();
         E = in.nextInt();
-        max = E - S;
+
         FindingCalf sol = new FindingCalf();
-        sol.bfs(S);
+        sol.bfs();
 
     }
 
