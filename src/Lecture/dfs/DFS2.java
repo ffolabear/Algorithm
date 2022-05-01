@@ -13,7 +13,7 @@ public class DFS2 {
         if (root == null) {
             return;
         } else {
-
+            //현재 노드의 자식 노드들이 있으므로 계속 탐색
             DFS(root.lt);
             DFS(root.rt);
         }
