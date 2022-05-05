@@ -1,27 +1,18 @@
 package Lecture.dfs;
 
+import java.util.Map;
+
 public class MovingNode {
 
 
     static Tree tree = new Tree();
-    static int ans = 0;
 
-    private void DFS(Node root) {
+    private int DFS(Node root, int level) {
         if (root.rt == null && root.lt == null) {
-            return;
+            System.out.println(level + " : " + root.data);
+            return level;
         } else {
-            ans++;
-//            if (root.rt == null) {
-//                DFS(root.lt);
-//                ans++;
-//            }
-//
-//            if (root.lt == null) {
-//                DFS(root.rt);
-//                ans++;
-//            }
-            DFS(root.lt);
-            DFS(root.rt);
+            return Math.min(DFS(root.lt, level++), DFS(root.rt, level++));
 
 
         }
@@ -33,8 +24,7 @@ public class MovingNode {
 
         Node root = tree.root;
         MovingNode sol = new MovingNode();
-        sol.DFS(root);
-        System.out.println(ans);
+        sol.DFS(root, 0);
     }
 
 
