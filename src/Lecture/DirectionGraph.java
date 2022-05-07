@@ -8,17 +8,15 @@ import java.util.Scanner;
  */
 public class DirectionGraph {
 
-    static int[][] graph;
+    public int[][] graph;
 
     //정점의 갯수
-    static int n;
+    public int n;
 
     //간선의 갯수
-    static int m;
+    public int m;
 
-    static int answer = 0;
-
-    private void graphMake() {
+    public void graphMake() {
 
         Scanner sc = new Scanner(System.in);
         n = sc.nextInt();
@@ -32,7 +30,7 @@ public class DirectionGraph {
 
     }
 
-    private void printGraph() {
+    public void printGraph() {
 
         for (int i = 1; i <= n; i++) {
             for (int j = 1; j <= n; j++) {

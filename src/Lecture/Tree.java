@@ -1,22 +1,24 @@
-package Lecture.bfs;
+package Lecture;
 
-class Node {
 
-    int data;
-    Node lt;
-    Node rt;
 
-    public Node(int data) {
-        this.data = data;
-        this.lt = null;
-        this.rt = null;
+public class Tree {
+
+    public class Node {
+
+        public int data;
+        public Node lt;
+        public Node rt;
+
+        public Node(int data) {
+            this.data = data;
+            this.lt = null;
+            this.rt = null;
+        }
+
     }
 
-}
-
-class Tree {
-
-    Node root;
+    public Node root;
 
     public Tree() {
 

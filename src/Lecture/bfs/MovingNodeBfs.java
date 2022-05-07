@@ -1,5 +1,8 @@
 package Lecture.bfs;
 
+import Lecture.Node;
+import Lecture.Tree;
+
 import java.util.LinkedList;
 import java.util.Queue;
 

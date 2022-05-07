@@ -1,16 +1,18 @@
 package Lecture.dfs;
 
+import Lecture.Tree;
+
 /**
  * 전위 순회 : 일반적인 DFS, 부모 - 완쪽 자식 - 오른쪽 자식
  * 중위 순회 : 왼쪽 자식 - 부모 - 오른쪽 자식
  * 후위 순회 : 완쪽 자식 - 오른쪽 자식 - 부모
  */
 
-public class DFS1 {
+public class DFS_Tree1 {
 
     static Tree tree = new Tree();
 
-    private void DFS(Node root) {
+    private void DFS(Tree.Node root) {
 
         if (root == null) {
             return;
@@ -34,8 +36,8 @@ public class DFS1 {
     public static void main(String[] args) {
 
 
-        Node root = tree.root;
-        DFS1 sol = new DFS1();
+        Tree.Node root = tree.root;
+        DFS_Tree1 sol = new DFS_Tree1();
         sol.DFS(root);
 
     }
