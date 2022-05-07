@@ -1,4 +1,4 @@
-package Lecture.dfs;
+package Lecture;
 
 /**
  * 그래프와 인접행렬

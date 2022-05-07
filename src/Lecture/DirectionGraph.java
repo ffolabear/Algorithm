@@ -1,4 +1,4 @@
-package Lecture.dfs;
+package Lecture;
 
 import java.util.Scanner;
 
@@ -18,7 +18,7 @@ public class DirectionGraph {
 
     static int answer = 0;
 
-    private static void graphMake() {
+    private void graphMake() {
 
         Scanner sc = new Scanner(System.in);
         n = sc.nextInt();
@@ -32,7 +32,7 @@ public class DirectionGraph {
 
     }
 
-    private static void printGraph() {
+    private void printGraph() {
 
         for (int i = 1; i <= n; i++) {
             for (int j = 1; j <= n; j++) {
@@ -42,9 +42,5 @@ public class DirectionGraph {
         }
 
     }
-//
-//    public DirectionGraph() {
-//        graphMake();
-//        printGraph();
-//    }
+
 }
