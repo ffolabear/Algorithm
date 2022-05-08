@@ -1,6 +1,5 @@
 package Lecture.bfs;
 
-import Lecture.Node;
 import Lecture.Tree;
 
 import java.util.LinkedList;
@@ -11,9 +10,9 @@ public class MovingNodeBfs {
 
     static Tree tree = new Tree();
 
-    private int BFS(Node root) {
+    private int BFS(Tree.Node root) {
 
-        Queue<Node> queue = new LinkedList<>();
+        Queue<Tree.Node> queue = new LinkedList<>();
         queue.offer(root);
 
         int level = 0;
@@ -21,7 +20,7 @@ public class MovingNodeBfs {
         while (!queue.isEmpty()) {
             int len = queue.size();
             for (int i = 0; i < len; i++) {
-                Node current = queue.poll();
+                Tree.Node current = queue.poll();
 
                 if (current.lt == null && current.rt == null) {
                     return level;
@@ -45,7 +44,7 @@ public class MovingNodeBfs {
 
     public static void main(String[] args) {
 
-        Node root = tree.root;
+        Tree.Node root = tree.root;
         MovingNodeBfs sol = new MovingNodeBfs();
 
         System.out.println(sol.BFS(root));
