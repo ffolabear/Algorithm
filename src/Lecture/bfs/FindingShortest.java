@@ -1,7 +1,6 @@
 package Lecture.bfs;
 
 import Lecture.DirectionArrayList;
-import Lecture.DirectionGraph;
 
 import java.util.ArrayList;
 import java.util.LinkedList;
@@ -29,7 +28,8 @@ public class FindingShortest {
         queue.offer(v);
 
         while (!queue.isEmpty()) {
-
+            //큐에 있는 노드들 = 인접한 노드들
+            //그래서 하나씩 빼면서 탐색
             int current = queue.poll();
 
             for (Integer next : list.get(current)) {
@@ -48,23 +48,21 @@ public class FindingShortest {
     public static void main(String[] args) {
 
         DirectionArrayList graph = new DirectionArrayList();
-        list = graph.list;
         graph.graphMake();
 
+        list = graph.list;
         n = graph.n;
         m = graph.m;
 
-        System.out.println(n + " " + m);
         chk = new boolean[n + 1];
         distance = new int[n + 1];
-
 
 
         FindingShortest sol = new FindingShortest();
         sol.BFS(1);
 
-        for (int i : distance) {
-            System.out.print(i + " ");
+        for (int i = 2; i <= n; i++) {
+            System.out.println(i + " : " + distance[i]);
         }
 
     }

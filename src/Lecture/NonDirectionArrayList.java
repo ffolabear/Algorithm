@@ -9,7 +9,7 @@ import java.util.Scanner;
  */
 public class NonDirectionArrayList {
     //처음 내가 사용했던 방식
-//    public ArrayList<Integer>[] list;
+    //public ArrayList<Integer>[] list;
     //강의방식
     public ArrayList<ArrayList<Integer>> list;
 
@@ -27,7 +27,6 @@ public class NonDirectionArrayList {
 
         list = new ArrayList<>();
 
-//        list = new ArrayList[n + 1];
         for (int i = 0; i <= n; i++) {
             list.add(new ArrayList<Integer>());
         }
