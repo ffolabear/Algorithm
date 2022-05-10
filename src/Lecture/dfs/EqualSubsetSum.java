@@ -4,44 +4,55 @@ import java.util.Scanner;
 
 public class EqualSubsetSum {
 
+    static int N;
     static int[] nums;
-    static boolean[] visited;
+    static boolean flag = false;
+    static int total = 0;
+    static String ans = "NO";
 
-    private void solution() {
+    private void dfs(int L, int sum) {
 
-    }
+        if (flag) {
+            return;
+        }
 
-    static int subsetSum() {
+        if (sum > total / 2) {
+            return;
+        }
 
-        int sumVisit = 0;
-        int sumRest = 0;
 
-        for (int i = 0; i < visited.length; i++) {
-            if (visited[i]) {
-                sumVisit += nums[i];
-            } else {
-                sumRest += nums[i];
+        if (L == N) {
+            if (sum + sum == total) {
+                flag = true;
+                ans = "YES";
             }
+
+
+        } else {
+
+            dfs(L + 1, sum + nums[L]);
+            dfs(L + 1, sum);
 
         }
 
-        return 0;
+
     }
 
+    public static void main(String[] args) {
+        Scanner in = new Scanner(System.in);
 
-    public static void main(String[] args){
-        Scanner in=new Scanner(System.in);
-
-        int N = in.nextInt();
+        N = in.nextInt();
         nums = new int[N];
-        visited = new boolean[N];
 
         for (int i = 0; i < nums.length; i++) {
-            nums[i] = in.nextInt();
+            int input = in.nextInt();
+            nums[i] = input;
+            total += input;
         }
 
         EqualSubsetSum sol = new EqualSubsetSum();
-        sol.solution();
+        sol.dfs(nums[0], 0);
+        System.out.println(ans);
 
     }
 
