@@ -10,7 +10,11 @@ public class EqualSubsetSum {
     static int total = 0;
     static String ans = "NO";
 
+    static int cnt = 1;
+
     private void dfs(int L, int sum) {
+
+        cnt++;
 
         if (flag) {
             return;
@@ -23,8 +27,8 @@ public class EqualSubsetSum {
 
         if (L == N) {
             if (sum + sum == total) {
-                flag = true;
                 ans = "YES";
+                flag = true;
             }
 
 
@@ -51,8 +55,9 @@ public class EqualSubsetSum {
         }
 
         EqualSubsetSum sol = new EqualSubsetSum();
-        sol.dfs(nums[0], 0);
+        sol.dfs(0, 0);
         System.out.println(ans);
+        System.out.println(cnt);
 
     }
 
