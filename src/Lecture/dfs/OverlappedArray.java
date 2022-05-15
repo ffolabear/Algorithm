@@ -7,25 +7,21 @@ import java.util.Scanner;
 public class OverlappedArray {
 
     static int N, M;
+    static int[] ans;
 
-    private void dfs(int c, boolean[] chk, List<Integer> list) {
+    private void dfs(int c) {
 
-        if (list.size() == M) {
-            for (int i : list) {
+        if (c == M) {
+            for (int i : ans) {
                 System.out.print(i + " ");
-                System.out.println();
             }
-            return;
+            System.out.println();
 
         } else {
             for (int i = 1; i <= N; i++) {
-//                if (!chk[i]) {
-//                    list.add(i);
-//                }
-                System.out.println(i + " : " + chk[i]);
+                ans[c] = i;
+                dfs(c + 1);
             }
-//            System.out.println("배열의 크기  : " + list.size() + " " + list);
-
         }
     }
 
@@ -35,20 +31,11 @@ public class OverlappedArray {
 
         N = sc.nextInt();
         M = sc.nextInt();
+        ans = new int[M];
 
         OverlappedArray sol = new OverlappedArray();
 
-
-        for (int i = 1; i <= N; i++) {
-            List<Integer> list = new ArrayList<>();
-            boolean[] chk = new boolean[N + 1];
-
-            chk[i] = true;
-//            System.out.println("int i : " + i);
-            list.add(i);
-            sol.dfs(i, chk, list);
-        }
-
+        sol.dfs(1);
 
     }
 
