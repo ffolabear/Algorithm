@@ -9,9 +9,9 @@ public class OverlappedArray {
     static int N, M;
     static int[] ans;
 
-    private void dfs(int c) {
+    private void dfs(int depth) {
 
-        if (c == M) {
+        if (depth == M) {
             for (int i : ans) {
                 System.out.print(i + " ");
             }
@@ -19,8 +19,8 @@ public class OverlappedArray {
 
         } else {
             for (int i = 1; i <= N; i++) {
-                ans[c] = i;
-                dfs(c + 1);
+                ans[depth] = i;
+                dfs(depth + 1);
             }
         }
     }
@@ -35,7 +35,7 @@ public class OverlappedArray {
 
         OverlappedArray sol = new OverlappedArray();
 
-        sol.dfs(1);
+        sol.dfs(0);
 
     }
 
