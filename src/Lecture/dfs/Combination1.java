@@ -8,7 +8,7 @@ import java.util.Scanner;
  * - 참고할 배열에 값이 있으면 그냥 그 값을 리턴
  */
 
-public class Combination {
+public class Combination1 {
 
     //1 ~ n 까지의 자연수중 r 개를 뽑아 만드는 조합수
     static int N, R;
@@ -40,7 +40,7 @@ public class Combination {
 
         comb = new int[N + 1][N + 1];
 
-        Combination sol = new Combination();
+        Combination1 sol = new Combination1();
         System.out.println(sol.dfs(N, R));
 
 
