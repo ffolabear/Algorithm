@@ -6,11 +6,11 @@ import java.util.Scanner;
  * 더미 데이터
  *
  * 3 2
- * 3 6 9
+3 6 9
  *
  */
 
-public class Permutation {
+public class Permutation1 {
 
     static int N, M;
     static int[] nums;
@@ -57,7 +57,7 @@ public class Permutation {
 //        }
 //        System.out.println();
 
-        Permutation sol = new Permutation();
+        Permutation1 sol = new Permutation1();
         sol.dfs(0);
 
     }
