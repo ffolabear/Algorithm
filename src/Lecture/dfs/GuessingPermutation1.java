@@ -2,7 +2,7 @@ package Lecture.dfs;
 
 import java.util.Scanner;
 
-public class GuessingCombination {
+public class GuessingPermutation1 {
 
     static int[] cases;
     static int[] currentCombination;
@@ -66,7 +66,7 @@ public class GuessingCombination {
         currentCombination = new int[N];
         isUsed = new boolean[N + 1];
 
-        GuessingCombination sol = new GuessingCombination();
+        GuessingPermutation1 sol = new GuessingPermutation1();
         for (int i = 0; i < N; i++) {
             cases[i] = sol.combination(N - 1, i);
         }
