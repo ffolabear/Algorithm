@@ -2,7 +2,7 @@ package Lecture.dfs;
 
 import java.util.Scanner;
 
-public class FindingMaze {
+public class FindingMaze1 {
 
     static int[][] maze = new int[8][8];
     static int[] dx = {1, -1, 0, 0};
@@ -38,7 +38,7 @@ public class FindingMaze {
             }
         }
 
-        FindingMaze sol = new FindingMaze();
+        FindingMaze1 sol = new FindingMaze1();
         maze[1][1] = 1;
         sol.dfs(1, 1);
 
