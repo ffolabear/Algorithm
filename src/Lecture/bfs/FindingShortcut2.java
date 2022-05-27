@@ -1,19 +1,19 @@
-package Lecture.dfs;
+package Lecture.bfs;
 
 import java.util.LinkedList;
 import java.util.Queue;
 import java.util.Scanner;
 
-class Node {
-    int x, y;
+/**
+ * 원론적인 이유를 제외하면 최단거리를 구하는 알고리즘이므로 BFS를 떠올릴 수 있다.
+ * DFS로 풀었던 문제와는 다르게 Queue 를 선언하며, 진행할 수 있는 길로 갈때마다 그 거리를
+ * 배열에 표시해준다. (dis 배열)
+ *
+ * 그리고 마찬가지로 상하좌우를 탐색해야하기 때문에 dx, dy 테크닉을 사용한다.
+ * 조건에 만족하는 정점들을 큐에 넣고 하나씩 탐색할때마다 그 거리를 dis 배열에 기록하기 때문에 목적지인 (7,7) 죄표값이 정답이 된다.
+ */
 
-    public Node(int x, int y) {
-        this.x = x;
-        this.y = y;
-    }
-}
-
-public class FindingShortcut1 {
+public class FindingShortcut2 {
 
     static int[][] maze = new int[8][8];
     static int[][] dis = new int[8][8];
@@ -25,16 +25,18 @@ public class FindingShortcut1 {
 
     private void bfs(int x, int y) {
 
-        Queue<Node> queue = new LinkedList<>();
-
-        queue.offer(new Node(x, y));
+        //첫번째 노드 방문 처리
         maze[x][y] = 1;
 
+        Queue<Node> queue = new LinkedList<>();
+        //첫지점을 먼저 넣어준다.
+        queue.offer(new Node(x, y));
+
         while (!queue.isEmpty()) {
+            //큐에 있는 노드들을 하나씩 탐색하기 시작
             Node current = queue.poll();
 
             for (int i = 0; i < 4; i++) {
-
                 int nx = current.x + dx[i];
                 int ny = current.y + dy[i];
 
@@ -42,10 +44,14 @@ public class FindingShortcut1 {
                     maze[nx][ny] = 1;
                     queue.offer(new Node(nx, ny));
                     dis[nx][ny] = dis[current.x][current.y] + 1;
-
                 }
+
             }
+
+
         }
+
+
     }
 
     public static void main(String[] args) {
@@ -58,8 +64,9 @@ public class FindingShortcut1 {
             }
         }
 
-        FindingShortcut1 sol = new FindingShortcut1();
+        FindingShortcut2 sol = new FindingShortcut2();
         sol.bfs(1, 1);
+
         if (dis[7][7] == 0) {
             System.out.println(-1);
         } else {
