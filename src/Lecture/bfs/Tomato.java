@@ -4,44 +4,36 @@ import java.util.*;
 
 public class Tomato {
 
+    static int M, N;
     static int[][] box;
     static int[][] chk;
 
-    static List<Node> tomatoes = new ArrayList<>();
-
     static int[] dx = {1, -1, 0, 0};
     static int[] dy = {0, 0, -1, 1};
-    Queue<Node> queue = new LinkedList<>();
+    static Queue<Node> queue = new LinkedList<>();
 
     private void bfs() {
 
-        for (Node node : tomatoes) {
+        while (!queue.isEmpty()) {
 
-            queue.offer(node);
-            chk[node.x][node.y] = 0;
+            Node current = queue.poll();
 
-            while (!queue.isEmpty()) {
-
-                Node current = queue.poll();
-
-                for (int i = 0; i < 4; i++) {
-                    int nx = current.x + dx[i];
-                    int ny = current.y + dy[i];
-
-
+            for (int i = 0; i < 4; i++) {
+                int nx = current.x + dx[i];
+                int ny = current.y + dy[i];
+                if (nx >= 1 && nx <= N && ny >= 1 && ny <= M && box[nx][ny] == 0) {
+                    box[nx][ny] = 1;
+                    queue.offer(new Node(nx, ny));
+                    chk[nx][ny] = chk[current.x][current.y] + 1;
                 }
             }
-
-
-
         }
-
     }
 
     public static void main(String[] args) {
         Scanner in = new Scanner(System.in);
-        int M = in.nextInt();
-        int N = in.nextInt();
+        M = in.nextInt();
+        N = in.nextInt();
 
         box = new int[N + 1][M + 1];
         chk = new int[N + 1][M + 1];
@@ -50,24 +42,40 @@ public class Tomato {
             for (int j = 1; j <= M; j++) {
                 box[i][j] = in.nextInt();
                 if (box[i][j] == 1) {
-                    tomatoes.add(new Node(i, j));
+                    queue.add(new Node(i, j));
+
+                }
+
+            }
+        }
+
+        Tomato sol = new Tomato();
+
+        sol.bfs();
+        int ans = Integer.MIN_VALUE;
+
+        boolean isValid = true;
+
+        for (int i = 1; i <= N; i++) {
+            for (int j = 1; j <= M; j++) {
+                ans = Math.max(ans, box[i][j]);
+                if (box[i][j] == 0) {
+                    isValid = false;
+                    break;
                 }
             }
         }
 
-//        for (int i = 1; i <= N; i++) {
-//            for (int j = 1; j <= M; j++) {
-//                System.out.print(box[i][j] + " ");
-//            }
-//            System.out.println();
-//        }
-
-        Tomato sol = new Tomato();
-        System.out.println(tomatoes);
-        for (Node n : tomatoes) {
-            System.out.println(n.x + " " + n.y);
+        if (isValid) {
+            for (int i = 1; i <= N; i++) {
+                for (int j = 1; j <= M; j++) {
+                    ans = Math.max(ans, chk[i][j]);
+                }
+            }
+            System.out.println(ans);
+        } else {
+            System.out.println(-1);
         }
-        sol.bfs();
 
     }
 
