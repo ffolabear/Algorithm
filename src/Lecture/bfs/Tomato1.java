@@ -2,7 +2,7 @@ package Lecture.bfs;
 
 import java.util.*;
 
-public class Tomato {
+public class Tomato1 {
 
     static int M, N;
     static int[][] box;
@@ -49,7 +49,7 @@ public class Tomato {
             }
         }
 
-        Tomato sol = new Tomato();
+        Tomato1 sol = new Tomato1();
 
         sol.bfs();
         int ans = Integer.MIN_VALUE;
