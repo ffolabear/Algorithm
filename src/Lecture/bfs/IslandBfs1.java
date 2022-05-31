@@ -4,7 +4,7 @@ import java.util.LinkedList;
 import java.util.Queue;
 import java.util.Scanner;
 
-public class IslandBfs {
+public class IslandBfs1 {
 
     static int N;
     static int ans = 0;
@@ -49,7 +49,7 @@ public class IslandBfs {
             }
         }
 
-        IslandBfs sol = new IslandBfs();
+        IslandBfs1 sol = new IslandBfs1();
 
         for (int i = 1; i <= N; i++) {
             for (int j = 1; j <= N; j++) {
