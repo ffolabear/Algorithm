@@ -14,13 +14,31 @@ class Point{
 
 public class PizzaDelivery {
 
-    static int N, M;
-
-    static int[][] map;
+    static int N, M, len;
+    static int answer = Integer.MAX_VALUE;
     static int[] combi;
     static ArrayList<Point> house, pizza;
 
     private void dfs(int L, int s) {
+        if (L == M) {
+            int sum = 0;
+            for (Point hs : house) {
+                int distance = Integer.MAX_VALUE;
+                for (int i : combi) {
+                    distance = Math.min(distance, (Math.abs(pizza.get(i).x - hs.x)) + (Math.abs(pizza.get(i).y - hs.y)));
+                }
+                sum += distance;
+            }
+            answer = Math.min(answer, sum);
+
+        } else {
+            for (int i = s; i < len; i++) {
+                combi[L] = i;
+                dfs(L + 1, i + 1);
+            }
+
+
+        }
 
     }
 
@@ -35,30 +53,22 @@ public class PizzaDelivery {
         pizza = new ArrayList<>();
         combi = new int[M];
 
-        map = new int[N + 1][N + 1];
         for (int i = 1; i <= N; i++) {
             for (int j = 1; j <= N; j++) {
-                map[i][j] = sc.nextInt();
-            }
-        }
-
-        for (int i = 1; i <= N; i++) {
-            for (int j = 1; j <= N; j++) {
-                if (map[i][j] == 1) {
+                int temp = sc.nextInt();
+                if (temp == 1) {
                     house.add(new Point(i, j));
-                } else if (map[i][j] == 2){
+                } else if (temp == 2){
                     pizza.add(new Point(i, j));
                 }
             }
         }
 
-        for (int i = 1; i <= N; i++) {
-            for (int j = 1; j <= N; j++) {
-                System.out.print(map[i][j] + " ");
-            }
-            System.out.println();
-        }
+        len = pizza.size();
 
+        PizzaDelivery sol = new PizzaDelivery();
+        sol.dfs(0, 0);
+        System.out.println(answer);
     }
 
 }
