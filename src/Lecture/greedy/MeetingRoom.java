@@ -32,22 +32,13 @@ public class MeetingRoom {
         });
 
         int end = 0;
-        int count = Integer.MIN_VALUE;
+        int count = 0;
 
-        for (int i = 0; i < meeting.size(); i++) {
-            Node current = meeting.get(i);
-            end = current.y;
-            int temp = 1;
-
-            for (int j = i + 1; j < meeting.size(); j++) {
-                Node next = meeting.get(j);
-                if (next.x >= end) {
-                    temp++;
-                    end = next.y;
-                }
+        for (Node node : meeting) {
+            if (node.x >= end) {
+                count++;
+                end = node.y;
             }
-            count = Math.max(count, temp);
-            System.out.println();
         }
 
         System.out.println(count);
