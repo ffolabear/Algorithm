@@ -2,13 +2,13 @@ package Lecture.greedy;
 
 import java.util.*;
 
-class Info {
-    int h;
-    int w;
+class Node {
+    int x;
+    int y;
 
-    public Info(int h, int w) {
-        this.h = h;
-        this.w = w;
+    public Node(int x, int y) {
+        this.x = x;
+        this.y = y;
     }
 }
 
@@ -17,28 +17,28 @@ public class WrestlingPlayer {
     public static void main(String[] args) {
         Scanner in = new Scanner(System.in);
         int N = in.nextInt();
-        List<Info> player = new ArrayList<>();
+        List<Node> player = new ArrayList<>();
 
         for (int i = 0; i < N; i++) {
             int height = in.nextInt();
             int weight = in.nextInt();
-            player.add(new Info(height, weight));
+            player.add(new Node(height, weight));
         }
 
-        Collections.sort(player, new Comparator<Info>() {
+        Collections.sort(player, new Comparator<Node>() {
             @Override
-            public int compare(Info o1, Info o2) {
-                return o2.h - o1.h;
+            public int compare(Node o1, Node o2) {
+                return o2.x - o1.x;
             }
         });
 
         int weight = Integer.MIN_VALUE;
         int count = 0;
 
-        for (Info i : player) {
-            if (i.w > weight) {
+        for (Node i : player) {
+            if (i.y > weight) {
                 count++;
-                weight = i.w;
+                weight = i.y;
             }
         }
 
