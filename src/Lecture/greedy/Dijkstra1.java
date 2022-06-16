@@ -62,6 +62,9 @@ public class Dijkstra1 {
             int now = current.vex;
             int nowCost = current.cost;
 
+            System.out.println("now    : " + now);
+            System.out.println("nowCost: " + nowCost);
+
             if (nowCost > dis[now]) {
                 continue;
             }

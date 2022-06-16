@@ -24,8 +24,51 @@ public class Dijkstra2 {
         pq.offer(new Edge(v, 0));
 
         while (!pq.isEmpty()) {
+
             Edge current = pq.poll();
 
+            //현재 탐색하는 노드의 번호
+            //최초 값
+            //now : 1
+            //cost : 0
+
+            int now = current.vex;
+
+            //현재 노드까지 가는데 드는 비용
+            int nowCost = current.cost;
+
+            /**
+             * now    : 1
+             * nowCost: 0
+             *
+             * now    : 3
+             * nowCost: 4
+             *
+             * now    : 4
+             * nowCost: 9
+             *
+             * now    : 2
+             * nowCost: 11
+             *
+             * now    : 2
+             * nowCost: 12
+             *
+             * now    : 5
+             * nowCost: 14
+             */
+
+            //현재 탐색하는 노드와 이어진 노드들을 탐색
+            for (Edge ob : graph.get(now)) {
+
+                //만약 현제 탐색하는 노드까지의 거리 + 이어진 노드의 합이 INTEGER.MAX_VALUE 보다 작다면
+                if (dis[ob.vex] > nowCost + ob.cost) {
+                    dis[ob.vex] = nowCost + ob.cost;
+                    pq.offer(new Edge(ob.vex, now + ob.cost));
+
+                }
+
+
+            }
 
         }
     }
@@ -54,7 +97,7 @@ public class Dijkstra2 {
         }
 
 
-        for (int i = 1; i < graph.size(); i++) {
+        for (int i = 0; i < graph.size(); i++) {
             ArrayList<Edge> arr = graph.get(i);
             System.out.println(i + "번 노드");
             for (int j = 0; j < arr.size(); j++) {
@@ -89,6 +132,7 @@ public class Dijkstra2 {
 
         Dijkstra2 sol = new Dijkstra2();
         sol.solution(1);
+
         for (int i = 1; i < dis.length; i++) {
             System.out.print(i + " : ");
 
