@@ -1,77 +1,32 @@
 package Lecture.greedy;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.PriorityQueue;
+import java.util.Scanner;
 
-/**
- * 입력 예시
- * ex) 1번 정점에서 2번 정점으로 가는데 12의 비용이 든다.
- * 6 9
- * 1 2 12
- * 1 3 4
- * 2 1 2
- * 2 3 5
- * 2 5 5
- * 3 4 5
- * 4 2 2
- * 4 5 5
- * 6 4 5
- * <p>
- * ---------
- * <p>
- * 2 : 11
- * 3 : 4
- * 4 : 9
- * 5 : 14
- * 6 : impossible
- */
-
-class Edge implements Comparable<Edge> {
-
-    int vex;
-    int cost;
-
-    public Edge(int vex, int cost) {
-        this.vex = vex;
-        this.cost = cost;
-    }
-
-    @Override
-    public int compareTo(Edge o) {
-        return this.cost - o.cost;
-    }
-
-}
-
-public class Dijkstra {
+public class Dijkstra2 {
 
     static int n, m;
     //정점과 정점의 정보를 저장할 배열
     static ArrayList<ArrayList<Edge>> graph;
 
-    //1부터 각 정점까지의 거리의 최솟값을 저장할 배열
+    //1부터 각 인덱스에 해당하는 정점까지의 거리의 최솟값을 저장할 배열
     static int[] dis;
+
 
     public void solution(int v) {
 
+        //최소 비용을 출력해야 하기 때문에 PriorityQueue 를 사용한다.
         PriorityQueue<Edge> pq = new PriorityQueue<>();
+
+        //처음 정점을 먼저 넣어준다.
         pq.offer(new Edge(v, 0));
-        dis[v] = 0;
 
         while (!pq.isEmpty()) {
             Edge current = pq.poll();
-            int now = current.vex;
-            int nowCost = current.cost;
 
-            if (nowCost > dis[now]) {
-                continue;
-            }
 
-            for (Edge ob : graph.get(now)) {
-                if (dis[ob.vex] > nowCost + ob.cost) {
-                    dis[ob.vex] = nowCost + ob.cost;
-                    pq.offer(new Edge(ob.vex, nowCost + ob.cost));
-                }
-            }
         }
     }
 
@@ -101,16 +56,38 @@ public class Dijkstra {
 
         for (int i = 1; i < graph.size(); i++) {
             ArrayList<Edge> arr = graph.get(i);
-            System.out.println(i + " 번 노드");
+            System.out.println(i + "번 노드");
             for (int j = 0; j < arr.size(); j++) {
-                System.out.println(arr.get(j).vex + " : " + arr.get(j).cost);
+                System.out.println("[" + arr.get(j).vex + "] : " + arr.get(j).cost);
             }
             System.out.println();
         }
 
+        /**
+         * 1번 노드
+         * [2] : 12
+         * [3] : 4
+         *
+         * 2번 노드
+         * [1] : 2
+         * [3] : 5
+         * [5] : 5
+         *
+         * 3번 노드
+         * [4] : 5
+         *
+         * 4번 노드
+         * [2] : 2
+         * [5] : 5
+         *
+         * 5번 노드
+         *
+         * 6번 노드
+         * [4] : 5
+         *
+         */
 
-
-        Dijkstra sol = new Dijkstra();
+        Dijkstra2 sol = new Dijkstra2();
         sol.solution(1);
         for (int i = 1; i < dis.length; i++) {
             System.out.print(i + " : ");
@@ -124,4 +101,5 @@ public class Dijkstra {
         }
 
     }
+
 }
