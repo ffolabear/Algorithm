@@ -4,10 +4,17 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
+/**
+ * aabbaccc
+ * a2b2
+ *
+ */
+
 public class StringCompression {
 
     public int solution(String s) {
 
+        //가장 긴 단위는 절반보다 클수 없음
         int maxLen = s.length() / 2;
 
         if (s.length() == 1) {
