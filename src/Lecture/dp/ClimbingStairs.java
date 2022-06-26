@@ -17,7 +17,7 @@ public class ClimbingStairs {
     static int[] dy;
     static int N;
 
-    static int solution() {
+    private static int solution() {
         //첫번째 계단까지 가는 경우는 1가지
         dy[1] = 1;
 
