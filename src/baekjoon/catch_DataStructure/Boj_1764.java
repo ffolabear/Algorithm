@@ -1,9 +1,7 @@
 package baekjoon.catch_DataStructure;
 
 import java.io.*;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.StringTokenizer;
+import java.util.*;
 
 public class Boj_1764 {
 
@@ -26,16 +24,23 @@ public class Boj_1764 {
         }
 
         int ans = 0;
+        ArrayList<String> nameList = new ArrayList<>();
 
         for (int i = 0; i < M; i++) {
             String name = br.readLine();
             if (neverHeard.containsKey(name)) {
-                bw.append(name).append('\n');
+                nameList.add(name);
                 ans += 1;
             }
         }
 
-        System.out.println(ans);
+        Collections.sort(nameList);
+
+        bw.append(String.valueOf(ans)).append('\n');
+        for (String s : nameList) {
+            bw.append(s).append('\n');
+        }
+
         bw.flush();
         bw.close();
 
