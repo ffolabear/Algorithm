@@ -22,14 +22,16 @@ public class Boj_17413 {
     public static void main(String[] args) throws IOException {
 
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+
         String input = br.readLine();
+        StringBuilder ans = new StringBuilder();
 
         StringBuilder tagFront = new StringBuilder();
         StringBuilder tagBack = new StringBuilder();
 
         if (input.charAt(0) != '<') {
             String[] str = input.split(" ");
-            withoutTag(str);
+            ans.append(withoutTag(str));
         } else {
             for (int i = 0; i < input.length(); i++) {
 
