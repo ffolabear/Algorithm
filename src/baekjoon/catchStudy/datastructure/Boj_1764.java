@@ -1,4 +1,4 @@
-package baekjoon.catch_DataStructure;
+package baekjoon.catchStudy.datastructure;
 
 import java.io.*;
 import java.util.*;

@@ -1,7 +1,6 @@
-package baekjoon.catch_DataStructure;
+package baekjoon.catchStudy.datastructure;
 
 import java.io.*;
-import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.PriorityQueue;
 

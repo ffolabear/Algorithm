@@ -1,10 +1,9 @@
-package baekjoon.catch_DataStructure;
+package baekjoon.catchStudy.datastructure;
 
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
-import java.util.StringTokenizer;
 
 public class Boj_10828 {
 
