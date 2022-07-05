@@ -1,22 +1,17 @@
 package baekjoon.catchStudy.string;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
+import java.io.*;
+import java.util.Stack;
 
 public class Boj_17413 {
 
-    private static String withoutTag(String[] input) {
+    static BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
 
-        StringBuilder ans = new StringBuilder();
-        StringBuilder sb;
+    private static void printStack(Stack<Character> stack) throws IOException {
 
-        for (int i = 0; i < input.length; i++) {
-            sb = new StringBuilder(input[i]);
-            ans.append(sb).append(" ");
+        while (!stack.isEmpty()) {
+            bw.append(stack.pop());
         }
-
-        return ans.toString();
     }
 
     public static void main(String[] args) throws IOException {
@@ -24,22 +19,40 @@ public class Boj_17413 {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
         String input = br.readLine();
-        StringBuilder ans = new StringBuilder();
+        Stack<Character> stack = new Stack<>();
 
-        StringBuilder tagFront = new StringBuilder();
-        StringBuilder tagBack = new StringBuilder();
+        boolean isBetweenTag = false;
 
-        if (input.charAt(0) != '<') {
-            String[] str = input.split(" ");
-            ans.append(withoutTag(str));
-        } else {
-            for (int i = 0; i < input.length(); i++) {
+        for (int i = 0; i < input.length(); i++) {
+            if (input.charAt(i) == '<') {
+                printStack(stack);
+                isBetweenTag = true;
+                bw.append('<');
 
+            } else if (input.charAt(i) == '>'){
+                isBetweenTag = false;
+                bw.append('>');
+
+            } else if (isBetweenTag) {
+                bw.append(input.charAt(i));
+
+            } else {
+                //태그 사이가 아닐떼
+                if (input.charAt(i) == ' ') {
+                    printStack(stack);
+                    bw.append(' ');
+                } else {
+                    stack.push(input.charAt(i));
+                }
 
             }
 
         }
 
+        printStack(stack);
+
+        bw.flush();
+        bw.close();
 
     }
 
