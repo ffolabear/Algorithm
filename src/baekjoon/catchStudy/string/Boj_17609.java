@@ -3,15 +3,17 @@ package baekjoon.catchStudy.string;
 import java.io.*;
 import java.util.Scanner;
 
-public class Palindrome {
+public class Boj_17609 {
 
     static int t;
     static String s;
     static char[] arr;
+
     public static void main(String[] args) {
 
         Scanner sc=new Scanner(System.in);
         t=sc.nextInt();
+
         for (int tc = 1; tc <=t; tc++) {
             s=sc.next();
             arr=s.toCharArray();
