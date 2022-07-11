@@ -9,54 +9,71 @@ public class Boj_17609 {
     static String s;
     static char[] arr;
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
 
-        Scanner sc=new Scanner(System.in);
-        t=sc.nextInt();
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        t = Integer.parseInt(br.readLine());
 
-        for (int tc = 1; tc <=t; tc++) {
-            s=sc.next();
-            arr=s.toCharArray();
-            int left=0;
-            int right=s.length()-1;
-            if(check(left,right)) {
-                System.out.println(0);
-                continue;
-            }
-            if(checkS(left,right)) {
-                System.out.println(1);
-            }else {
-                System.out.println(2);
-            }
+        String word = "";
+        int result = 0;
+
+        for (int i = 0; i < t; i++) {
+
+            word = br.readLine();
+            result = check(word);
 
         }
-
     }
 
-    private static boolean check(int left,int right) {
-        while(left<=right) {
-            if(arr[left]!=arr[right]) {//다름
-                return false;
+    private static int check(String word) {
+
+        //투포인터 알고리즘
+        int left = 0;
+        int right = word.length() - 1;
+        int result = 0;
+
+        while (left <= right) {
+            if (word.charAt(left) == word.charAt(right)) {
+                //끝에서 비교했을때 두 문자가 같다면 중심으로 포인터를 옮겨야함
+                left++;
+                right--;
+            } else {
+                result = 1;
+                //유사 회문인지 체크용 포인터
+                int tempL = left + 1;
+                int tempR = right;
+
+                while (tempL <= tempR) {
+                    if (word.charAt(tempL) == word.charAt(tempR)) {
+                        tempL++;
+                        tempR--;
+                    } else {
+                        //유사 회문이 아니면 탐색할 이유가 없음
+                        result++;
+                        break;
+                    }
+                }
+
+                tempL = left;
+                tempR = right - 1;
+
+                while (tempL <= tempR) {
+                    if (word.charAt(tempL) == word.charAt(tempR)) {
+                        tempL++;
+                        tempR--;
+                    } else {
+                        //유사 회문이 아니면 탐색할 이유가 없음
+                        result++;
+                        break;
+                    }
+                }
+
+                return result;
             }
-            left+=1;
-            right-=1;
         }
-        return true;
+
+        return result;
     }
 
-    private static boolean checkS(int left,int right) {
-        while(left<=right) {
-            if(arr[left]!=arr[right]) {//다름
-                boolean a=check(left+1,right);
-                boolean b=check(left,right-1);
-                if(a==false && b==false) {
-                    return false;
-                }else return true;
-            }
-            left+=1;
-            right-=1;
-        }
-        return true;
-    }
 
 }

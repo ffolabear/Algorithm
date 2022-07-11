@@ -74,11 +74,11 @@ public class Boj_16916 {
             }
 
         }
-//
-//        for (int i=0; i < table.length; i++) {
-//            System.out.print(table[i] + " ");
-//        }
-//        System.out.println();
+
+        for (int i=0; i < table.length; i++) {
+            System.out.print(table[i] + " ");
+        }
+        System.out.println();
 
     }
 
