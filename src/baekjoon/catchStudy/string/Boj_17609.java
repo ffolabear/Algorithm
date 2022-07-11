@@ -1,7 +1,6 @@
 package baekjoon.catchStudy.string;
 
 import java.io.*;
-import java.util.Scanner;
 
 public class Boj_17609 {
 
@@ -12,6 +11,8 @@ public class Boj_17609 {
     public static void main(String[] args) throws IOException {
 
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
+
         t = Integer.parseInt(br.readLine());
 
         String word = "";
@@ -22,7 +23,17 @@ public class Boj_17609 {
             word = br.readLine();
             result = check(word);
 
+            if (result >= 2) {
+                bw.append(String.valueOf(result - 1)).append('\n');
+            } else {
+                bw.append(String.valueOf(result)).append('\n');
+
+            }
         }
+
+        bw.flush();
+        bw.close();
+
     }
 
     private static int check(String word) {
