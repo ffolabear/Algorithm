@@ -7,6 +7,8 @@ public class Boj_1018 {
 
     static boolean[][] board;
     static int N, M;
+    static int min = 64;
+
 
     public static void main(String[] args) throws IOException {
 
@@ -37,17 +39,38 @@ public class Boj_1018 {
         for (int i = 0; i < N - 7; i++) {
             for (int j = 0; j < M - 7; j++) {
                 isValid(i, j);
-
             }
         }
+
+        bw.append(String.valueOf(min));
+        bw.flush();
+        bw.close();
 
     }
 
 
     private static void isValid(int i, int j) {
 
+        int end_x = i + 8;
+        int end_y = j + 8;
+        int count = 0;
 
+        boolean init = board[i][j];
 
+        for (int x = i; x < end_x; x++) {
+            for (int y = j; y < end_y; y++) {
+                if (board[x][y] != init) {
+                    count++;
+                }
+
+                //교대로 색이 바뀌어야 하므로 반대로 바꿔줌
+                init = (!init);
+            }
+            init = (!init);
+        }
+
+        count = Math.min(count, 64 - count);
+        min = Math.min(min, count);
     }
 
 }
