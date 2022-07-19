@@ -6,7 +6,7 @@ import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.StringTokenizer;
 
-public class Boj_11724 {
+public class Boj_11724_1 {
 
     static int N, M;
     static ArrayList<Integer>[] node;

@@ -10,6 +10,7 @@ public class Boj_1260 {
     static int N, M, V;
     static ArrayList<Integer>[] adj;
 
+
     static boolean[] visited;
 
     //dfs 결과
@@ -23,6 +24,7 @@ public class Boj_1260 {
 
 
         N = Integer.parseInt(st.nextToken());
+
         M = Integer.parseInt(st.nextToken());
         V = Integer.parseInt(st.nextToken());
 
