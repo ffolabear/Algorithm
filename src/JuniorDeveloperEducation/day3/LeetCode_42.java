@@ -37,9 +37,6 @@ public class LeetCode_42 {
             }
 
 
-
-
-
         }
 
         System.out.println("ans = " + ans);
