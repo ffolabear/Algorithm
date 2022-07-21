@@ -1,48 +1,31 @@
 package JuniorDeveloperEducation.day3;
 
-import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.InputStreamReader;
+import java.util.Scanner;
 
 public class Boj_5675 {
 
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args){
 
-        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        Scanner sc = new Scanner(System.in);
+        StringBuilder sb = new StringBuilder();
 
-        String input = "";
-        while (true) {
-            input = br.readLine();
-            int time = Integer.parseInt(input);
-            System.out.println(isValid(time));
+
+        while (sc.hasNext()) {
+            int time = sc.nextInt();
+            sb.append(isValid(time)).append('\n');
         }
+
+        System.out.println(sb.toString());
     }
 
     private static String isValid(int time) {
 
-        int degree = 0;
         String ans = "N";
 
-        int hour = 0;
-        int min = 0;
-
-        while (hour < 13) {
-
-            if (degree == time) {
-                ans = "Y";
-                break;
-            }
-
-            if (min > 360) {
-                min = min - 360;
-            }
-
-            degree = Math.abs(min - hour);
-
-            hour += 1;
-            min += 12;
+        if (time % 6 == 0) {
+            ans = "Y";
         }
-
 
         return ans;
     }
