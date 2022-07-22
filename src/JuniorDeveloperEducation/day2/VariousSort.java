@@ -34,12 +34,11 @@ public class VariousSort {
         }
 
         return list;
-
     }
 
     /**
      * 1. 정렬 되지 않은 인덱스의 맨 앞에서 부터, 이를 포함한 그 이후의 배열값 중 가장 작은 값을 찾아 감.
-     *    (정렬되지 않은 인덱스의 맨 앞은, 초기 입력에서는 배열의 시작위치일 것이다.)
+     * (정렬되지 않은 인덱스의 맨 앞은, 초기 입력에서는 배열의 시작위치일 것이다.)
      * 2. 가장 작은 값을 찾으면, 그 값을 현재 인덱스의 값과 바꿔준다.
      * 3. 다음 인덱스에서 위 과정을 반복해줌.
      */
@@ -73,12 +72,24 @@ public class VariousSort {
      * 4. 만약 삽입 변수가 더 크면, 비교 인덱스+1에 삽입 변수를 저장함
      */
     private static void insertionSort(ArrayList<Integer> list) {
+
+
         for (int i = 1; i < list.size(); i++) {
+
+            int temp = list.get(i);
+            int prev = i - 1;
+
+            while (prev >= 0 && temp < list.get(prev)) {
+                int next = list.get(prev);
+                list.set(prev + 1, next);
+                prev--;
+            }
+
+            list.set(prev + 1, temp);
 
         }
 
-
-
+        System.out.println("list = " + list);
     }
 
 
