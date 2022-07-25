@@ -26,8 +26,9 @@ public class Boj_10610 {
         }
 
 
+
         if (sb.toString().charAt(sb.length() - 1) == '0' && sum % 3 == 0) {
-                bw.append(sb);
+            bw.append(sb);
         } else {
             bw.append("-1");
         }
