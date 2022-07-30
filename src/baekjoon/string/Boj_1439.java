@@ -10,12 +10,27 @@ public class Boj_1439 {
 
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         String str = br.readLine();
+
         int zero = 0;
         int one = 0;
 
-        for (int i = 0; i < str.length(); i++) {
+        if (str.charAt(0) == '1') {
+            one++;
+        } else {
+            zero++;
         }
 
+        for (int i = 1; i < str.length(); i++) {
+            if (str.charAt(i- 1) != str.charAt(i)) {
+                if (str.charAt(i) == '1') {
+                    one++;
+                } else {
+                    zero++;
+                }
+            }
+        }
+
+        System.out.println(Math.min(one, zero));
 
     }
 
