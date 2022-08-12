@@ -6,7 +6,7 @@ import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.Collections;
 
-public class Boj_2667 {
+public class Boj_2667_1 {
 
     static int N, group_cnt;
     static String[] a;
