@@ -1,9 +1,8 @@
 package baekjoon.searching;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
+import java.io.*;
 import java.util.ArrayList;
+import java.util.Collections;
 
 public class Boj_2667_2 {
 
@@ -21,7 +20,7 @@ public class Boj_2667_2 {
     static ArrayList<Integer> groupCnt = new ArrayList<>();
 
 
-    static void dfs(int x, int y) {
+    static int dfs(int x, int y) {
 
         visited[x][y] = true;
 
@@ -30,11 +29,15 @@ public class Boj_2667_2 {
             int ny = y + dy[i];
 
             if (nx >= 0 && ny >= 0 && nx < N && ny < N) {
-                if (map[nx][ny].equals("1") && !visited[nx][ny])
-                dfs(nx, ny);
-                cnt++;
+                if (map[nx][ny].equals("1") && !visited[nx][ny]){
+                    dfs(nx, ny);
+                    cnt++;
+
+                }
             }
         }
+
+        return cnt;
     }
 
     public static void main(String[] args) throws IOException {
@@ -43,7 +46,7 @@ public class Boj_2667_2 {
         N = Integer.parseInt(br.readLine());
 
         map = new String[N][N];
-        visited = new boolean[N + 1][N + 1];
+        visited = new boolean[N][N];
 
         for (int i = 0; i < N; i++) {
             String[] row = br.readLine().split("");
@@ -53,13 +56,6 @@ public class Boj_2667_2 {
             }
         }
 
-//
-//        for (int i = 0; i < N; i++) {
-//            for (int j = 0; j < N; j++) {
-//                System.out.print(map[i][j] + " ");
-//            }
-//            System.out.println();
-//        }
 
         cnt = 0;
 
@@ -67,13 +63,19 @@ public class Boj_2667_2 {
             for (int j = 0; j < N; j++) {
                 if (map[i][j].equals("1") && !visited[i][j]) {
                     cnt = 1;
-                    dfs(i, j);
-                    groupCnt.add(cnt);
+
+                    groupCnt.add(dfs(i, j));
                 }
             }
         }
 
-        System.out.println(groupCnt);
+        Collections.sort(groupCnt);
+
+        System.out.println(groupCnt.size());
+        for (int i : groupCnt) {
+            System.out.println(i);
+        }
+
     }
 
 }
