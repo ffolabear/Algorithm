@@ -31,32 +31,36 @@ public class Boj_1759 {
         }
         System.out.println();
 
-        for (int i = 0; i < C; i++) {
-            dfs(i, new StringBuilder());
-
-        }
+        dfs(0, 0);
 
         bw.flush();
         bw.close();
 
     }
 
-    private static void dfs(int idx, StringBuilder sb) throws IOException {
+    private static void dfs(int idx, int cnt) throws IOException {
 
-        if (sb.length() == L) {
-            if (isValid(sb)) {
-                bw.append(sb.toString()).append('\n');
+        if (cnt == L) {
+            StringBuilder sb = new StringBuilder();
+
+            for (int i = 0; i < C; i++) {
+                if (isUsed[i]) {
+                    sb.append(arr[i]);
+                }
             }
-            return;
+
+            if (isValid(sb)) {
+                bw.append(sb).append('\n');
+            }
+
 
         } else {
 
-//            isUsed[idx] = true;
-//            sb.append(arr[idx]);
-
             for (int i = idx; i < C; i++) {
-                sb.append(arr[i]);
-                dfs(i + 1, sb);
+
+                isUsed[i] = true;
+                dfs(i + 1, cnt + 1);
+                isUsed[i] = false;
             }
 
         }
