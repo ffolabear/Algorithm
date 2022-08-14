@@ -7,13 +7,14 @@ import java.util.StringTokenizer;
 public class Boj_1759 {
 
     static int L, C;
+    static BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
     static char[] arr;
     static boolean[] isUsed;
 
     public static void main(String[] args) throws IOException {
 
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
+
 
         StringTokenizer st = new StringTokenizer(br.readLine());
 
@@ -30,31 +31,55 @@ public class Boj_1759 {
         }
         System.out.println();
 
-        for (int i = 0; i < arr.length; i++) {
+        for (int i = 0; i < C; i++) {
+            dfs(i, new StringBuilder());
 
-            StringBuilder sb = new StringBuilder();
-            dfs(i + 1, sb);
         }
+
+        bw.flush();
+        bw.close();
 
     }
 
-    private static void dfs(int idx, StringBuilder sb) {
+    private static void dfs(int idx, StringBuilder sb) throws IOException {
 
         if (sb.length() == L) {
-            System.out.println(sb);
+            if (isValid(sb)) {
+                bw.append(sb.toString()).append('\n');
+            }
             return;
+
         } else {
 
-            isUsed[idx] = true;
-            sb.append(arr[idx]);
+//            isUsed[idx] = true;
+//            sb.append(arr[idx]);
 
-            for (int i = idx; i < arr.length; i++) {
-                if (!isUsed[i]) {
-                    dfs(i, sb);
-                }
+            for (int i = idx; i < C; i++) {
+                sb.append(arr[i]);
+                dfs(i + 1, sb);
             }
 
         }
+    }
+
+    private static boolean isValid(StringBuilder sb) {
+
+        int cntVowel = 0;
+        int cntConsonant = 0;
+
+        for (int i = 0; i < sb.length(); i++) {
+            if (sb.charAt(i) == 'a' || sb.charAt(i) == 'e' || sb.charAt(i) == 'i' || sb.charAt(i) == 'o' || sb.charAt(i) == 'u') {
+                cntVowel++;
+            } else {
+                cntConsonant++;
+            }
+        }
+
+        if (cntVowel >= 1 && cntConsonant >= 2) {
+            return true;
+        }
+
+        return false;
     }
 
 }
