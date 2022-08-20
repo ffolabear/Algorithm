@@ -22,8 +22,20 @@ public class LongestIncreasingSubsequence {
 
         arr[0] = 1;
 
+        for (int i = 1; i < N; i++) {
 
+            int max = 0;
+            for (int j = i - 1; j >= 0; j--) {
+                if (nums[j] < nums[i] && arr[j] > max) {
+                    max = arr[j];
+                }
+                arr[i] = max + 1;
+            }
 
+        }
+
+        Arrays.sort(arr);
+        System.out.println(arr[N - 1]);
 
     }
 
