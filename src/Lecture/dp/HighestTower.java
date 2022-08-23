@@ -17,7 +17,7 @@ public class HighestTower {
 
         // [i][0] : 넓이
         // [i][1] : 높이
-        // [i][2] : 무
+        // [i][2] : 무게
 
         for (int i = 0; i < N; i++) {
             bricks[i][0] = sc.nextInt();
