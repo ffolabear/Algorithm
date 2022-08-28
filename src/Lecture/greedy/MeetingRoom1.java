@@ -5,7 +5,7 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.Scanner;
 
-public class MeetingRoom {
+public class MeetingRoom1 {
 
     public static void main(String[] args) {
         Scanner in = new Scanner(System.in);
