@@ -1,11 +1,7 @@
 package baekjoon.simulation;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.StringTokenizer;
+import java.io.*;
+import java.util.*;
 
 class info {
 
@@ -23,20 +19,47 @@ public class Boj_7568 {
     public static void main(String[] args) throws IOException {
 
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
+
         int N = Integer.parseInt(br.readLine());
 
         List<info> list = new ArrayList<>();
         StringTokenizer st;
+        int maxHeight = 0;
 
         for (int i = 0; i < N; i++) {
             st = new StringTokenizer(br.readLine());
             int weight = Integer.parseInt(st.nextToken());
             int height = Integer.parseInt(st.nextToken());
-
+            maxHeight = Math.max(maxHeight, height);
             list.add(new info(weight, height));
         }
 
+        for (int i = 0; i < N; i++) {
+            int rank = 1;
+            for (int j = 0; j < N; j++) {
+                if (list.get(i).height < list.get(j).height && list.get(i).weight < list.get(j).height) {
+                    rank++;
+                }
 
+            }
+            bw.append(String.valueOf(rank)).append(" ");
+        }
+
+
+        for (info i : list) {
+            int rank = 1;
+            for (info j : list) {
+                if (i.height < j.weight && i.weight < j.height) {
+                    rank++;
+                }
+            }
+
+//            bw.append(String.valueOf(rank)).append(" ");
+        }
+
+        bw.flush();
+        bw.close();
 
     }
 
