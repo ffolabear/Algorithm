@@ -25,20 +25,18 @@ public class Boj_7568 {
 
         List<info> list = new ArrayList<>();
         StringTokenizer st;
-        int maxHeight = 0;
 
         for (int i = 0; i < N; i++) {
             st = new StringTokenizer(br.readLine());
             int weight = Integer.parseInt(st.nextToken());
             int height = Integer.parseInt(st.nextToken());
-            maxHeight = Math.max(maxHeight, height);
             list.add(new info(weight, height));
         }
 
         for (int i = 0; i < N; i++) {
             int rank = 1;
             for (int j = 0; j < N; j++) {
-                if (list.get(i).height < list.get(j).height && list.get(i).weight < list.get(j).height) {
+                if (list.get(i).height < list.get(j).height && list.get(i).weight < list.get(j).weight) {
                     rank++;
                 }
 
