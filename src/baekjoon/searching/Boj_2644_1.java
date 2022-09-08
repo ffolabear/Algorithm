@@ -6,7 +6,7 @@ import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.StringTokenizer;
 
-public class Boj_2644 {
+public class Boj_2644_1 {
 
     static int n, a, b, m;
     static boolean[] visited;
@@ -59,7 +59,7 @@ public class Boj_2644 {
 
 
 
-        Boj_2644 sol = new Boj_2644();
+        Boj_2644_1 sol = new Boj_2644_1();
         sol.dfs(a, b, 0);
         System.out.println(ans);
     }
