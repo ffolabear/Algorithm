@@ -28,6 +28,45 @@ public class Boj_2644_2 {
         node = new ArrayList[n + 1];
         visited = new boolean[n + 1];
 
+        for (int i = 1; i <= n; i++) {
+            node[i] = new ArrayList<>();
+        }
+
+        for (int i = 1; i <= m; i++) {
+            st = new StringTokenizer(br.readLine());
+            int from = Integer.parseInt(st.nextToken());
+            int to = Integer.parseInt(st.nextToken());
+
+            node[from].add(to);
+            node[to].add(from);
+        }
+
+
+        dfs(a, b, 0);
+        System.out.println(ans);
+
+    }
+
+    private static void dfs(int start, int end, int count) {
+
+        if (start == end) {
+
+            ans = count;
+            return;
+
+        } else {
+            visited[start] = true;
+            for (int i = 0; i < node[start].size(); i++) {
+                int current = node[start].get(i);
+                if (!visited[current]) {
+                    dfs(current, end, count + 1);
+                }
+
+            }
+
+
+        }
+
     }
 
 }
