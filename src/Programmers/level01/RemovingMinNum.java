@@ -1,29 +1,31 @@
 package Programmers.level01;
 
+import java.util.List;
+import java.util.ArrayList;
+import java.util.Collections;
+
 public class RemovingMinNum {
 
-    public int[] solution(int[] arr) {
+    public List<Integer> solution(int[] arr) {
 
-        int num = Integer.MAX_VALUE;
-        int[] answer;
-
-        if (arr.length == 1) {
-            answer = new int[]{-1};
-        } else {
-            for (int i : arr) {
-                num = Math.min(num, i);
-            }
-
-            answer = new int[arr.length - 1];
-            for (int i = 0; i < arr.length; i++) {
-                if (arr[i] != num) {
-                    answer[i] = arr[i];
-                }
-
-            }
-
+        int min = Integer.MAX_VALUE;
+        for (int i : arr) {
+            min = Math.min(min, i);
         }
-        return answer;
+
+        List<Integer> list = new ArrayList<>();
+        for (int i : arr) {
+            if (i != min) {
+                list.add(i);
+
+            }
+        }
+
+        if (list.size() == 0) {
+            list.add(-1);
+        }
+
+        return list;
     }
 
     public static void main(String[] args) {
@@ -31,8 +33,8 @@ public class RemovingMinNum {
         RemovingMinNum sol = new RemovingMinNum();
         int[] arr = {4, 3, 2, 1};
 //        int[] arr = {10};
-        sol.solution(arr);
 
+        sol.solution(arr);
     }
 
 }
