@@ -13,33 +13,36 @@ public class CaesarCipher {
 
             if (current >= 65 && current <= 90) {
                 if (current + n > 90) {
-                    current = n - (90 - current);
+                    current = current + n - 26;
                 } else {
                     current += n;
                 }
 
             } else if (current >= 97 && current <= 122) {
                 if (current + n > 122) {
-                    current = n - (122 - current);
+                    current = current + n - 26;
                 } else {
                     current += n;
                 }
 
             }
 
+
             sb.append((char) current);
         }
 
         String answer = sb.toString();
-        System.out.println(answer);
         return answer;
     }
 
     public static void main(String[] args) {
 
         CaesarCipher sol = new CaesarCipher();
-        String s = "AB";
-        int n = 1;
+
+//        String s = "AB";
+//        int n = 1;
+        String s = "a B z";
+        int n = 4;
         sol.solution(s, n);
     }
 
