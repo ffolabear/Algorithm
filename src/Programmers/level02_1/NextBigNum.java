@@ -13,27 +13,25 @@ public class NextBigNum {
                 countOne++;
             }
         }
-        int tempCountOne = 0;
 
         while (true) {
+
+            int tempCountOne = 0;
+            String tempStr = convertToBinary(answer);
+
+            for (int i = 0; i < tempStr.length(); i++) {
+                if (tempStr.charAt(i) == '1') {
+                    tempCountOne++;
+                }
+            }
 
             if (tempCountOne == countOne) {
                 break;
             } else {
-                String tempStr = convertToBinary(answer);
-
-                for (int i = 0; i < tempStr.length(); i++) {
-                    if (tempStr.charAt(i) == '1') {
-                        tempCountOne++;
-                    }
-                }
-
+                answer++;
             }
-
-
         }
 
-        System.out.println(answer);
         return answer;
     }
 
@@ -48,21 +46,6 @@ public class NextBigNum {
         return res.toString();
     }
 
-
-    private int convertToDecimal(String str) {
-
-        int len = str.length() - 1;
-        int res = 0;
-
-        for (int i = -0; i < str.length(); i++) {
-            if (str.charAt(i) == '1') {
-                res += Math.pow(2, len);
-            }
-            len--;
-        }
-
-        return res;
-    }
 
     public static void main(String[] args) {
 
