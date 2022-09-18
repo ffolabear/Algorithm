@@ -5,31 +5,32 @@ public class NextBigNum {
     public int solution(int n) {
 
         int answer = n + 1;
-        int countOne = 0;
-        String convertBinary = convertToBinary(n);
 
-        for (int i = 0; i < convertBinary.length(); i++) {
-            if (convertBinary.charAt(i) == '1') {
+        String convertedNum = Integer.toBinaryString(n);
+        int countOne = 0;
+
+        for (int i = 0; i < convertedNum.length(); i++) {
+            if (convertedNum.charAt(i) == '1') {
                 countOne++;
             }
         }
 
         while (true) {
+            String temp = Integer.toBinaryString(answer);
 
-            int tempCountOne = 0;
-            String tempStr = convertToBinary(answer);
-
-            for (int i = 0; i < tempStr.length(); i++) {
-                if (tempStr.charAt(i) == '1') {
-                    tempCountOne++;
+            int tempCntOne = 0;
+            for (int i = 0; i < temp.length(); i++) {
+                if (temp.charAt(i) == '1') {
+                    tempCntOne++;
                 }
             }
 
-            if (tempCountOne == countOne) {
+            if (tempCntOne == countOne) {
                 break;
             } else {
                 answer++;
             }
+
         }
 
         return answer;
