@@ -1,12 +1,35 @@
 package Programmers.level02_1;
 
+/**
+ * K 칸 앞으로 점프
+ * - 배터리 K칸 소모
+ *
+ * 현재까지 온 거리 x 2 만큼 순간이동
+ * - 배터리 소모 X
+ *
+ * 5칸 간다면
+ *  1. 5칸 점프 - 배터리 5칸 소모
+ *  2. 2칸 점프 - 순간이동 - 1칸 점프 : 배터리 3칸 소모
+ *  3. 1칸 점프 - 순간이동 - 순간이동 - 1칸 점프 : 배터리 2칸 소모
+ *
+ *  1 2 4 5
+ *  3 6
+ *  5 ...
+ */
+
 public class JumpAndTeleport {
 
     public int solution(int n) {
         int ans = 0;
 
-        // [실행] 버튼을 누르면 출력 값을 볼 수 있습니다.
-        System.out.println("Hello Java");
+        while (n != 0) {
+            if (n % 2 == 0) {
+                n /= 2;
+            } else {
+                n -= 1;
+                ans++;
+            }
+        }
 
         return ans;
     }
