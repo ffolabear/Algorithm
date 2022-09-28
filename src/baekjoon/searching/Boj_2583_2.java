@@ -43,19 +43,55 @@ public class Boj_2583_2 {
         }
 
 
+        for (int i = 0; i < M; i++) {
+            for (int j = 0; j < N; j++) {
+                if (map[i][j] == 0) {
+                    cnt = 0;
+                    dfs(i, j);
+                    list.add(cnt);
+                }
+            }
+        }
+
+        Collections.sort(list);
+        bw.append(String.valueOf(list.size())).append('\n');
+
+        for (int i : list) {
+            bw.append(String.valueOf(i)).append(' ');
+        }
+
+        bw.flush();
+        bw.close();
+
     }
 
     private static void makingArea(int x1, int y1, int x2, int y2) {
-        for (int i = 0; i < y2; i++) {
+        for (int i = y1; i < y2; i++) {
             for (int j = x1; j < x2; j++) {
-                map[i][j] = 1;
+                map[j][i] = 1;
             }
         }
 
     }
 
+
+
     private static void dfs(int x, int y) {
 
+        map[x][y] = -1;
+        cnt++;
+
+        for (int i = 0; i < 4; i++) {
+            int nx = dx[i] + x;
+            int ny = dy[i] + y;
+
+            if (nx >= 0 && nx < M && ny >= 0 && ny < N) {
+                if (map[nx][ny] == 0) {
+                    dfs(nx, ny);
+                }
+            }
+
+        }
 
     }
 
