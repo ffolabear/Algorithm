@@ -1,9 +1,35 @@
 package Programmers.level02_1;
 
+import java.util.LinkedList;
+import java.util.Queue;
+
 public class Cache {
 
     public int solution(int cacheSize, String[] cities) {
+
         int answer = 0;
+
+        if (cacheSize == 0) {
+            return cities.length * 5;
+        }
+
+        LinkedList<String> queue = new LinkedList<>();
+
+        for (int i = 0; i < cities.length; i++) {
+            String temp = cities[i].toUpperCase();
+            if (queue.remove(temp)) {
+                answer += 1;
+                queue.add(temp);
+            } else {
+                answer += 5;
+                if (queue.size() >= cacheSize) {
+                    queue.remove(0);
+                }
+                queue.add(temp);
+            }
+
+        }
+
         return answer;
     }
 
