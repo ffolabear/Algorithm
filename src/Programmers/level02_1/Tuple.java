@@ -1,47 +1,55 @@
 package Programmers.level02_1;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Comparator;
 
 public class Tuple {
 
-    public String[] solution(String s) {
+    public ArrayList<Integer> solution(String s) {
 
-        String[] answer = {};
+        s = s.replaceAll("\\{", "");
+        String[] covt = s.split("}");
 
-        String regex = "[{]";
-        String covt = s.replaceAll(regex, "");
-        String[] nums = covt.split("}");
 
-        String[][] strArr = new String[nums.length][];
-
-        int maxLength = nums[0].length();
-
-        for (int i = 0; i < nums.length; i++) {
-            maxLength = Math.max(maxLength, nums[i].length());
-        }
-
-        String longest = "";
-
-        for (int i = 0; i < nums.length; i++) {
-            if (nums[i].length() == maxLength) {
-                longest = nums[i];
-
+        for (int i = 0; i < covt.length; i++) {
+            if (covt[i].charAt(0) == ',') {
+                covt[i] = covt[i].substring(1);
             }
         }
 
-        longest = longest.substring(1);
-        System.out.println(longest);
+        Arrays.sort(covt, new Comparator<String>() {
+            @Override
+            public int compare(String o1, String o2) {
+                return o1.length() - o2.length();
+            }
 
-        answer = longest.split(",");
+        });
 
+        ArrayList<Integer> answer = new ArrayList<>();
 
+        for (String str : covt) {
+            String[] tempArr = str.split(",");
+            for (int i = 0; i < tempArr.length; i++) {
+                int tempInt = Integer.parseInt(tempArr[i]);
+                if (!answer.contains(tempInt)) {
+                    answer.add(tempInt);
+                }
+
+            }
+        }
+        System.out.println(answer);
         return answer;
     }
 
     public static void main(String[] args) {
 
-        String s = "{{2},{2,1},{2,1,3},{2,1,3,4}}";
-
         Tuple sol = new Tuple();
+//        String s = "{{2},{2,1},{2,1,3,4},{2,1,3}}";
+        String s = "{{1,2,3},{2,1},{1,2,4,3},{2}}";
+//        String s = "{{2},{2,1},{2,1,3,4},{2,1,3}}";
+//        String s = "{{2},{2,1},{2,1,3,4},{2,1,3}}";
+//        String s = "{{2},{2,1},{2,1,3,4},{2,1,3}}";
         sol.solution(s);
 
     }
