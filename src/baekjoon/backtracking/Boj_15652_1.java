@@ -5,12 +5,12 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.StringTokenizer;
 
-public class Boj_15650_1 {
+public class Boj_15652_1 {
 
     static int N;
     static int M;
 
-    static int[] nums;
+    static int[] selected;
     static boolean[] isVisited;
     static StringBuilder sb = new StringBuilder();
 
@@ -19,42 +19,38 @@ public class Boj_15650_1 {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         StringTokenizer st = new StringTokenizer(br.readLine());
 
-
         N = Integer.parseInt(st.nextToken());
         M = Integer.parseInt(st.nextToken());
 
-        nums = new int[M];
-        isVisited = new boolean[N];
+        selected = new int[M + 1];
+        isVisited = new boolean[N + 1];
 
-
-        dfs(0);
+        dfs(1);
         System.out.println(sb);
 
     }
 
     static void dfs(int depth) {
 
-
-
-        if (depth == M) {
-            for (int i : nums) {
-                sb.append(i).append(' ');
+        if (depth == M + 1) {
+            for (int i = 1; i < selected.length; i++) {
+                sb.append(selected[i]).append(' ');
             }
             sb.append("\n");
             return;
-        }
 
-        for (int i = nums[depth]; i < N; i++) {
+        } else {
 
-            if (!isVisited[i]) {
-                isVisited[i] = true;
-                nums[depth] = i + 1;
-                dfs(depth + 1);
-                isVisited[i] = false;
+            int start = selected[depth - 1];
+            if (start == 0) {
+                start = 1;
             }
 
+            for (int i = selected[depth-1] + 1; i <= N; i++) {
+                selected[depth] = i;
+                dfs(depth + 1);
+
+            }
         }
-
     }
-
 }

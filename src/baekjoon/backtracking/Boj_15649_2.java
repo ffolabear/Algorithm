@@ -5,11 +5,17 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.StringTokenizer;
 
+/**
+ * 중복되는 수열을 여러 번 출력하면 안되며,
+ * 각 수열은 공백으로 구분해서 출력해야 한다.
+ * 수열은 사전 순으로 증가하는 순서로 출력해야 한다.
+ */
+
 public class Boj_15649_2 {
 
     static int N, M;
 
-    static int[] nums;
+    static int[] selected;
     static boolean[] isVisited;
     static StringBuilder sb = new StringBuilder();
 
@@ -23,42 +29,36 @@ public class Boj_15649_2 {
         N = Integer.parseInt(st.nextToken());
         M = Integer.parseInt(st.nextToken());
 
-        nums = new int[M];
-        isVisited = new boolean[N];
+        selected = new int[M + 1];
+        isVisited = new boolean[N + 1];
 
-        dfs(0);
+        dfs(1);
         System.out.println(sb);
 
     }
 
     static void dfs(int depth) {
 
-        if (depth == M) {
-//            for (int i : nums) {
-//                sb.append(i).append(' ');
-//            }
-//            sb.append("\n");
-//            return;
-
-            for (int i = 0; i < isVisited.length; i++) {
-                System.out.println(isVisited[i] + " ");
+        if (depth == M + 1) {
+            for (int i = 1; i < selected.length; i++) {
+                sb.append(selected[i]).append(' ');
             }
-            System.out.println();
+            sb.append("\n");
+            return;
 
-        }
+        } else {
 
-        for (int i = 0; i < N; i++) {
-            if (!isVisited[i]) {
+            for (int i = 1; i <= N; i++) {
+                if (isVisited[i]) {
+                    continue;
+                }
+                selected[depth] = i;
                 isVisited[i] = true;
-                nums[depth] = i + 1;
                 dfs(depth + 1);
                 isVisited[i] = false;
+
             }
         }
-
-
-
-
     }
 
 }

@@ -20,7 +20,6 @@ public class Boj_15649_1 {
         StringTokenizer st = new StringTokenizer(br.readLine());
 
 
-
         N = Integer.parseInt(st.nextToken());
         M = Integer.parseInt(st.nextToken());
 
@@ -34,6 +33,7 @@ public class Boj_15649_1 {
     }
 
     static void dfs(int depth) {
+
         if (depth == M) {
             for (int i : nums) {
                 sb.append(i).append(' ');
@@ -43,6 +43,7 @@ public class Boj_15649_1 {
         }
 
         for (int i = 0; i < N; i++) {
+
             if (!isVisited[i]) {
                 isVisited[i] = true;
                 nums[depth] = i + 1;
