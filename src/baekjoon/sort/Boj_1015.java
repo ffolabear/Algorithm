@@ -1,40 +1,66 @@
 package baekjoon.sort;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
+import java.io.*;
 import java.util.*;
+
+class Elem implements Comparable<Elem> {
+
+    int num;
+    int idx;
+
+    @Override
+    public int compareTo(Elem other) {
+
+        if (num != other.num) {
+            return num - other.num;
+        } else {
+            return idx - other.idx;
+        }
+    }
+}
 
 public class Boj_1015 {
 
     public static void main(String[] args) throws IOException {
 
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
+
         StringTokenizer st;
         int N = Integer.parseInt(br.readLine());
         st = new StringTokenizer(br.readLine());
 
-        //2 3 1
-        //A[0] = 2    ==    B[P[0]] = 2
-        //A[1] = 3    ==    B[P[1]] = 3
-        //A[2] = 1    ==    B[P[2]] = 1
-
-        ArrayList<Integer> A = new ArrayList<>();
+        Elem[] B = new Elem[N];
+        int[] P = new int[N];
 
         for (int i = 0; i < N; i++) {
-            A.add(Integer.parseInt(st.nextToken()));
+
+            B[i] = new Elem();
+            B[i].idx = i;
+            B[i].num = Integer.parseInt(st.nextToken());
         }
 
-        Collections.sort(A, new Comparator<Integer>() {
+        for (Elem e : B) {
+            System.out.println(e.idx + " " + e.num);
+        }
 
-            @Override
-            public int compare(Integer o1, Integer o2) {
-                return 0;
-            }
+        System.out.println();
+        Arrays.sort(B);
 
-        });
+        for (int i = 0; i < N; i++) {
+            P[B[i].idx] = i;
+        }
 
-        System.out.println(A);
+        for (Elem e : B) {
+            System.out.println(e.idx + " " + e.num);
+        }
+
+        for (int i = 0; i < N; i++) {
+            bw.append(String.valueOf(P[i])).append(" ");
+        }
+
+        bw.flush();
+        bw.close();
 
     }
 
