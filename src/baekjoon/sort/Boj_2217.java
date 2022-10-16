@@ -18,33 +18,21 @@ public class Boj_2217 {
         int N = Integer.parseInt(st.nextToken());
         ArrayList<Integer> list = new ArrayList<>();
 
-        int divided = 0;
+        int sum = 0;
 
         for (int i = 0; i < N; i++) {
             int input = Integer.parseInt(br.readLine());
             list.add(input);
-            divided += input;
         }
 
-        Collections.sort(list);
-        divided /= N;
+        Collections.sort(list, Collections.reverseOrder());
+        int ans = 0;
 
-        if (N == 1) {
-            System.out.println(divided);
-        } else {
-
-            for (int i = 0; i < N; i++) {
-                if (list.get(i) < divided) {
-                    continue;
-                } else {
-                    System.out.println(list.get(i - 1) * N);
-                    break;
-                }
-
-            }
+        for (int i = 0; i < N; i++) {
+            ans = Math.max(ans, list.get(i) * (i + 1));
         }
 
-
+        System.out.println(ans);
     }
 
 }
