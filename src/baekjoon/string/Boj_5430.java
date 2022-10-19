@@ -4,6 +4,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Scanner;
 
 public class Boj_5430 {
@@ -17,9 +18,11 @@ public class Boj_5430 {
 
             String command = br.readLine();
             int n = Integer.parseInt(br.readLine());
-            String[] arrInput = br.readLine().replaceAll("[,\\[\\]]","").split("");
-            ArrayList<Integer> arr = new ArrayList<>();
+            String[] arrInput = br.readLine().replaceAll("\\[","")
+                                            .replaceAll("]","").split(",");
 
+
+            ArrayList<Integer> arr = new ArrayList<>();
             for (int j = 0; j < n; j++) {
                 arr.add(Integer.parseInt(arrInput[j]));
             }
@@ -57,7 +60,11 @@ public class Boj_5430 {
 
         }
 
-        result = arr.toString();
+        if (pointer != 0) {
+            Collections.reverse(arr);
+        }
+
+        result = arr.toString().replaceAll(" ", "");
 
         return result;
 
