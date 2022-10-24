@@ -1,16 +1,13 @@
 package Programmers.level02_1;
 
 import java.util.HashMap;
+import java.util.Map;
 
 public class DiscountEvent {
 
     public int solution(String[] want, int[] number, String[] discount) {
 
         int answer = 0;
-
-        //1 ≤ want의 길이 = number의 길이 ≤ 10
-        //10 ≤ discount의 길이 ≤ 100,000
-
         HashMap<String, Integer> map = new HashMap<>();
 
         for (int i = 0; i < want.length; i++) {
@@ -19,15 +16,8 @@ public class DiscountEvent {
 
         int start = 0;
         int end = 9;
-        int ans = 0;
-        System.out.println(discount.length);
 
-        //0 - 10
-        //1 - 11
-        //2 - 12
-        //3 - 13
-
-        for (int i = 0; i < discount.length - 10; i++) {
+        for (int i = 0; i <= discount.length - 10; i++) {
 
             HashMap<String, Integer> copyMap = new HashMap<>(map);
 
@@ -37,14 +27,25 @@ public class DiscountEvent {
                 }
             }
 
+            if (isValid(copyMap)) {
+                answer++;
+            }
+
             start++;
             end++;
 
-            System.out.println(copyMap);
         }
 
-
         return answer;
+    }
+
+    private static boolean isValid(Map<String, Integer> copyMap) {
+        for (String key : copyMap.keySet()) {
+            if (copyMap.get(key) != 0) {
+                return false;
+            }
+        }
+        return true;
     }
 
     public static void main(String[] args) {
