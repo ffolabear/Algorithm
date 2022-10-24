@@ -17,6 +17,23 @@ public class DiscountEvent {
             map.put(want[i], number[i]);
         }
 
+        int start = 0;
+        int end = 9;
+
+        System.out.println(map);
+
+        for (int i = 0; i < discount.length - 10; i++) {
+            for (int j = start; j <= end; j++) {
+                if (map.containsKey(discount[j])) {
+                    map.put(discount[j], map.get(discount[j]) - 1);
+                }
+            }
+
+            start++;
+            end++;
+
+            System.out.println(map);
+        }
 
 
         return answer;
