@@ -19,20 +19,28 @@ public class DiscountEvent {
 
         int start = 0;
         int end = 9;
+        int ans = 0;
+        System.out.println(discount.length);
 
-        System.out.println(map);
+        //0 - 10
+        //1 - 11
+        //2 - 12
+        //3 - 13
 
         for (int i = 0; i < discount.length - 10; i++) {
+
+            HashMap<String, Integer> copyMap = new HashMap<>(map);
+
             for (int j = start; j <= end; j++) {
-                if (map.containsKey(discount[j])) {
-                    map.put(discount[j], map.get(discount[j]) - 1);
+                if (copyMap.containsKey(discount[j])) {
+                    copyMap.put(discount[j], copyMap.get(discount[j]) - 1);
                 }
             }
 
             start++;
             end++;
 
-            System.out.println(map);
+            System.out.println(copyMap);
         }
 
 
