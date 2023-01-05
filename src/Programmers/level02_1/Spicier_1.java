@@ -2,7 +2,7 @@ package Programmers.level02_1;
 
 import java.util.PriorityQueue;
 
-public class Spicier {
+public class Spicier_1 {
 
     public int solution(int[] scoville, int K) {
 
@@ -42,7 +42,7 @@ public class Spicier {
         int[] scovile = {1, 2, 3, 9, 10, 12};
         int K = 7;
 
-        Spicier sol = new Spicier();
+        Spicier_1 sol = new Spicier_1();
         sol.solution(scovile, K);
 
     }

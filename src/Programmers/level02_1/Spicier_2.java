@@ -1,11 +1,11 @@
-package Programmers.level02_2;
+package Programmers.level02_1;
 
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.PriorityQueue;
 
-public class Spicier {
+public class Spicier_2 {
 
     public int solution(int[] scoville, int K) {
 
@@ -49,7 +49,7 @@ public class Spicier {
         int K = 7;
         int[] scoville = {1, 2, 3, 9, 10, 12};
 
-        Spicier sol = new Spicier();
+        Spicier_2 sol = new Spicier_2();
 
         System.out.println(sol.solution(scoville, K));
 

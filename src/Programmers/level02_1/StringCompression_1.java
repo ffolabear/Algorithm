@@ -11,7 +11,7 @@ import java.util.Scanner;
 
  */
 
-public class string_compression {
+public class StringCompression_1 {
 
     public static void main(String[] args) {
 

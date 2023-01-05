@@ -1,10 +1,10 @@
-package Programmers.level02_2;
+package Programmers.level02_1;
 
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
-public class StringCompression {
+public class StringCompression_2 {
 
     public int solution(String s) {
 
@@ -59,7 +59,7 @@ public class StringCompression {
 
     public static void main(String[] args) throws IOException {
 
-        StringCompression sol = new StringCompression();
+        StringCompression_2 sol = new StringCompression_2();
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         String s = br.readLine();
 

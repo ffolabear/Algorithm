@@ -3,7 +3,7 @@ package Programmers.level02_1;
 import org.junit.Assert;
 import org.junit.Test;
 
-public class Kakao2020_StringCompression {
+public class Kakao2020_StringCompression2 {
 
     public int solution(String s) {
 
@@ -75,7 +75,7 @@ public class Kakao2020_StringCompression {
         //String s = "abcabcabcabcdededededede";
         //String s = "xababcdcdababcdcd";
 
-        Kakao2020_StringCompression stringComp = new Kakao2020_StringCompression();
+        Kakao2020_StringCompression2 stringComp = new Kakao2020_StringCompression2();
         stringComp.solution(s);
 
     }
