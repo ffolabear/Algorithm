@@ -36,7 +36,7 @@ MANIFEST.MF
 # CDT- autotools
 .autotools
 
-# Java annotation processor (APT)
+# java annotation processor (APT)
 .factorypath
 
 # PDT-specific (PHP Development Tools)
@@ -61,7 +61,7 @@ MANIFEST.MF
 .apt_generated/
 .apt_generated_test/
 
-# Scala IDE specific (Scala & Java development for Eclipse)
+# Scala IDE specific (Scala & java development for Eclipse)
 .cache-main
 .scala_dependencies
 .worksheet
@@ -78,4 +78,4 @@ MANIFEST.MF
 # End of https://www.toptal.com/developers/gitignore/api/eclipse
 
 # 인텔리제이 설정파일 제외
-src/Hackerrank/test/
+src/hackerrank/test/

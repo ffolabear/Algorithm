@@ -1,1 +1,0 @@
-package Codeup;import java.util.Scanner;public class Codeup_1028 {    public static void main(String[] args) {        Scanner sc = new Scanner(System.in);        int N = Integer.parseUnsignedInt(sc.next());        String str = Integer.toUnsignedString(N);        System.out.println(str);    }}
